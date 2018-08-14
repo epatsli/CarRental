@@ -44,11 +44,9 @@ public class EmployeeEntity implements Serializable {
 	public EmployeeEntity() {
 	}
 
-	public EmployeeEntity(EmployeeEntityBuilder builder) {
-		this.person = builder.person;
-		this.position = builder.position;
-		this.institutionEmployee = builder.institutionEmployee;
-		this.carKeeper = builder.carKeeper;
+	public EmployeeEntity(PersonData person, PositionEntity position) {
+		this.person = person;
+		this.position = position;
 	}
 
 	public int getIdEmployee() {
@@ -89,36 +87,6 @@ public class EmployeeEntity implements Serializable {
 
 	public void setCarKeeper(List<CarEntity> carKeeper) {
 		this.carKeeper = carKeeper;
-	}
-
-	public static class EmployeeEntityBuilder {
-
-		private PersonData person;
-		private PositionEntity position;
-		private InstitutionEntity institutionEmployee;
-		private List<CarEntity> carKeeper;
-
-		public EmployeeEntityBuilder() {
-		}
-
-		public EmployeeEntityBuilder(PersonData person, PositionEntity position) {
-			this.person = person;
-			this.position = position;
-		}
-
-		public EmployeeEntityBuilder withInstitutionEmployee(InstitutionEntity institutionEmployee) {
-			this.institutionEmployee = institutionEmployee;
-			return this;
-		}
-
-		public EmployeeEntityBuilder withCarKeeper(List<CarEntity> carKeeper) {
-			this.carKeeper = carKeeper;
-			return this;
-		}
-
-		public EmployeeEntity build() {
-			return new EmployeeEntity(this);
-		}
 	}
 
 }
