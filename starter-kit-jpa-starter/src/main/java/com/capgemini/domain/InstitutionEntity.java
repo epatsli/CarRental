@@ -1,5 +1,6 @@
 package com.capgemini.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import com.capgemini.embedded.AddressData;
 
 @Entity
 @Table(name = "INSTITUTIONS")
-public class InstitutionEntity {
+public class InstitutionEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,12 +35,15 @@ public class InstitutionEntity {
 	@Column(name = "phoneNumber", length = 16)
 	private String phoneNumber;
 
+	@Column(name = "listEmployee")
 	@OneToMany(mappedBy = "institutionEmployee")
 	private List<EmployeeEntity> listEmployee = new ArrayList<>();
 
+	@Column(name = "listInstitutionPickup")
 	@OneToMany(mappedBy = "institutionPickup")
 	private List<InstitutionEntity> listInstitutionPickup = new ArrayList<>();
 
+	@Column(name = "institutionReturn")
 	@OneToMany(mappedBy = "institutionReturn")
 	private List<InstitutionEntity> listInstitutionReturn = new ArrayList<>();
 

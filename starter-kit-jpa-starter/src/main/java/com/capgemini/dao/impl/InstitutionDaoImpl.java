@@ -14,36 +14,6 @@ import com.capgemini.domain.InstitutionEntity;
 public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> implements InstitutionDao {
 
 	@Override
-	public void addInstitution() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void removeInstitution(int idInstitution) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void editInstitution(int idInstitution) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void addEmployeeToInstitute(int idEmployee, int idInstitution) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void removeEmployeeWithInstitute(int idEmployee) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public List<EmployeeEntity> findCurrentEmployee(int idInstitution) {
 
 		TypedQuery<EmployeeEntity> query = entityManager.createQuery(

@@ -1,5 +1,6 @@
 package com.capgemini.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import com.capgemini.embedded.PersonData;
 
 @Entity
 @Table(name = "CLIENTS")
-public class ClientEntity {
+public class ClientEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -53,6 +54,7 @@ public class ClientEntity {
 		this.creditCardNumber = build.creditCardNumber;
 		this.email = build.email;
 		this.address = build.address;
+		this.listRentingCars = build.listRentingCars;
 	}
 
 	public int getIdClient() {
@@ -117,6 +119,7 @@ public class ClientEntity {
 		private String creditCardNumber;
 		private String email;
 		private AddressData address;
+		private List<RentingCarEntity> listRentingCars;
 
 		public ClientEntityBuilder() {
 		}
@@ -142,6 +145,11 @@ public class ClientEntity {
 
 		public ClientEntityBuilder withAddress(AddressData address) {
 			this.address = address;
+			return this;
+		}
+
+		public ClientEntityBuilder withListRentingCars(List<RentingCarEntity> listRentingCars) {
+			this.listRentingCars = listRentingCars;
 			return this;
 		}
 

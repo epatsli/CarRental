@@ -35,6 +35,86 @@ public class CarTO {
 		return new CarTOBuilder();
 	}
 
+	public int getIdCar() {
+		return idCar;
+	}
+
+	public void setIdCar(int idCar) {
+		this.idCar = idCar;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public int getEngine_capacity() {
+		return engine_capacity;
+	}
+
+	public void setEngine_capacity(int engine_capacity) {
+		this.engine_capacity = engine_capacity;
+	}
+
+	public int getEngine_power() {
+		return engine_power;
+	}
+
+	public void setEngine_power(int engine_power) {
+		this.engine_power = engine_power;
+	}
+
+	public int getMileage() {
+		return mileage;
+	}
+
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public List<EmployeeTO> getEmployeeKeeper() {
+		return employeeKeeper;
+	}
+
+	public void setEmployeeKeeper(List<EmployeeTO> employeeKeeper) {
+		this.employeeKeeper = employeeKeeper;
+	}
+
 	public static class CarTOBuilder {
 		private int idCar;
 		private String type;
@@ -50,8 +130,7 @@ public class CarTO {
 		public CarTOBuilder() {
 		}
 
-		public CarTOBuilder(int idCar, String type, String brand, String model) {
-			this.idCar = idCar;
+		public CarTOBuilder(String type, String brand, String model) {
 			this.type = type;
 			this.brand = brand;
 			this.model = model;

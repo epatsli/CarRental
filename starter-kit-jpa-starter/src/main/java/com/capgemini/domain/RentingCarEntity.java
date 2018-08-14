@@ -1,5 +1,6 @@
 package com.capgemini.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "RENTINGCARS")
-public class RentingCarEntity {
+public class RentingCarEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +26,9 @@ public class RentingCarEntity {
 
 	@Column(name = "returnDate", nullable = true)
 	private Date returnDate;
+
+	@Column(name = "price", nullable = true)
+	private double price;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private InstitutionEntity institutionPickup;
@@ -41,44 +45,74 @@ public class RentingCarEntity {
 	public RentingCarEntity() {
 	}
 
-	public RentingCarEntity(RentingCarEntityBuilder build) {
-		this.pickupDate = build.pickupDate;
-		this.returnDate = build.returnDate;
-		this.institutionPickup = build.institutionPickup;
-		this.institutionReturn = build.institutionReturn;
-		this.clientRented = build.clientRented;
-		this.car = build.car;
+	public RentingCarEntity(Date pickupDate, Date returnDate, double price) {
+		this.pickupDate = pickupDate;
+		this.returnDate = returnDate;
+		this.price = price;
 	}
 
-	public static class RentingCarEntityBuilder {
-		private Date pickupDate;
-		private Date returnDate;
-		private InstitutionEntity institutionPickup;
-		private InstitutionEntity institutionReturn;
-		private ClientEntity clientRented;
-		private CarEntity car;
+	public int getIdRenting() {
+		return idRenting;
+	}
 
-		public RentingCarEntityBuilder() {
-		}
+	public void setIdRenting(int idRenting) {
+		this.idRenting = idRenting;
+	}
 
-		public RentingCarEntityBuilder(Date pickupDate, InstitutionEntity institutionPickup, CarEntity car,
-				ClientEntity clientRented) {
-			this.clientRented = clientRented;
-			this.pickupDate = pickupDate;
-			this.institutionPickup = institutionPickup;
-			this.car = car;
-		}
+	public Date getPickupDate() {
+		return pickupDate;
+	}
 
-		public RentingCarEntityBuilder withReturnCar(Date returnDate, InstitutionEntity institutionReturn) {
-			this.returnDate = returnDate;
-			this.institutionReturn = institutionReturn;
-			return this;
-		}
+	public void setPickupDate(Date pickupDate) {
+		this.pickupDate = pickupDate;
+	}
 
-		public RentingCarEntity build() {
-			return new RentingCarEntity(this);
-		}
+	public Date getReturnDate() {
+		return returnDate;
+	}
 
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public InstitutionEntity getInstitutionPickup() {
+		return institutionPickup;
+	}
+
+	public void setInstitutionPickup(InstitutionEntity institutionPickup) {
+		this.institutionPickup = institutionPickup;
+	}
+
+	public InstitutionEntity getInstitutionReturn() {
+		return institutionReturn;
+	}
+
+	public void setInstitutionReturn(InstitutionEntity institutionReturn) {
+		this.institutionReturn = institutionReturn;
+	}
+
+	public ClientEntity getClientRented() {
+		return clientRented;
+	}
+
+	public void setClientRented(ClientEntity clientRented) {
+		this.clientRented = clientRented;
+	}
+
+	public CarEntity getCar() {
+		return car;
+	}
+
+	public void setCar(CarEntity car) {
+		this.car = car;
 	}
 
 }
