@@ -53,13 +53,18 @@ public class InstitutionEntity {
 	}
 
 	public InstitutionEntity(String street, String numberHous, String city, String postCode, String email,
-			String phoneNumber) {
+			String phoneNumber, List<EmployeeEntity> listEmployee, List<EmployeeEntity> listInstitutionPickup,
+			List<EmployeeEntity> listInstitutionReturn) {
+
 		this.street = street;
 		this.numberHous = numberHous;
 		this.city = city;
 		this.postCode = postCode;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.listEmployee = listEmployee;
+		this.listInstitutionPickup = listInstitutionPickup;
+		this.listInstitutionReturn = listInstitutionReturn;
 	}
 
 	public int getIdInstitution() {

@@ -2,6 +2,8 @@ package com.capgemini.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 
 import com.capgemini.dao.InstitutionDao;
@@ -43,14 +45,24 @@ public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> imp
 
 	@Override
 	public List<EmployeeEntity> findCurrentEmployee(int idInstitution) {
-		// TODO Auto-generated method stub
-		return null;
+
+		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
+				"SELECT * FROM EmployeeEntity emp WHERE emp.idInstitution=:idInstitution ", EmployeeEntity.class);
+		query.setParameter("idInstitution", idInstitution);
+		return query.getResultList();
 	}
 
 	@Override
 	public List<EmployeeEntity> findCarKeeperInInstitution(int idCar, int idInstitution) {
 		// TODO Auto-generated method stub
-		return null;
+
+		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
+				"SELECT * FROM EmployeeEntity emp JOIN emp.idCarEntity e WHERE e.idCar=:idCar AND emp.idInstitution=:idInstitution  ",
+				EmployeeEntity.class);
+		query.setParameter("idInstitution", idInstitution);
+		query.setParameter("idCar", idCar);
+		return query.getResultList();
+
 	}
 
 }

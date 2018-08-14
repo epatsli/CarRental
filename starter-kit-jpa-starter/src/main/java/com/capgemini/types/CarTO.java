@@ -1,8 +1,5 @@
 package com.capgemini.types;
 
-import com.capgemini.domain.CarEntity;
-import com.capgemini.domain.CarEntity.CarEntityBuilder;
-
 public class CarTO {
 
 	private int idCar;
@@ -28,6 +25,7 @@ public class CarTO {
 		this.engine_power = builder.engine_power;
 		this.mileage = builder.mileage;
 		this.year = builder.year;
+
 	}
 
 	public static CarTOBuilder builder() {
@@ -43,7 +41,7 @@ public class CarTO {
 		private int engine_capacity;
 		private int engine_power;
 		private int mileage;
-		private int year;
+		private int year;// this.listRentingCar=builder.listRentingCar;this.employeeKeeper=builder.employeeKeeper;
 
 		public CarTOBuilder() {
 		}
@@ -84,3 +82,4 @@ public class CarTO {
 			return new CarTO(this);
 		}
 	}
+}

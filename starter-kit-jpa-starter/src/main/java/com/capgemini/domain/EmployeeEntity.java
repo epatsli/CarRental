@@ -47,14 +47,14 @@ public class EmployeeEntity {
 	public EmployeeEntity() {
 	}
 
-	public EmployeeEntity(String firstName, String lastName, PositionEntity position,
-			InstitutionEntity institutionEmployee, Date dataOfBirth, List<CarEntity> carKeeper) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.position = position;
-		this.institutionEmployee = institutionEmployee;
-		this.dataOfBirth = dataOfBirth;
-		this.carKeeper = carKeeper;
+	public EmployeeEntity(EmployeeEntityBuilder builder) {
+		this.idEmployee = builder.idEmployee;
+		this.firstName = builder.firstName;
+		this.lastName = builder.lastName;
+		this.position = builder.position;
+		this.institutionEmployee = builder.institutionEmployee;
+		this.dataOfBirth = builder.dataOfBirth;
+		this.carKeeper = builder.carKeeper;
 	}
 
 	public int getIdEmployee() {
@@ -118,17 +118,39 @@ public class EmployeeEntity {
 		private int idEmployee;
 		private String firstName;
 		private String lastName;
+		private Date dataOfBirth;
 		private PositionEntity position;
 		private InstitutionEntity institutionEmployee;
-		private Date dataOfBirth;
+		private List<CarEntity> carKeeper;
 
-		public EmployeeEntityBuilder(int idEmployee, String firstName, String lastName, int position) {
+		public EmployeeEntityBuilder() {
+		}
+
+		public EmployeeEntityBuilder(int idEmployee, String firstName, String lastName, PositionEntity position) {
 			this.idEmployee = idEmployee;
 			this.firstName = firstName;
 			this.lastName = lastName;
 			this.position = position;
 		}
 
+		public EmployeeEntityBuilder dataOfBirth(Date dataOfBirth) {
+			this.dataOfBirth = dataOfBirth;
+			return this;
+		}
+
+		public EmployeeEntityBuilder institutionEmployee(InstitutionEntity institutionEmployee) {
+			this.institutionEmployee = institutionEmployee;
+			return this;
+		}
+
+		public EmployeeEntityBuilder carKeeper(List<CarEntity> carKeeper) {
+			this.carKeeper = carKeeper;
+			return this;
+		}
+
+		public EmployeeEntity build() {
+			return new EmployeeEntity(this);
+		}
 	}
 
 }
