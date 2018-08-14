@@ -1,5 +1,7 @@
 package com.capgemini.types;
 
+import java.util.List;
+
 public class CarTO {
 
 	private int idCar;
@@ -11,6 +13,7 @@ public class CarTO {
 	private int engine_power;
 	private int mileage;
 	private int year;
+	private List<EmployeeTO> employeeKeeper;
 
 	public CarTO() {
 	}
@@ -41,7 +44,8 @@ public class CarTO {
 		private int engine_capacity;
 		private int engine_power;
 		private int mileage;
-		private int year;// this.listRentingCar=builder.listRentingCar;this.employeeKeeper=builder.employeeKeeper;
+		private int year;
+		private List<EmployeeTO> employeeKeeper;
 
 		public CarTOBuilder() {
 		}
@@ -53,28 +57,33 @@ public class CarTO {
 			this.model = model;
 		}
 
-		public CarTOBuilder color(String color) {
+		public CarTOBuilder withColor(String color) {
 			this.color = color;
 			return this;
 		}
 
-		public CarTOBuilder engine_capacity(int engine_capacity) {
+		public CarTOBuilder withEngine_capacity(int engine_capacity) {
 			this.engine_capacity = engine_capacity;
 			return this;
 		}
 
-		public CarTOBuilder engine_power(int engine_power) {
+		public CarTOBuilder withEngine_power(int engine_power) {
 			this.engine_power = engine_power;
 			return this;
 		}
 
-		public CarTOBuilder mileage(int mileage) {
+		public CarTOBuilder withMileage(int mileage) {
 			this.mileage = mileage;
 			return this;
 		}
 
-		public CarTOBuilder year(int year) {
+		public CarTOBuilder withYear(int year) {
 			this.year = year;
+			return this;
+		}
+
+		public CarTOBuilder withEmployeeKeeper(List<EmployeeTO> employeeKeeper) {
+			this.employeeKeeper = employeeKeeper;
 			return this;
 		}
 

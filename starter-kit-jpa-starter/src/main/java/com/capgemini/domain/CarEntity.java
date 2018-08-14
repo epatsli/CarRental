@@ -152,11 +152,11 @@ public class CarEntity {
 		this.listRentingCar = listRentingCar;
 	}
 
-	public List<EmployeeEntity> getEmployeeKeeper() {
+	public List<EmployeeEntity> getListEmployeeKeeper() {
 		return employeeKeeper;
 	}
 
-	public void setEmployeeKeeper(List<EmployeeEntity> employeeKeeper) {
+	public void setListEmployeeKeeper(List<EmployeeEntity> employeeKeeper) {
 		this.employeeKeeper = employeeKeeper;
 	}
 
@@ -183,37 +183,37 @@ public class CarEntity {
 			this.model = model;
 		}
 
-		public CarEntityBuilder color(String color) {
+		public CarEntityBuilder withColor(String color) {
 			this.color = color;
 			return this;
 		}
 
-		public CarEntityBuilder engine_capacity(int engine_capacity) {
+		public CarEntityBuilder withEngine_capacity(int engine_capacity) {
 			this.engine_capacity = engine_capacity;
 			return this;
 		}
 
-		public CarEntityBuilder engine_power(int engine_power) {
+		public CarEntityBuilder withEngine_power(int engine_power) {
 			this.engine_power = engine_power;
 			return this;
 		}
 
-		public CarEntityBuilder mileage(int mileage) {
+		public CarEntityBuilder withMileage(int mileage) {
 			this.mileage = mileage;
 			return this;
 		}
 
-		public CarEntityBuilder year(int year) {
+		public CarEntityBuilder withYear(int year) {
 			this.year = year;
 			return this;
 		}
 
-		public CarEntityBuilder listRentingCar(List<RentingCarEntity> listRentingCar) {
+		public CarEntityBuilder withListRentingCar(List<RentingCarEntity> listRentingCar) {
 			this.listRentingCar = listRentingCar;
 			return this;
 		}
 
-		public CarEntityBuilder employeeKeeper(List<EmployeeEntity> employeeKeeper) {
+		public CarEntityBuilder withEmployeeKeeper(List<EmployeeEntity> employeeKeeper) {
 			this.employeeKeeper = employeeKeeper;
 			return this;
 		}

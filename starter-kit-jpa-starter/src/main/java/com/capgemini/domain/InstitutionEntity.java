@@ -44,27 +44,25 @@ public class InstitutionEntity {
 	private List<EmployeeEntity> listEmployee = new ArrayList<>();
 
 	@OneToMany(mappedBy = "institutionPickup")
-	private List<EmployeeEntity> listInstitutionPickup = new ArrayList<>();
+	private List<InstitutionEntity> listInstitutionPickup = new ArrayList<>();
 
 	@OneToMany(mappedBy = "institutionReturn")
-	private List<EmployeeEntity> listInstitutionReturn = new ArrayList<>();
+	private List<InstitutionEntity> listInstitutionReturn = new ArrayList<>();
 
 	public InstitutionEntity() {
 	}
 
-	public InstitutionEntity(String street, String numberHous, String city, String postCode, String email,
-			String phoneNumber, List<EmployeeEntity> listEmployee, List<EmployeeEntity> listInstitutionPickup,
-			List<EmployeeEntity> listInstitutionReturn) {
-
-		this.street = street;
-		this.numberHous = numberHous;
-		this.city = city;
-		this.postCode = postCode;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.listEmployee = listEmployee;
-		this.listInstitutionPickup = listInstitutionPickup;
-		this.listInstitutionReturn = listInstitutionReturn;
+	public InstitutionEntity(InstitutionEntityBuilder build) {
+		this.idInstitution = build.idInstitution;
+		this.street = build.street;
+		this.numberHous = build.numberHous;
+		this.city = build.city;
+		this.postCode = build.postCode;
+		this.email = build.email;
+		this.phoneNumber = build.phoneNumber;
+		this.listEmployee = build.listEmployee;
+		this.listInstitutionPickup = build.listInstitutionPickup;
+		this.listInstitutionReturn = build.listInstitutionReturn;
 	}
 
 	public int getIdInstitution() {
@@ -123,4 +121,57 @@ public class InstitutionEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
+	public static class InstitutionEntityBuilder {
+		private int idInstitution;
+		private String street;
+		private String numberHous;
+		private String city;
+		private String postCode;
+		private String email;
+		private String phoneNumber;
+		private List<EmployeeEntity> listEmployee;
+		private List<InstitutionEntity> listInstitutionPickup;
+		private List<InstitutionEntity> listInstitutionReturn;
+
+		public InstitutionEntityBuilder() {
+		}
+
+		public InstitutionEntityBuilder(int idInstitution, String street, String numberHous, String city,
+				String postCode) {
+			this.idInstitution = idInstitution;
+			this.street = street;
+			this.numberHous = numberHous;
+			this.city = city;
+			this.postCode = postCode;
+		}
+
+		public InstitutionEntityBuilder withEmail(String email) {
+			this.email = email;
+			return this;
+		}
+
+		public InstitutionEntityBuilder withPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+			return this;
+		}
+
+		public InstitutionEntityBuilder withListEmployee(List<EmployeeEntity> listEmployee) {
+			this.listEmployee = listEmployee;
+			return this;
+		}
+
+		public InstitutionEntityBuilder withListInstitutionPickup(List<InstitutionEntity> listInstitutionPickup) {
+			this.listInstitutionPickup = listInstitutionPickup;
+			return this;
+		}
+
+		public InstitutionEntityBuilder withListInstitutionReturn(List<InstitutionEntity> listInstitutionReturn) {
+			this.listInstitutionReturn = listInstitutionReturn;
+			return this;
+		}
+
+		public InstitutionEntity build() {
+			return new InstitutionEntity(this);
+		}
+	}
 }

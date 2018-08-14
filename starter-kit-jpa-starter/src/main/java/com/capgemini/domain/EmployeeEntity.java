@@ -133,17 +133,17 @@ public class EmployeeEntity {
 			this.position = position;
 		}
 
-		public EmployeeEntityBuilder dataOfBirth(Date dataOfBirth) {
+		public EmployeeEntityBuilder withDataOfBirth(Date dataOfBirth) {
 			this.dataOfBirth = dataOfBirth;
 			return this;
 		}
 
-		public EmployeeEntityBuilder institutionEmployee(InstitutionEntity institutionEmployee) {
+		public EmployeeEntityBuilder withInstitutionEmployee(InstitutionEntity institutionEmployee) {
 			this.institutionEmployee = institutionEmployee;
 			return this;
 		}
 
-		public EmployeeEntityBuilder carKeeper(List<CarEntity> carKeeper) {
+		public EmployeeEntityBuilder withCarKeeper(List<CarEntity> carKeeper) {
 			this.carKeeper = carKeeper;
 			return this;
 		}

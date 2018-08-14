@@ -8,6 +8,7 @@ import com.capgemini.domain.AuthorEntity;
 import com.capgemini.domain.CarEntity;
 import com.capgemini.types.CarTO;
 import com.capgemini.types.CarTO.CarTOBuilder;
+import com.capgemini.types.EmployeeTO;
 
 public class CarMapper {
 
@@ -18,9 +19,12 @@ public class CarMapper {
 		// Set<AuthorTO> authorTOs =
 		// AuthorMapper.map2TOs(carEntity.getAuthors());
 
+		List<EmployeeTO> carKeepers = CarMapper.map2TOs(carEntity.getListEmployeeKeeper());
+
 		return new CarTOBuilder(carEntity.getIdCar(), carEntity.getType(), carEntity.getBrand(), carEntity.getModel())
-				.color(carEntity.getColor()).engine_capacity(carEntity.getEngine_capacity())
-				.engine_power(carEntity.getEngine_power()).mileage(carEntity.getMileage()).year(carEntity.getYear())
+				.withColor(carEntity.getColor()).withEngine_capacity(carEntity.getEngine_capacity())
+				.withEngine_power(carEntity.getEngine_power()).withMileage(carEntity.getMileage())
+				.withYear(carEntity.getYear())
 
 				.build();
 
@@ -32,9 +36,13 @@ public class CarMapper {
 			return null;
 
 		CarEntity carEntity = new CarEntity();
+
 		Set<AuthorEntity> authors = AuthorMapper.map2Entities(carTO.getAuthors());
+
 		carEntity.setAuthors(authors);
+
 		carEntity.setTitle(carTO.getTitle());
+
 		return carEntity;
 	}
 
