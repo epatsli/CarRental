@@ -64,6 +64,8 @@ public class CarEntity {
 		this.engine_power = builder.engine_power;
 		this.mileage = builder.mileage;
 		this.year = builder.year;
+		this.listRentingCar = builder.listRentingCar;
+		this.employeeKeeper = builder.employeeKeeper;
 	}
 
 	public CarEntityBuilder build() {
@@ -168,6 +170,8 @@ public class CarEntity {
 		private int engine_power;
 		private int mileage;
 		private int year;
+		private List<RentingCarEntity> listRentingCar;
+		private List<EmployeeEntity> employeeKeeper;
 
 		public CarEntityBuilder() {
 		}
@@ -201,6 +205,16 @@ public class CarEntity {
 
 		public CarEntityBuilder year(int year) {
 			this.year = year;
+			return this;
+		}
+
+		public CarEntityBuilder listRentingCar(List<RentingCarEntity> listRentingCar) {
+			this.listRentingCar = listRentingCar;
+			return this;
+		}
+
+		public CarEntityBuilder employeeKeeper(List<EmployeeEntity> employeeKeeper) {
+			this.employeeKeeper = employeeKeeper;
 			return this;
 		}
 
