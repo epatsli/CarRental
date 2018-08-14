@@ -55,7 +55,6 @@ public class CarEntity {
 	}
 
 	public CarEntity(CarEntityBuilder builder) {
-		this.idCar = builder.idCar;
 		this.type = builder.type;
 		this.brand = builder.brand;
 		this.model = builder.model;
@@ -161,7 +160,6 @@ public class CarEntity {
 	}
 
 	public static class CarEntityBuilder {
-		private int idCar;
 		private String type;
 		private String brand;
 		private String model;
@@ -176,8 +174,7 @@ public class CarEntity {
 		public CarEntityBuilder() {
 		}
 
-		public CarEntityBuilder(int idCar, String type, String brand, String model) {
-			this.idCar = idCar;
+		public CarEntityBuilder(String type, String brand, String model) {
 			this.type = type;
 			this.brand = brand;
 			this.model = model;

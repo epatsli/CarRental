@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
+
+import com.capgemini.embedded.AddressData;
 
 @Entity
 @Table(name = "CLIENTS")
@@ -41,17 +44,8 @@ public class ClientEntity {
 	@Column(name = "email", length = 32, nullable = true)
 	private String email;
 
-	@Column(name = "street", length = 32, nullable = true)
-	private String street;
-
-	@Column(name = "numberHous", length = 16, nullable = true)
-	private String numberHous;
-
-	@Column(name = "city", length = 32, nullable = true)
-	private String city;
-
-	@Column(name = "postCode", length = 8, nullable = true)
-	private String postCode;
+	@Embedded
+	private AddressData address;
 
 	@OneToMany(mappedBy = "clientRented")
 	private List<RentingCarEntity> listRentingCars = new ArrayList<>();
@@ -59,18 +53,14 @@ public class ClientEntity {
 	public ClientEntity() {
 	}
 
-	public ClientEntity(String firstName, String lastName, Date dataOfBirth, String phoneNumber,
-			String creditCardNumber, String email, String street, String numberHous, String city, String postCode) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dataOfBirth = dataOfBirth;
-		this.phoneNumber = phoneNumber;
-		this.creditCardNumber = creditCardNumber;
-		this.email = email;
-		this.street = street;
-		this.numberHous = numberHous;
-		this.city = city;
-		this.postCode = postCode;
+	public ClientEntity(ClientEntityBuilder build) {
+		this.firstName = build.firstName;
+		this.lastName = build.lastName;
+		this.dataOfBirth = build.dataOfBirth;
+		this.phoneNumber = build.phoneNumber;
+		this.creditCardNumber = build.creditCardNumber;
+		this.email = build.email;
+		this.address = build.address;
 	}
 
 	public int getIdClient() {
@@ -129,36 +119,68 @@ public class ClientEntity {
 		this.email = email;
 	}
 
-	public String getStreet() {
-		return street;
+	public AddressData getAddress() {
+		return address;
 	}
 
-	public void setStreet(String street) {
-		this.street = street;
+	public void setAddress(AddressData address) {
+		this.address = address;
 	}
 
-	public String getNumberHous() {
-		return numberHous;
+	public List<RentingCarEntity> getListRentingCars() {
+		return listRentingCars;
 	}
 
-	public void setNumberHous(String numberHous) {
-		this.numberHous = numberHous;
+	public void setListRentingCars(List<RentingCarEntity> listRentingCars) {
+		this.listRentingCars = listRentingCars;
 	}
 
-	public String getCity() {
-		return city;
-	}
+	public static class ClientEntityBuilder {
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+		private String firstName;
+		private String lastName;
+		private Date dataOfBirth;
+		private String phoneNumber;
+		private String creditCardNumber;
+		private String email;
+		private AddressData address;
 
-	public String getPostCode() {
-		return postCode;
-	}
+		public ClientEntityBuilder() {
+		}
 
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
+		public ClientEntityBuilder(String firstName, String lastName) {
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
 
+		public ClientEntityBuilder withDataOfBirth(Date dataOfBirth) {
+			this.dataOfBirth = dataOfBirth;
+			return this;
+		}
+
+		public ClientEntityBuilder withPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+			return this;
+		}
+
+		public ClientEntityBuilder withCredicalNumber(String creditCardNumber) {
+			this.creditCardNumber = creditCardNumber;
+			return this;
+		}
+
+		public ClientEntityBuilder withEmail(String email) {
+			this.email = email;
+			return this;
+		}
+
+		public ClientEntityBuilder withAddress(AddressData address) {
+			this.address = address;
+			return this;
+		}
+
+		public ClientEntity build() {
+			return new ClientEntity(this);
+		}
+
+	}
 }

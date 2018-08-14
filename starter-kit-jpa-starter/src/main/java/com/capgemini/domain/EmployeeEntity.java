@@ -30,15 +30,15 @@ public class EmployeeEntity {
 	@Column(name = "lastName", length = 32, nullable = false)
 	private String lastName;
 
+	@Column(name = "dateOfBirth", columnDefinition = " DATE", nullable = true)
+	private Date dataOfBirth;
+
 	@Column(name = "position", nullable = false)
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private PositionEntity position;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private InstitutionEntity institutionEmployee;
-
-	@Column(name = "dateOfBirth", columnDefinition = " DATE", nullable = true)
-	private Date dataOfBirth;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "EMPLOYEES_CARS", joinColumns = @JoinColumn(name = "idEmployee") , inverseJoinColumns = @JoinColumn(name = "idCar") )
@@ -48,7 +48,6 @@ public class EmployeeEntity {
 	}
 
 	public EmployeeEntity(EmployeeEntityBuilder builder) {
-		this.idEmployee = builder.idEmployee;
 		this.firstName = builder.firstName;
 		this.lastName = builder.lastName;
 		this.position = builder.position;
@@ -115,7 +114,6 @@ public class EmployeeEntity {
 
 	public static class EmployeeEntityBuilder {
 
-		private int idEmployee;
 		private String firstName;
 		private String lastName;
 		private Date dataOfBirth;
@@ -126,8 +124,7 @@ public class EmployeeEntity {
 		public EmployeeEntityBuilder() {
 		}
 
-		public EmployeeEntityBuilder(int idEmployee, String firstName, String lastName, PositionEntity position) {
-			this.idEmployee = idEmployee;
+		public EmployeeEntityBuilder(String firstName, String lastName, PositionEntity position) {
 			this.firstName = firstName;
 			this.lastName = lastName;
 			this.position = position;

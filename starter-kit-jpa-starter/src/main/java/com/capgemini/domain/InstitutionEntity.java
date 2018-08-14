@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
 
+import com.capgemini.embedded.AddressData;
+
 @Entity
 @Table(name = "INSTITUTIONS")
 public class InstitutionEntity {
@@ -21,17 +24,8 @@ public class InstitutionEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idInstitution;
 
-	@Column(name = "street", length = 32)
-	private String street;
-
-	@Column(name = "numberHous", length = 16)
-	private String numberHous;
-
-	@Column(name = "city", length = 32)
-	private String city;
-
-	@Column(name = "postCode", length = 8)
-	private String postCode;
+	@Embedded
+	private AddressData address;
 
 	@Email
 	@Column(name = "email", length = 256)
@@ -53,11 +47,7 @@ public class InstitutionEntity {
 	}
 
 	public InstitutionEntity(InstitutionEntityBuilder build) {
-		this.idInstitution = build.idInstitution;
-		this.street = build.street;
-		this.numberHous = build.numberHous;
-		this.city = build.city;
-		this.postCode = build.postCode;
+		this.address = build.address;
 		this.email = build.email;
 		this.phoneNumber = build.phoneNumber;
 		this.listEmployee = build.listEmployee;
@@ -73,36 +63,12 @@ public class InstitutionEntity {
 		this.idInstitution = idInstitution;
 	}
 
-	public String getStreet() {
-		return street;
+	public AddressData getAddress() {
+		return address;
 	}
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getNumberHous() {
-		return numberHous;
-	}
-
-	public void setNumberHous(String numberHous) {
-		this.numberHous = numberHous;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getPostCode() {
-		return postCode;
-	}
-
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
+	public void setAddress(AddressData address) {
+		this.address = address;
 	}
 
 	public String getEmail() {
@@ -122,11 +88,7 @@ public class InstitutionEntity {
 	}
 
 	public static class InstitutionEntityBuilder {
-		private int idInstitution;
-		private String street;
-		private String numberHous;
-		private String city;
-		private String postCode;
+		private AddressData address;
 		private String email;
 		private String phoneNumber;
 		private List<EmployeeEntity> listEmployee;
@@ -136,13 +98,8 @@ public class InstitutionEntity {
 		public InstitutionEntityBuilder() {
 		}
 
-		public InstitutionEntityBuilder(int idInstitution, String street, String numberHous, String city,
-				String postCode) {
-			this.idInstitution = idInstitution;
-			this.street = street;
-			this.numberHous = numberHous;
-			this.city = city;
-			this.postCode = postCode;
+		public InstitutionEntityBuilder(AddressData address) {
+			this.address = address;
 		}
 
 		public InstitutionEntityBuilder withEmail(String email) {
