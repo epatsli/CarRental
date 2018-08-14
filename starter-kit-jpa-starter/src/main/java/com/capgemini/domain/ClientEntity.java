@@ -1,7 +1,6 @@
 package com.capgemini.domain;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,6 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 
 import com.capgemini.embedded.AddressData;
+import com.capgemini.embedded.PersonData;
 
 @Entity
 @Table(name = "CLIENTS")
@@ -24,15 +24,6 @@ public class ClientEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idClient;
-
-	@Column(name = "firstName", length = 32, nullable = false)
-	private String firstName;
-
-	@Column(name = "lastName", length = 32, nullable = false)
-	private String lastName;
-
-	@Column(name = "dateOfBirth", columnDefinition = " DATE", nullable = false)
-	private Date dataOfBirth;
 
 	@Column(name = "phoneNumber", length = 16, nullable = false)
 	private String phoneNumber;
@@ -45,6 +36,9 @@ public class ClientEntity {
 	private String email;
 
 	@Embedded
+	private PersonData person;
+
+	@Embedded
 	private AddressData address;
 
 	@OneToMany(mappedBy = "clientRented")
@@ -54,9 +48,7 @@ public class ClientEntity {
 	}
 
 	public ClientEntity(ClientEntityBuilder build) {
-		this.firstName = build.firstName;
-		this.lastName = build.lastName;
-		this.dataOfBirth = build.dataOfBirth;
+		this.person = build.person;
 		this.phoneNumber = build.phoneNumber;
 		this.creditCardNumber = build.creditCardNumber;
 		this.email = build.email;
@@ -71,28 +63,12 @@ public class ClientEntity {
 		this.idClient = idClient;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public PersonData getPerson() {
+		return person;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Date getDataOfBirth() {
-		return dataOfBirth;
-	}
-
-	public void setDataOfBirth(Date dataOfBirth) {
-		this.dataOfBirth = dataOfBirth;
+	public void setPerson(PersonData person) {
+		this.person = person;
 	}
 
 	public String getPhoneNumber() {
@@ -137,9 +113,7 @@ public class ClientEntity {
 
 	public static class ClientEntityBuilder {
 
-		private String firstName;
-		private String lastName;
-		private Date dataOfBirth;
+		private PersonData person;
 		private String phoneNumber;
 		private String creditCardNumber;
 		private String email;
@@ -148,14 +122,8 @@ public class ClientEntity {
 		public ClientEntityBuilder() {
 		}
 
-		public ClientEntityBuilder(String firstName, String lastName) {
-			this.firstName = firstName;
-			this.lastName = lastName;
-		}
-
-		public ClientEntityBuilder withDataOfBirth(Date dataOfBirth) {
-			this.dataOfBirth = dataOfBirth;
-			return this;
+		public ClientEntityBuilder(PersonData person) {
+			this.person = person;
 		}
 
 		public ClientEntityBuilder withPhoneNumber(String phoneNumber) {

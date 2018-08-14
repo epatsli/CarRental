@@ -8,7 +8,6 @@ import com.capgemini.domain.AuthorEntity;
 import com.capgemini.domain.CarEntity;
 import com.capgemini.types.CarTO;
 import com.capgemini.types.CarTO.CarTOBuilder;
-import com.capgemini.types.EmployeeTO;
 
 public class CarMapper {
 
@@ -16,17 +15,10 @@ public class CarMapper {
 		if (carEntity == null)
 			return null;
 
-		// Set<AuthorTO> authorTOs =
-		// AuthorMapper.map2TOs(carEntity.getAuthors());
-
-		List<EmployeeTO> carKeepers = CarMapper.map2TOs(carEntity.getListEmployeeKeeper());
-
 		return new CarTOBuilder(carEntity.getIdCar(), carEntity.getType(), carEntity.getBrand(), carEntity.getModel())
 				.withColor(carEntity.getColor()).withEngine_capacity(carEntity.getEngine_capacity())
 				.withEngine_power(carEntity.getEngine_power()).withMileage(carEntity.getMileage())
-				.withYear(carEntity.getYear())
-
-				.build();
+				.withYear(carEntity.getYear()).build();
 
 	}
 

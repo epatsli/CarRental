@@ -1,11 +1,11 @@
 package com.capgemini.domain;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.capgemini.embedded.PersonData;
+
 @Entity
 @Table(name = "EMPLOYEES")
 public class EmployeeEntity {
@@ -24,14 +26,8 @@ public class EmployeeEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idEmployee;
 
-	@Column(name = "firstName", length = 32, nullable = false)
-	private String firstName;
-
-	@Column(name = "lastName", length = 32, nullable = false)
-	private String lastName;
-
-	@Column(name = "dateOfBirth", columnDefinition = " DATE", nullable = true)
-	private Date dataOfBirth;
+	@Embedded
+	private PersonData person;
 
 	@Column(name = "position", nullable = false)
 	@ManyToOne(cascade = CascadeType.PERSIST)
@@ -48,11 +44,9 @@ public class EmployeeEntity {
 	}
 
 	public EmployeeEntity(EmployeeEntityBuilder builder) {
-		this.firstName = builder.firstName;
-		this.lastName = builder.lastName;
+		this.person = builder.person;
 		this.position = builder.position;
 		this.institutionEmployee = builder.institutionEmployee;
-		this.dataOfBirth = builder.dataOfBirth;
 		this.carKeeper = builder.carKeeper;
 	}
 
@@ -64,20 +58,12 @@ public class EmployeeEntity {
 		this.idEmployee = idEmployee;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public PersonData getPerson() {
+		return person;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setPerson(PersonData person) {
+		this.person = person;
 	}
 
 	public PositionEntity getPosition() {
@@ -96,14 +82,6 @@ public class EmployeeEntity {
 		this.institutionEmployee = institutionEmployee;
 	}
 
-	public Date getDataOfBirth() {
-		return dataOfBirth;
-	}
-
-	public void setDataOfBirth(Date dataOfBirth) {
-		this.dataOfBirth = dataOfBirth;
-	}
-
 	public List<CarEntity> getCarKeeper() {
 		return carKeeper;
 	}
@@ -114,9 +92,7 @@ public class EmployeeEntity {
 
 	public static class EmployeeEntityBuilder {
 
-		private String firstName;
-		private String lastName;
-		private Date dataOfBirth;
+		private PersonData person;
 		private PositionEntity position;
 		private InstitutionEntity institutionEmployee;
 		private List<CarEntity> carKeeper;
@@ -124,15 +100,9 @@ public class EmployeeEntity {
 		public EmployeeEntityBuilder() {
 		}
 
-		public EmployeeEntityBuilder(String firstName, String lastName, PositionEntity position) {
-			this.firstName = firstName;
-			this.lastName = lastName;
+		public EmployeeEntityBuilder(PersonData person, PositionEntity position) {
+			this.person = person;
 			this.position = position;
-		}
-
-		public EmployeeEntityBuilder withDataOfBirth(Date dataOfBirth) {
-			this.dataOfBirth = dataOfBirth;
-			return this;
 		}
 
 		public EmployeeEntityBuilder withInstitutionEmployee(InstitutionEntity institutionEmployee) {
