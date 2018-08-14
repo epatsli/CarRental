@@ -6,11 +6,11 @@ import com.capgemini.domain.CarEntity;
 
 public interface CarDao extends Dao<CarEntity, Long> {
 
-	void addCar();
+	void addCar(int idCar, String type, String brand);
 
 	void removeCar(int idCar);
 
-	void editCar(int idCar);
+	void editCar(int idCar, String brand, int engine_capacity, int mileage);
 
 	void addCarKeeper(int idCar, int idEmployee);
 

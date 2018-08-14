@@ -66,6 +66,10 @@ public class CarEntity {
 		this.year = builder.year;
 	}
 
+	public CarEntityBuilder build() {
+		return new CarEntityBuilder();
+	}
+
 	public int getIdCar() {
 		return idCar;
 	}
@@ -164,6 +168,9 @@ public class CarEntity {
 		private int engine_power;
 		private int mileage;
 		private int year;
+
+		public CarEntityBuilder() {
+		}
 
 		public CarEntityBuilder(int idCar, String type, String brand, String model) {
 			this.idCar = idCar;
