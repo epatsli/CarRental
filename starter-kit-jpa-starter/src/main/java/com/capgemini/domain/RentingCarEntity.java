@@ -41,14 +41,44 @@ public class RentingCarEntity {
 	public RentingCarEntity() {
 	}
 
-	public RentingCarEntity(Date pickupDate, Date returnDate, InstitutionEntity institutionPickup,
-			InstitutionEntity institutionReturn, ClientEntity clientRented, CarEntity car) {
-		this.pickupDate = pickupDate;
-		this.returnDate = returnDate;
-		this.institutionPickup = institutionPickup;
-		this.institutionReturn = institutionReturn;
-		this.clientRented = clientRented;
-		this.car = car;
+	public RentingCarEntity(RentingCarEntityBuilder build) {
+		this.pickupDate = build.pickupDate;
+		this.returnDate = build.returnDate;
+		this.institutionPickup = build.institutionPickup;
+		this.institutionReturn = build.institutionReturn;
+		this.clientRented = build.clientRented;
+		this.car = build.car;
+	}
+
+	public static class RentingCarEntityBuilder {
+		private Date pickupDate;
+		private Date returnDate;
+		private InstitutionEntity institutionPickup;
+		private InstitutionEntity institutionReturn;
+		private ClientEntity clientRented;
+		private CarEntity car;
+
+		public RentingCarEntityBuilder() {
+		}
+
+		public RentingCarEntityBuilder(Date pickupDate, InstitutionEntity institutionPickup, CarEntity car,
+				ClientEntity clientRented) {
+			this.clientRented = clientRented;
+			this.pickupDate = pickupDate;
+			this.institutionPickup = institutionPickup;
+			this.car = car;
+		}
+
+		public RentingCarEntityBuilder withReturnCar(Date returnDate, InstitutionEntity institutionReturn) {
+			this.returnDate = returnDate;
+			this.institutionReturn = institutionReturn;
+			return this;
+		}
+
+		public RentingCarEntity build() {
+			return new RentingCarEntity(this);
+		}
+
 	}
 
 }

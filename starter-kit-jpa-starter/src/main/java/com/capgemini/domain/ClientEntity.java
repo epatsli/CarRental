@@ -112,7 +112,6 @@ public class ClientEntity {
 	}
 
 	public static class ClientEntityBuilder {
-
 		private PersonData person;
 		private String phoneNumber;
 		private String creditCardNumber;
