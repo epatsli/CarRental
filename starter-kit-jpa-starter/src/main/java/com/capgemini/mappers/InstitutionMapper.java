@@ -21,7 +21,7 @@ public class InstitutionMapper {
 		List<EmployeeTO> employeeTOs = EmployeeMapper.map2TOs(institution.getListEmployee());
 		List<InstitutionTO> listInstitutionPickups = InstitutionMapper.map2TOs(institution.getListInstitutionPickup());
 		List<InstitutionTO> listInstitutionReturn = InstitutionMapper.map2TOs(institution.getListInstitutionReturn());
-		AddressDataTO address = AddressDataMapper.mapToTO(institution.getAddress());
+		AddressDataTO address = AddressMapper.mapToTO(institution.getAddress());
 
 		return new InstitutionTOBuilder().withIdInstitution(institution.getIdInstitution()).withAddress(address)
 				.withEmail(institution.getEmail()).withPhoneNumber(institution.getPhoneNumber())
@@ -42,7 +42,7 @@ public class InstitutionMapper {
 				.map2Entities(institutionTO.getListInstitutionPickup());
 		List<InstitutionEntity> listInstitutionReturn = InstitutionMapper
 				.map2Entities(institutionTO.getListInstitutionReturn());
-		AddressData address = AddressDataMapper.mapToEntity(institutionTO.getAddress());
+		AddressData address = AddressMapper.mapToEntity(institutionTO.getAddress());
 
 		institutionEntity.setAddress(address);
 		institutionEntity.setEmail(institutionTO.getEmail());
