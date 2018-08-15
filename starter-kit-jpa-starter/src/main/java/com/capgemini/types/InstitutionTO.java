@@ -22,6 +22,7 @@ public class InstitutionTO {
 	}
 
 	public InstitutionTO(InstitutionTOBuilder build) {
+		this.idInstitution = build.idInstitution;
 		this.address = build.address;
 		this.email = build.email;
 		this.phoneNumber = build.phoneNumber;
@@ -87,6 +88,7 @@ public class InstitutionTO {
 	}
 
 	public static class InstitutionTOBuilder {
+		private int idInstitution;
 		private AddressDataTO address;
 		private String email;
 		private String phoneNumber;
@@ -96,6 +98,11 @@ public class InstitutionTO {
 
 		public InstitutionTOBuilder(AddressDataTO address) {
 			this.address = address;
+		}
+
+		public InstitutionTOBuilder withIdInstitution(int idInstitution) {
+			this.idInstitution = idInstitution;
+			return this;
 		}
 
 		public InstitutionTOBuilder withEmail(String email) {

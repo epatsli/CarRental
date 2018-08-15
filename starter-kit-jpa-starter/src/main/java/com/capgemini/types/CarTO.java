@@ -149,10 +149,19 @@ public class CarTO {
 		public CarTOBuilder() {
 		}
 
-		public CarTOBuilder(String type, String brand, String model) {
+		public CarTOBuilder withType(String type) {
 			this.type = type;
+			return this;
+		}
+
+		public CarTOBuilder withBrand(String brand) {
 			this.brand = brand;
+			return this;
+		}
+
+		public CarTOBuilder withModel(String model) {
 			this.model = model;
+			return this;
 		}
 
 		public CarTOBuilder withColor(String color) {

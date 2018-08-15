@@ -45,12 +45,11 @@ public class EmployeeEntity implements Serializable {
 	public EmployeeEntity() {
 	}
 
-	public EmployeeEntity(PersonData person, PositionEntity position, InstitutionEntity institutionEmployee,
-			List<CarEntity> carKeeper) {
-		this.person = person;
-		this.position = position;
-		this.institutionEmployee = institutionEmployee;
-		this.carKeeper = carKeeper;
+	public EmployeeEntity(EmployeeEntityBuilder builder) {
+		this.person = builder.person;
+		this.position = builder.position;
+		this.institutionEmployee = builder.institutionEmployee;
+		this.carKeeper = builder.carKeeper;
 	}
 
 	public int getIdEmployee() {
@@ -91,6 +90,42 @@ public class EmployeeEntity implements Serializable {
 
 	public void setCarKeeper(List<CarEntity> carKeeper) {
 		this.carKeeper = carKeeper;
+	}
+
+	public static class EmployeeEntityBuilder {
+		private int idEmployee;
+		private PersonData person;
+		private PositionEntity position;
+		private InstitutionEntity institutionEmployee;
+		private List<CarEntity> carKeeper;
+
+		public EmployeeEntityBuilder() {
+		}
+
+		public EmployeeEntityBuilder withPerson(PersonData person) {
+			this.person = person;
+			return this;
+		}
+
+		public EmployeeEntityBuilder withPosition(PositionEntity position) {
+			this.position = position;
+			return this;
+		}
+
+		public EmployeeEntityBuilder withInstitutionEmployee(InstitutionEntity institutionEmployee) {
+			this.institutionEmployee = institutionEmployee;
+			return this;
+		}
+
+		public EmployeeEntityBuilder withCarKeeper(List<CarEntity> carKeeper) {
+			this.carKeeper = carKeeper;
+			return this;
+		}
+
+		public EmployeeEntity build() {
+			return new EmployeeEntity(this);
+		}
+
 	}
 
 }

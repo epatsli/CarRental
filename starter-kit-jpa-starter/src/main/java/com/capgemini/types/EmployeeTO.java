@@ -1,15 +1,28 @@
 package com.capgemini.types;
 
+import java.util.List;
+
+import javax.persistence.Embedded;
+
 import com.capgemini.embedded.PersonDataTO;
 
 public class EmployeeTO {
 	private int idEmployee;
+	@Embedded
 	private PersonDataTO person;
 	private PositionTO position;
+	private InstitutionTO institutionEmployee;
+	private List<CarTO> carKeeper;
 
-	public EmployeeTO(PersonDataTO person, PositionTO position) {
-		this.person = person;
-		this.position = position;
+	public EmployeeTO() {
+	}
+
+	public EmployeeTO(EmployeeTOBuilder builder) {
+		this.idEmployee = builder.idEmployee;
+		this.person = builder.person;
+		this.position = builder.position;
+		this.institutionEmployee = builder.institutionEmployee;
+		this.carKeeper = builder.carKeeper;
 	}
 
 	public int getIdEmployee() {
@@ -34,6 +47,63 @@ public class EmployeeTO {
 
 	public void setPosition(PositionTO position) {
 		this.position = position;
+	}
+
+	public InstitutionTO getInstitutionEmployee() {
+		return institutionEmployee;
+	}
+
+	public void setInstitutionEmployee(InstitutionTO institutionEmployee) {
+		this.institutionEmployee = institutionEmployee;
+	}
+
+	public List<CarTO> getCarKeeper() {
+		return carKeeper;
+	}
+
+	public void setCarKeeper(List<CarTO> carKeeper) {
+		this.carKeeper = carKeeper;
+	}
+
+	public static class EmployeeTOBuilder {
+		private int idEmployee;
+		private PersonDataTO person;
+		private PositionTO position;
+		private InstitutionTO institutionEmployee;
+		private List<CarTO> carKeeper;
+
+		public EmployeeTOBuilder() {
+		}
+
+		public EmployeeTOBuilder withIdEmployee(int idEmployee) {
+			this.idEmployee = idEmployee;
+			return this;
+		}
+
+		public EmployeeTOBuilder withPerson(PersonDataTO person) {
+			this.person = person;
+			return this;
+		}
+
+		public EmployeeTOBuilder withPosition(PositionTO position) {
+			this.position = position;
+			return this;
+		}
+
+		public EmployeeTOBuilder withInstitutionEmployee(InstitutionTO institutionEmployee) {
+			this.institutionEmployee = institutionEmployee;
+			return this;
+		}
+
+		public EmployeeTOBuilder withCarKeeper(List<CarTO> carKeeper) {
+			this.carKeeper = carKeeper;
+			return this;
+		}
+
+		public EmployeeTO build() {
+			return new EmployeeTO(this);
+		}
+
 	}
 
 }

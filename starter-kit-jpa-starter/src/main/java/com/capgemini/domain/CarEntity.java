@@ -176,10 +176,19 @@ public class CarEntity implements Serializable {
 		public CarEntityBuilder() {
 		}
 
-		public CarEntityBuilder(String type, String brand, String model) {
+		public CarEntityBuilder withType(String type) {
 			this.type = type;
+			return this;
+		}
+
+		public CarEntityBuilder withBrand(String brand) {
 			this.brand = brand;
+			return this;
+		}
+
+		public CarEntityBuilder withModel(String model) {
 			this.model = model;
+			return this;
 		}
 
 		public CarEntityBuilder withColor(String color) {

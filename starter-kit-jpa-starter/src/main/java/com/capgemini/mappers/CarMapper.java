@@ -18,11 +18,11 @@ public class CarMapper {
 		List<RentingCarTO> RentingCarTOs = RentingCarMapper.map2TOs(carEntity.getListRentingCar());
 		List<EmployeeTO> employeeKeepers = EmployeeMapper.map2TOs(carEntity.getListEmployeeKeeper());
 
-		return new CarTOBuilder(carEntity.getType(), carEntity.getBrand(), carEntity.getModel())
-				.withColor(carEntity.getColor()).withEngineCapacity(carEntity.getEngine_capacity())
-				.withEnginePower(carEntity.getEnginePower()).withMileage(carEntity.getMileage())
-				.withYear(carEntity.getYear()).withListRentingCar(RentingCarTOs).withEmployeeKeeper(employeeKeepers)
-				.build();
+		return new CarTOBuilder().withType(carEntity.getType()).withBrand(carEntity.getBrand())
+				.withModel(carEntity.getModel()).withColor(carEntity.getColor())
+				.withEngineCapacity(carEntity.getEngine_capacity()).withEnginePower(carEntity.getEnginePower())
+				.withMileage(carEntity.getMileage()).withYear(carEntity.getYear()).withListRentingCar(RentingCarTOs)
+				.withEmployeeKeeper(employeeKeepers).build();
 	}
 
 	public static CarEntity toCarEntity(CarTO carTO) {
@@ -30,9 +30,10 @@ public class CarMapper {
 		if (carTO == null)
 			return null;
 
-		return new CarEntityBuilder(carTO.getType(), carTO.getBrand(), carTO.getModel()).withColor(carTO.getColor())
-				.withEngineCapacity(carTO.getEngine_capacity()).withEnginePower(carTO.getEnginePower())
-				.withMileage(carTO.getMileage()).withYear(carTO.getYear()).build();
+		return new CarEntityBuilder().withType(carTO.getType()).withBrand(carTO.getBrand()).withModel(carTO.getModel())
+				.withColor(carTO.getColor()).withEngineCapacity(carTO.getEngine_capacity())
+				.withEnginePower(carTO.getEnginePower()).withMileage(carTO.getMileage()).withYear(carTO.getYear())
+				.build();
 
 	}
 
