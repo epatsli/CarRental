@@ -125,8 +125,9 @@ public class ClientEntity implements Serializable {
 		public ClientEntityBuilder() {
 		}
 
-		public ClientEntityBuilder(PersonData person) {
+		public ClientEntityBuilder withPersonData(PersonData person) {
 			this.person = person;
+			return this;
 		}
 
 		public ClientEntityBuilder withPhoneNumber(String phoneNumber) {

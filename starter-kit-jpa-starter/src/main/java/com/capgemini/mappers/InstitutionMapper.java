@@ -53,12 +53,12 @@ public class InstitutionMapper {
 		return institutionEntity;
 	}
 
-	public static List<InstitutionTO> map2TOs(List<InstitutionEntity> InstitutionEntities) {
-		return InstitutionEntities.stream().map(InstitutionMapper::toInstitutionTO).collect(Collectors.toList());
+	public static List<InstitutionTO> map2TOs(List<InstitutionEntity> institutionEntities) {
+		return institutionEntities.stream().map(InstitutionMapper::toInstitutionTO).collect(Collectors.toList());
 	}
 
-	public static List<InstitutionEntity> map2Entities(List<InstitutionTO> InstitutionTOs) {
-		return InstitutionTOs.stream().map(InstitutionMapper::toInstitutionEntity).collect(Collectors.toList());
+	public static List<InstitutionEntity> map2Entities(List<InstitutionTO> institutionTOs) {
+		return institutionTOs.stream().map(InstitutionMapper::toInstitutionEntity).collect(Collectors.toList());
 	}
 
 }
