@@ -21,9 +21,17 @@ public class PersonData {
 	}
 
 	public PersonData(String firstName, String lastName, Date dataOfBirth) {
+		checkBeforeCreate();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dataOfBirth = dataOfBirth;
+	}
+
+	private void checkBeforeCreate() {
+		if (firstName == null || lastName == null) {
+			throw new RuntimeException("This person can't be created");
+		}
+
 	}
 
 }

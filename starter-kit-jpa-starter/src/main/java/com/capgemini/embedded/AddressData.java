@@ -6,16 +6,16 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class AddressData {
 
-	@Column(name = "street", length = 32, nullable = true)
+	@Column(name = "street", length = 32, nullable = false)
 	private String street;
 
-	@Column(name = "houseNumber", length = 16, nullable = true)
+	@Column(name = "houseNumber", length = 16, nullable = false)
 	private String houseNumber;
 
-	@Column(name = "city", length = 32, nullable = true)
+	@Column(name = "city", length = 32, nullable = false)
 	private String city;
 
-	@Column(name = "postCode", length = 8, nullable = true)
+	@Column(name = "postCode", length = 8, nullable = false)
 	private String postCode;
 
 	public AddressData() {
@@ -73,14 +73,14 @@ public class AddressData {
 			this.postCode = postCode;
 		}
 
-		private void checkBeforeBuild(String street, String houseNumber, String city, String postCode) {
+		private void checkBeforeBuild() {
 			if (street == null || houseNumber == null || city == null || postCode == null) {
-				throw new RuntimeException("Incorrect address");
+				throw new RuntimeException("This address can't be created.");
 			}
 		}
 
 		public AddressData build() {
-			checkBeforeBuild(street, houseNumber, city, postCode);
+			checkBeforeBuild();
 			return new AddressData(this);
 		}
 

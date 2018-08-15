@@ -2,16 +2,12 @@ package com.capgemini.dao;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,36 +31,29 @@ public class CarDaoImplTest {
 	@Autowired
 	private CarDaoImpl carDao;
 
-	private static CarEntity car1;
-	private static CarEntity car2;
+	private static CarEntity carOne;
+	private static CarEntity carTwo;
 	private static EmployeeEntity employee;
 	private static InstitutionEntity institution;
 	private static PositionEntity position;
 
-	@BeforeClass
-	public static void init() {
-		position = new PositionEntity("Manager");
-		institution = new InstitutionEntity("Poznan", "2", "Glika", "62-030", "swsw", "451455");
-		employee = new EmployeeEntity("Jan", "Kowalski", new Date(), institution, position);
-		car2 = new CarEntity.CarEntityBuilder().withBrand("Renault").withCarType("Combi").withEmployee(employee)
-				.withEngineCapacity(1500).withMileage(30000).withPower(100).withProductionYear(2014).withColor("red")
-				.withRentals(new HashSet<RentalEntity>()).build();
-	}
-
-	@Before
-	public void setup() {
-		// carDao.deleteAll();
-		List<CarEntity> cars = carDao.findAll();
-		for (CarEntity car : cars) {
-			carDao.delete(car.getIdCar());
-		}
-		carDao.save(car1);
-		carDao.save(car2);
+	@Test
+	public void fieldAnnotations() {
+		// assert
+		AssertAnnotations.assertField(CarEntity.class, "idCar");
+		AssertAnnotations.assertField(CarEntity.class, "type");
+		AssertAnnotations.assertField(CarEntity.class, "brand");
+		AssertAnnotations.assertField(CarEntity.class, "model");
 	}
 
 	@Test
 	public void shouldReturnCarByType() {
 
+		carOne = new CarEntity.CarEntityBuilder("Van", "Opel", "Astra").withColor("black").withEngineCapacity(2000)
+				.withMileage(20000).withEnginePower(120).withYear(2010)// .withListRentingCar(new
+																		// List<RentingCarEntity>())
+				.build();
+		carDao.save(carOne);
 		// given
 		String type = "Combi";
 		String brand = "Opel";
@@ -75,13 +64,13 @@ public class CarDaoImplTest {
 		// then
 		assertEquals(1, result.size());
 		CarEntity car = result.get(0);
-		assertEquals(car2.getEngineCapacity(), car.getEngineCapacity());
-		assertEquals(car2.getBrandName(), car.getBrandName());
-		assertEquals(type, car.getCarType());
-		assertEquals(car2.getColor(), car.getColor());
-		assertEquals(car2.getMileage(), car.getMileage());
-		assertEquals(car2.getPower(), car.getPower());
-		assertEquals(car2.getProductionYear(), car.getProductionYear());
+		assertEquals(carOne.getEngine_capacity(), car.getEngine_capacity());
+		assertEquals(carOne.getBrand(), car.getBrand());
+		assertEquals(type, car.getType());
+		assertEquals(carOne.getColor(), car.getColor());
+		assertEquals(carOne.getMileage(), car.getMileage());
+		assertEquals(carOne.getEnginePower(), car.getEnginePower());
+		assertEquals(carOne.getYear(), car.getYear());
 	}
 
 }

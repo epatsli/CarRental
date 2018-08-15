@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CARS")
 public class CarEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,11 +35,11 @@ public class CarEntity implements Serializable {
 	@Column(name = "color", length = 32, nullable = true)
 	private String color;
 
-	@Column(name = "engine_capacity", nullable = true)
-	private int engine_capacity;
+	@Column(name = "engineCapacity", nullable = true)
+	private int engineCapacity;
 
-	@Column(name = "engine_power", nullable = true)
-	private int engine_power;
+	@Column(name = "enginePower", nullable = true)
+	private int enginePower;
 
 	@Column(name = "mileage", nullable = true)
 	private int mileage;
@@ -60,8 +61,8 @@ public class CarEntity implements Serializable {
 		this.brand = builder.brand;
 		this.model = builder.model;
 		this.color = builder.color;
-		this.engine_capacity = builder.engine_capacity;
-		this.engine_power = builder.engine_power;
+		this.engineCapacity = builder.engineCapacity;
+		this.enginePower = builder.enginePower;
 		this.mileage = builder.mileage;
 		this.year = builder.year;
 		this.listRentingCar = builder.listRentingCar;
@@ -113,19 +114,19 @@ public class CarEntity implements Serializable {
 	}
 
 	public int getEngine_capacity() {
-		return engine_capacity;
+		return engineCapacity;
 	}
 
-	public void setEngine_capacity(int engine_capacity) {
-		this.engine_capacity = engine_capacity;
+	public void setEngine_capacity(int engineCapacity) {
+		this.engineCapacity = engineCapacity;
 	}
 
-	public int getEngine_power() {
-		return engine_power;
+	public int getEnginePower() {
+		return enginePower;
 	}
 
-	public void setEngine_power(int engine_power) {
-		this.engine_power = engine_power;
+	public void setEnginePower(int enginePower) {
+		this.enginePower = enginePower;
 	}
 
 	public int getMileage() {
@@ -165,8 +166,8 @@ public class CarEntity implements Serializable {
 		private String brand;
 		private String model;
 		private String color;
-		private int engine_capacity;
-		private int engine_power;
+		private int engineCapacity;
+		private int enginePower;
 		private int mileage;
 		private int year;
 		private List<RentingCarEntity> listRentingCar;
@@ -186,13 +187,13 @@ public class CarEntity implements Serializable {
 			return this;
 		}
 
-		public CarEntityBuilder withEngine_capacity(int engine_capacity) {
-			this.engine_capacity = engine_capacity;
+		public CarEntityBuilder withEngineCapacity(int engineCapacity) {
+			this.engineCapacity = engineCapacity;
 			return this;
 		}
 
-		public CarEntityBuilder withEngine_power(int engine_power) {
-			this.engine_power = engine_power;
+		public CarEntityBuilder withEnginePower(int enginePower) {
+			this.enginePower = enginePower;
 			return this;
 		}
 
@@ -217,7 +218,15 @@ public class CarEntity implements Serializable {
 		}
 
 		public CarEntity build() {
+			checkBeforeBuild();
 			return new CarEntity(this);
+		}
+
+		private void checkBeforeBuild() {
+			if (type == null || brand == null || model == null) {
+				throw new RuntimeException("This car can't be created");
+			}
+
 		}
 
 	}

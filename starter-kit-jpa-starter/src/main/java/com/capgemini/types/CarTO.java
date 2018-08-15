@@ -9,8 +9,8 @@ public class CarTO {
 	private String brand;
 	private String model;
 	private String color;
-	private int engine_capacity;
-	private int engine_power;
+	private int engineCapacity;
+	private int enginePower;
 	private int mileage;
 	private int year;
 	private List<EmployeeTO> employeeKeeper;
@@ -24,8 +24,8 @@ public class CarTO {
 		this.brand = builder.brand;
 		this.model = builder.model;
 		this.color = builder.color;
-		this.engine_capacity = builder.engine_capacity;
-		this.engine_power = builder.engine_power;
+		this.engineCapacity = builder.engineCapacity;
+		this.enginePower = builder.enginePower;
 		this.mileage = builder.mileage;
 		this.year = builder.year;
 
@@ -76,19 +76,19 @@ public class CarTO {
 	}
 
 	public int getEngine_capacity() {
-		return engine_capacity;
+		return engineCapacity;
 	}
 
-	public void setEngine_capacity(int engine_capacity) {
-		this.engine_capacity = engine_capacity;
+	public void setEngineCapacity(int engineCapacity) {
+		this.engineCapacity = engineCapacity;
 	}
 
-	public int getEngine_power() {
-		return engine_power;
+	public int getEnginePower() {
+		return enginePower;
 	}
 
-	public void setEngine_power(int engine_power) {
-		this.engine_power = engine_power;
+	public void setEngine_power(int enginePower) {
+		this.enginePower = enginePower;
 	}
 
 	public int getMileage() {
@@ -121,8 +121,8 @@ public class CarTO {
 		private String brand;
 		private String model;
 		private String color;
-		private int engine_capacity;
-		private int engine_power;
+		private int engineCapacity;
+		private int enginePower;
 		private int mileage;
 		private int year;
 		private List<EmployeeTO> employeeKeeper;
@@ -141,13 +141,13 @@ public class CarTO {
 			return this;
 		}
 
-		public CarTOBuilder withEngine_capacity(int engine_capacity) {
-			this.engine_capacity = engine_capacity;
+		public CarTOBuilder withEngineCapacity(int engineCapacity) {
+			this.engineCapacity = engineCapacity;
 			return this;
 		}
 
-		public CarTOBuilder withEngine_power(int engine_power) {
-			this.engine_power = engine_power;
+		public CarTOBuilder withEnginePower(int enginePower) {
+			this.enginePower = enginePower;
 			return this;
 		}
 

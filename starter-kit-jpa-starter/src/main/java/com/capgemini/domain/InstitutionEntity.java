@@ -20,6 +20,7 @@ import com.capgemini.embedded.AddressData;
 @Entity
 @Table(name = "INSTITUTIONS")
 public class InstitutionEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,21 +30,21 @@ public class InstitutionEntity implements Serializable {
 	private AddressData address;
 
 	@Email
-	@Column(name = "email", length = 256)
+	@Column(name = "email", length = 256, nullable = true)
 	private String email;
 
-	@Column(name = "phoneNumber", length = 16)
+	@Column(name = "phoneNumber", length = 16, nullable = true)
 	private String phoneNumber;
 
-	@Column(name = "listEmployee")
+	@Column(name = "listEmployee", nullable = true)
 	@OneToMany(mappedBy = "institutionEmployee")
 	private List<EmployeeEntity> listEmployee = new ArrayList<>();
 
-	@Column(name = "listInstitutionPickup")
+	@Column(name = "listInstitutionPickup", nullable = true)
 	@OneToMany(mappedBy = "institutionPickup")
 	private List<InstitutionEntity> listInstitutionPickup = new ArrayList<>();
 
-	@Column(name = "institutionReturn")
+	@Column(name = "institutionReturn", nullable = true)
 	@OneToMany(mappedBy = "institutionReturn")
 	private List<InstitutionEntity> listInstitutionReturn = new ArrayList<>();
 

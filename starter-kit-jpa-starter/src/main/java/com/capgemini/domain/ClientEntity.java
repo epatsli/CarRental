@@ -21,6 +21,7 @@ import com.capgemini.embedded.PersonData;
 @Entity
 @Table(name = "CLIENTS")
 public class ClientEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -154,7 +155,16 @@ public class ClientEntity implements Serializable {
 		}
 
 		public ClientEntity build() {
+			checkBeforeBuild();
 			return new ClientEntity(this);
+		}
+
+		private void checkBeforeBuild() {
+
+			if (phoneNumber == null || creditCardNumber == null) {
+				throw new RuntimeException("Thic client can't be created.");
+			}
+
 		}
 
 	}

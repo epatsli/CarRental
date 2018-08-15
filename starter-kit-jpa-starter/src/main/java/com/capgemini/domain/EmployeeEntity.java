@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +21,7 @@ import com.capgemini.embedded.PersonData;
 @Entity
 @Table(name = "EMPLOYEES")
 public class EmployeeEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,11 +30,12 @@ public class EmployeeEntity implements Serializable {
 	@Embedded
 	private PersonData person;
 
-	@Column(name = "position", nullable = false)
 	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idPosition", nullable = false)
 	private PositionEntity position;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idInstitution", nullable = true)
 	private InstitutionEntity institutionEmployee;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
@@ -44,9 +45,12 @@ public class EmployeeEntity implements Serializable {
 	public EmployeeEntity() {
 	}
 
-	public EmployeeEntity(PersonData person, PositionEntity position) {
+	public EmployeeEntity(PersonData person, PositionEntity position, InstitutionEntity institutionEmployee,
+			List<CarEntity> carKeeper) {
 		this.person = person;
 		this.position = position;
+		this.institutionEmployee = institutionEmployee;
+		this.carKeeper = carKeeper;
 	}
 
 	public int getIdEmployee() {

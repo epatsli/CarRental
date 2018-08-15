@@ -10,18 +10,20 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "RENTINGCARS")
 public class RentingCarEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idRenting;
 
-	@Column(name = "pickupDate", nullable = true)
+	@Column(name = "pickupDate", nullable = false)
 	private Date pickupDate;
 
 	@Column(name = "returnDate", nullable = true)
@@ -31,15 +33,19 @@ public class RentingCarEntity implements Serializable {
 	private double price;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idInstitution", nullable = false)
 	private InstitutionEntity institutionPickup;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idInstitution", nullable = true)
 	private InstitutionEntity institutionReturn;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idClient", nullable = false)
 	private ClientEntity clientRented;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idCar", nullable = false)
 	private CarEntity car;
 
 	public RentingCarEntity() {

@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "POSITIONS")
 public class PositionEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,6 +34,11 @@ public class PositionEntity implements Serializable {
 		this.namePosition = namePosition;
 	}
 
+	public PositionEntity(String namePosition, List<EmployeeEntity> listEmployee) {
+		this.namePosition = namePosition;
+		this.listEmployee = listEmployee;
+	}
+
 	public int getIdPosition() {
 		return idPosition;
 	}
@@ -47,6 +53,14 @@ public class PositionEntity implements Serializable {
 
 	public void setNamePosition(String namePosition) {
 		this.namePosition = namePosition;
+	}
+
+	public List<EmployeeEntity> getListEmployee() {
+		return listEmployee;
+	}
+
+	public void setListEmployee(List<EmployeeEntity> listEmployee) {
+		this.listEmployee = listEmployee;
 	}
 
 }
