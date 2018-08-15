@@ -137,12 +137,24 @@ public class RentingCarEntity implements Serializable {
 		public RentingCarEntityBuilder() {
 		}
 
-		public RentingCarEntityBuilder(Date pickupDate, InstitutionEntity institutionPickup, ClientEntity clientRented,
-				CarEntity car) {
+		public RentingCarEntityBuilder withPickupDate(Date pickupDate) {
 			this.pickupDate = pickupDate;
+			return this;
+		}
+
+		public RentingCarEntityBuilder withInstitutionPickup(InstitutionEntity institutionPickup) {
 			this.institutionPickup = institutionPickup;
+			return this;
+		}
+
+		public RentingCarEntityBuilder withClientRented(ClientEntity clientRented) {
 			this.clientRented = clientRented;
+			return this;
+		}
+
+		public RentingCarEntityBuilder withCar(CarEntity car) {
 			this.car = car;
+			return this;
 		}
 
 		public RentingCarEntityBuilder withReturnDate(Date returnDate) {
