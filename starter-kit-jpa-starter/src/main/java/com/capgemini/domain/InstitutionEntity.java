@@ -92,6 +92,34 @@ public class InstitutionEntity implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
+	public List<EmployeeEntity> getListEmployee() {
+		return listEmployee;
+	}
+
+	public void setListEmployee(List<EmployeeEntity> listEmployee) {
+		this.listEmployee = listEmployee;
+	}
+
+	public List<InstitutionEntity> getListInstitutionPickup() {
+		return listInstitutionPickup;
+	}
+
+	public void setListInstitutionPickup(List<InstitutionEntity> listInstitutionPickup) {
+		this.listInstitutionPickup = listInstitutionPickup;
+	}
+
+	public List<InstitutionEntity> getListInstitutionReturn() {
+		return listInstitutionReturn;
+	}
+
+	public void setListInstitutionReturn(List<InstitutionEntity> listInstitutionReturn) {
+		this.listInstitutionReturn = listInstitutionReturn;
+	}
+
+	public void setIdInstitution(int idInstitution) {
+		this.idInstitution = idInstitution;
+	}
+
 	public static class InstitutionEntityBuilder {
 		private AddressData address;
 		private String email;

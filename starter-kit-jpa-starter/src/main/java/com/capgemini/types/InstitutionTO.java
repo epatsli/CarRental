@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 
-import com.capgemini.domain.EmployeeEntity;
-import com.capgemini.domain.InstitutionEntity;
 import com.capgemini.embedded.AddressDataTO;
 
 public class InstitutionTO {
@@ -14,9 +12,9 @@ public class InstitutionTO {
 	private AddressDataTO address;
 	private String email;
 	private String phoneNumber;
-	private List<EmployeeEntity> listEmployee;
-	private List<InstitutionEntity> listInstitutionPickup;
-	private List<InstitutionEntity> listInstitutionReturn;
+	private List<EmployeeTO> listEmployee;
+	private List<InstitutionTO> listInstitutionPickup;
+	private List<InstitutionTO> listInstitutionReturn;
 
 	public InstitutionTO() {
 	}
@@ -63,27 +61,27 @@ public class InstitutionTO {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public List<EmployeeEntity> getListEmployee() {
+	public List<EmployeeTO> getListEmployee() {
 		return listEmployee;
 	}
 
-	public void setListEmployee(List<EmployeeEntity> listEmployee) {
+	public void setListEmployee(List<EmployeeTO> listEmployee) {
 		this.listEmployee = listEmployee;
 	}
 
-	public List<InstitutionEntity> getListInstitutionPickup() {
+	public List<InstitutionTO> getListInstitutionPickup() {
 		return listInstitutionPickup;
 	}
 
-	public void setListInstitutionPickup(List<InstitutionEntity> listInstitutionPickup) {
+	public void setListInstitutionPickup(List<InstitutionTO> listInstitutionPickup) {
 		this.listInstitutionPickup = listInstitutionPickup;
 	}
 
-	public List<InstitutionEntity> getListInstitutionReturn() {
+	public List<InstitutionTO> getListInstitutionReturn() {
 		return listInstitutionReturn;
 	}
 
-	public void setListInstitutionReturn(List<InstitutionEntity> listInstitutionReturn) {
+	public void setListInstitutionReturn(List<InstitutionTO> listInstitutionReturn) {
 		this.listInstitutionReturn = listInstitutionReturn;
 	}
 
@@ -92,16 +90,20 @@ public class InstitutionTO {
 		private AddressDataTO address;
 		private String email;
 		private String phoneNumber;
-		private List<EmployeeEntity> listEmployee;
-		private List<InstitutionEntity> listInstitutionPickup;
-		private List<InstitutionEntity> listInstitutionReturn;
+		private List<EmployeeTO> listEmployee;
+		private List<InstitutionTO> listInstitutionPickup;
+		private List<InstitutionTO> listInstitutionReturn;
 
-		public InstitutionTOBuilder(AddressDataTO address) {
-			this.address = address;
+		public InstitutionTOBuilder() {
 		}
 
 		public InstitutionTOBuilder withIdInstitution(int idInstitution) {
 			this.idInstitution = idInstitution;
+			return this;
+		}
+
+		public InstitutionTOBuilder withAddress(AddressDataTO address) {
+			this.address = address;
 			return this;
 		}
 
@@ -115,17 +117,17 @@ public class InstitutionTO {
 			return this;
 		}
 
-		public InstitutionTOBuilder withListEmployee(List<EmployeeEntity> listEmployee) {
+		public InstitutionTOBuilder withListEmployee(List<EmployeeTO> listEmployee) {
 			this.listEmployee = listEmployee;
 			return this;
 		}
 
-		public InstitutionTOBuilder withListInstitutionPickup(List<InstitutionEntity> listInstitutionPickup) {
+		public InstitutionTOBuilder withListInstitutionPickup(List<InstitutionTO> listInstitutionPickup) {
 			this.listInstitutionPickup = listInstitutionPickup;
 			return this;
 		}
 
-		public InstitutionTOBuilder withListInstitutionReturn(List<InstitutionEntity> listInstitutionReturn) {
+		public InstitutionTOBuilder withListInstitutionReturn(List<InstitutionTO> listInstitutionReturn) {
 			this.listInstitutionReturn = listInstitutionReturn;
 			return this;
 		}

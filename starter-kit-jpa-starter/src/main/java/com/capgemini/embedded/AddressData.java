@@ -66,11 +66,27 @@ public class AddressData {
 		private String city;
 		private String postCode;
 
-		public AddressDataBuilder(String street, String houseNumber, String city, String postCode) {
+		public AddressDataBuilder() {
+		}
+
+		public AddressDataBuilder withStreet(String street) {
 			this.street = street;
+			return this;
+		}
+
+		public AddressDataBuilder withHouseNumber(String houseNumber) {
 			this.houseNumber = houseNumber;
+			return this;
+		}
+
+		public AddressDataBuilder withCity(String city) {
 			this.city = city;
+			return this;
+		}
+
+		public AddressDataBuilder withPostCode(String postCode) {
 			this.postCode = postCode;
+			return this;
 		}
 
 		private void checkBeforeBuild() {

@@ -1,33 +1,56 @@
 package com.capgemini.mappers;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
-import com.capgemini.domain.AuthorEntity;
+import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
-import com.capgemini.types.AuthorTO;
+import com.capgemini.embedded.AddressData;
+import com.capgemini.embedded.AddressDataTO;
+import com.capgemini.types.EmployeeTO;
 import com.capgemini.types.InstitutionTO;
 import com.capgemini.types.InstitutionTO.InstitutionTOBuilder;
 
 public class InstitutionMapper {
 
-	public static InstitutionTO toInstitutionTO(InstitutionEntity institutionEntity) {
-		if (institutionEntity == null)
+	public static InstitutionTO toInstitutionTO(InstitutionEntity institution) {
+
+		if (institution == null)
 			return null;
 
-		Set<AuthorTO> authorTOs = AuthorMapper.map2TOs(InstitutionEntity.getAuthors());
-		return new InstitutionTOBuilder().withAuthors(authorTOs).withTitle(InstitutionEntity.getTitle())
-				.withId(InstitutionEntity.getId()).build();
+		List<EmployeeTO> employeeTOs = EmployeeMapper.map2TOs(institution.getListEmployee());
+		List<InstitutionTO> listInstitutionPickups = InstitutionMapper.map2TOs(institution.getListInstitutionPickup());
+		List<InstitutionTO> listInstitutionReturn = InstitutionMapper.map2TOs(institution.getListInstitutionReturn());
+		AddressDataTO address = AddressDataMapper.mapToTO(institution.getAddress());
+
+		return new InstitutionTOBuilder().withIdInstitution(institution.getIdInstitution()).withAddress(address)
+				.withEmail(institution.getEmail()).withPhoneNumber(institution.getPhoneNumber())
+				.withListEmployee(employeeTOs).withListInstitutionPickup(listInstitutionPickups)
+				.withListInstitutionReturn(listInstitutionReturn).build();
 
 	}
 
-	public static InstitutionEntity toInstitutionEntity(InstitutionTO InstitutionTO) {
-		if (InstitutionTO == null)
+	public static InstitutionEntity toInstitutionEntity(InstitutionTO institutionTO) {
+
+		if (institutionTO == null)
 			return null;
-		InstitutionEntity InstitutionEntity = new InstitutionEntity();
-		Set<AuthorEntity> authors = AuthorMapper.map2Entities(InstitutionTO.getAuthors());
-		InstitutionEntity.setAuthors(authors);
-		InstitutionEntity.setTitle(InstitutionTO.getTitle());
-		return InstitutionEntity;
+
+		InstitutionEntity institutionEntity = new InstitutionEntity();
+
+		List<EmployeeEntity> employeeTOs = EmployeeMapper.map2Entities(institutionTO.getListEmployee());
+		List<InstitutionEntity> listInstitutionPickups = InstitutionMapper
+				.map2Entities(institutionTO.getListInstitutionPickup());
+		List<InstitutionEntity> listInstitutionReturn = InstitutionMapper
+				.map2Entities(institutionTO.getListInstitutionReturn());
+		AddressData address = AddressDataMapper.mapToEntity(institutionTO.getAddress());
+
+		institutionEntity.setAddress(address);
+		institutionEntity.setEmail(institutionTO.getEmail());
+		institutionEntity.setPhoneNumber(institutionTO.getPhoneNumber());
+		institutionEntity.setListEmployee(employeeTOs);
+		institutionEntity.setListInstitutionPickup(listInstitutionPickups);
+		institutionEntity.setListInstitutionReturn(listInstitutionReturn);
+		return institutionEntity;
 	}
 
 	public static List<InstitutionTO> map2TOs(List<InstitutionEntity> InstitutionEntities) {
