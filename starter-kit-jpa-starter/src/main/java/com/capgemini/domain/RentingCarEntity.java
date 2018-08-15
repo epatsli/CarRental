@@ -51,10 +51,14 @@ public class RentingCarEntity implements Serializable {
 	public RentingCarEntity() {
 	}
 
-	public RentingCarEntity(Date pickupDate, Date returnDate, double price) {
-		this.pickupDate = pickupDate;
-		this.returnDate = returnDate;
-		this.price = price;
+	public RentingCarEntity(RentingCarEntityBuilder build) {
+		this.pickupDate = build.pickupDate;
+		this.returnDate = build.returnDate;
+		this.price = build.price;
+		this.institutionPickup = build.institutionPickup;
+		this.institutionReturn = build.institutionReturn;
+		this.clientRented = build.clientRented;
+		this.car = build.car;
 	}
 
 	public int getIdRenting() {
@@ -121,4 +125,50 @@ public class RentingCarEntity implements Serializable {
 		this.car = car;
 	}
 
+	public static class RentingCarEntityBuilder {
+		private Date pickupDate;
+		private Date returnDate;
+		private double price;
+		private InstitutionEntity institutionPickup;
+		private InstitutionEntity institutionReturn;
+		private ClientEntity clientRented;
+		private CarEntity car;
+
+		public RentingCarEntityBuilder() {
+		}
+
+		public RentingCarEntityBuilder(Date pickupDate, InstitutionEntity institutionPickup, ClientEntity clientRented,
+				CarEntity car) {
+			this.pickupDate = pickupDate;
+			this.institutionPickup = institutionPickup;
+			this.clientRented = clientRented;
+			this.car = car;
+		}
+
+		public RentingCarEntityBuilder withReturnDate(Date returnDate) {
+			this.returnDate = returnDate;
+			return this;
+		}
+
+		public RentingCarEntityBuilder withInstitutionReturn(InstitutionEntity institutionReturn) {
+			this.institutionReturn = institutionReturn;
+			return this;
+		}
+
+		public RentingCarEntityBuilder withPrice(double price) {
+			this.price = price;
+			return this;
+		}
+
+		public RentingCarEntity build() {
+			checkBeforeBuild();
+			return new RentingCarEntity(this);
+		}
+
+		private void checkBeforeBuild() {
+			if (pickupDate == null || institutionPickup == null || clientRented == null || car == null) {
+				throw new RuntimeException("This rent can't be created.");
+			}
+		}
+	}
 }
