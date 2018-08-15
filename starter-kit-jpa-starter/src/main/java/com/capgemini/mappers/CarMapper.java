@@ -7,17 +7,22 @@ import com.capgemini.domain.CarEntity;
 import com.capgemini.domain.CarEntity.CarEntityBuilder;
 import com.capgemini.types.CarTO;
 import com.capgemini.types.CarTO.CarTOBuilder;
+import com.capgemini.types.EmployeeTO;
+import com.capgemini.types.RentingCarTO;
 
 public class CarMapper {
 
 	public static CarTO toCarTO(CarEntity carEntity) {
 		if (carEntity == null)
 			return null;
+		List<RentingCarTO> RentingCarTOs = RentingCarMapper.map2TOs(carEntity.getListRentingCar());
+		List<EmployeeTO> employeeKeepers = EmployeeMapper.map2TOs(carEntity.getListEmployeeKeeper());
 
 		return new CarTOBuilder(carEntity.getType(), carEntity.getBrand(), carEntity.getModel())
 				.withColor(carEntity.getColor()).withEngineCapacity(carEntity.getEngine_capacity())
 				.withEnginePower(carEntity.getEnginePower()).withMileage(carEntity.getMileage())
-				.withYear(carEntity.getYear()).build();
+				.withYear(carEntity.getYear()).withListRentingCar(RentingCarTOs).withEmployeeKeeper(employeeKeepers)
+				.build();
 	}
 
 	public static CarEntity toCarEntity(CarTO carTO) {

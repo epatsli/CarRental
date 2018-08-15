@@ -1,14 +1,13 @@
 package com.capgemini.types;
 
-import com.capgemini.domain.PositionEntity;
-import com.capgemini.embedded.PersonData;
+import com.capgemini.embedded.PersonDataTO;
 
 public class EmployeeTO {
 	private int idEmployee;
-	private PersonData person;
-	private PositionEntity position;
+	private PersonDataTO person;
+	private PositionTO position;
 
-	public EmployeeTO(PersonData person, PositionEntity position) {
+	public EmployeeTO(PersonDataTO person, PositionTO position) {
 		this.person = person;
 		this.position = position;
 	}
@@ -21,19 +20,19 @@ public class EmployeeTO {
 		this.idEmployee = idEmployee;
 	}
 
-	public PersonData getPerson() {
+	public PersonDataTO getPerson() {
 		return person;
 	}
 
-	public void setPerson(PersonData person) {
+	public void setPerson(PersonDataTO person) {
 		this.person = person;
 	}
 
-	public PositionEntity getPosition() {
+	public PositionTO getPosition() {
 		return position;
 	}
 
-	public void setPosition(PositionEntity position) {
+	public void setPosition(PositionTO position) {
 		this.position = position;
 	}
 

@@ -14,6 +14,7 @@ public class CarTO {
 	private int mileage;
 	private int year;
 	private List<EmployeeTO> employeeKeeper;
+	private List<RentingCarTO> listRentingCar;
 
 	public CarTO() {
 	}
@@ -28,6 +29,7 @@ public class CarTO {
 		this.enginePower = builder.enginePower;
 		this.mileage = builder.mileage;
 		this.year = builder.year;
+		this.listRentingCar = builder.listRentingCar;
 
 	}
 
@@ -115,6 +117,22 @@ public class CarTO {
 		this.employeeKeeper = employeeKeeper;
 	}
 
+	public List<RentingCarTO> getListRentingCar() {
+		return listRentingCar;
+	}
+
+	public void setListRentingCar(List<RentingCarTO> listRentingCar) {
+		this.listRentingCar = listRentingCar;
+	}
+
+	public int getEngineCapacity() {
+		return engineCapacity;
+	}
+
+	public void setEnginePower(int enginePower) {
+		this.enginePower = enginePower;
+	}
+
 	public static class CarTOBuilder {
 		private int idCar;
 		private String type;
@@ -125,6 +143,7 @@ public class CarTO {
 		private int enginePower;
 		private int mileage;
 		private int year;
+		private List<RentingCarTO> listRentingCar;
 		private List<EmployeeTO> employeeKeeper;
 
 		public CarTOBuilder() {
@@ -158,6 +177,11 @@ public class CarTO {
 
 		public CarTOBuilder withYear(int year) {
 			this.year = year;
+			return this;
+		}
+
+		public CarTOBuilder withListRentingCar(List<RentingCarTO> listRentingCar) {
+			this.listRentingCar = listRentingCar;
 			return this;
 		}
 

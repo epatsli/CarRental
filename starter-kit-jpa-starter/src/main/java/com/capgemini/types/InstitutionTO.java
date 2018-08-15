@@ -2,13 +2,16 @@ package com.capgemini.types;
 
 import java.util.List;
 
+import javax.persistence.Embedded;
+
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
-import com.capgemini.embedded.AddressData;
+import com.capgemini.embedded.AddressDataTO;
 
 public class InstitutionTO {
 	private int idInstitution;
-	private AddressData address;
+	@Embedded
+	private AddressDataTO address;
 	private String email;
 	private String phoneNumber;
 	private List<EmployeeEntity> listEmployee;
@@ -35,11 +38,11 @@ public class InstitutionTO {
 		this.idInstitution = idInstitution;
 	}
 
-	public AddressData getAddress() {
+	public AddressDataTO getAddress() {
 		return address;
 	}
 
-	public void setAddress(AddressData address) {
+	public void setAddress(AddressDataTO address) {
 		this.address = address;
 	}
 
@@ -84,14 +87,14 @@ public class InstitutionTO {
 	}
 
 	public static class InstitutionTOBuilder {
-		private AddressData address;
+		private AddressDataTO address;
 		private String email;
 		private String phoneNumber;
 		private List<EmployeeEntity> listEmployee;
 		private List<InstitutionEntity> listInstitutionPickup;
 		private List<InstitutionEntity> listInstitutionReturn;
 
-		public InstitutionTOBuilder(AddressData address) {
+		public InstitutionTOBuilder(AddressDataTO address) {
 			this.address = address;
 		}
 
