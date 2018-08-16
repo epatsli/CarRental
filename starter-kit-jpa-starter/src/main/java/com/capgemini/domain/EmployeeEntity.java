@@ -46,6 +46,7 @@ public class EmployeeEntity implements Serializable {
 	}
 
 	public EmployeeEntity(EmployeeEntityBuilder builder) {
+		this.idEmployee = builder.idEmployee;
 		this.person = builder.person;
 		this.position = builder.position;
 		this.institutionEmployee = builder.institutionEmployee;
@@ -100,6 +101,11 @@ public class EmployeeEntity implements Serializable {
 		private List<CarEntity> carKeeper;
 
 		public EmployeeEntityBuilder() {
+		}
+
+		public EmployeeEntityBuilder withIdEmployee(int idEmployee) {
+			this.idEmployee = idEmployee;
+			return this;
 		}
 
 		public EmployeeEntityBuilder withPerson(PersonData person) {

@@ -51,14 +51,15 @@ public class RentingCarEntity implements Serializable {
 	public RentingCarEntity() {
 	}
 
-	public RentingCarEntity(RentingCarEntityBuilder build) {
-		this.pickupDate = build.pickupDate;
-		this.returnDate = build.returnDate;
-		this.price = build.price;
-		this.institutionPickup = build.institutionPickup;
-		this.institutionReturn = build.institutionReturn;
-		this.clientRented = build.clientRented;
-		this.car = build.car;
+	public RentingCarEntity(RentingCarEntityBuilder builder) {
+		this.idRenting = builder.idRenting;
+		this.pickupDate = builder.pickupDate;
+		this.returnDate = builder.returnDate;
+		this.price = builder.price;
+		this.institutionPickup = builder.institutionPickup;
+		this.institutionReturn = builder.institutionReturn;
+		this.clientRented = builder.clientRented;
+		this.car = builder.car;
 	}
 
 	public int getIdRenting() {
@@ -126,6 +127,7 @@ public class RentingCarEntity implements Serializable {
 	}
 
 	public static class RentingCarEntityBuilder {
+		private int idRenting;
 		private Date pickupDate;
 		private Date returnDate;
 		private double price;
@@ -135,6 +137,11 @@ public class RentingCarEntity implements Serializable {
 		private CarEntity car;
 
 		public RentingCarEntityBuilder() {
+		}
+
+		public RentingCarEntityBuilder withIdRenting(int idRenting) {
+			this.idRenting = idRenting;
+			return this;
 		}
 
 		public RentingCarEntityBuilder withPickupDate(Date pickupDate) {

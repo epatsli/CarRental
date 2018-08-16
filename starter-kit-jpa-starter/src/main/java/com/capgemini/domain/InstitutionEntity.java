@@ -27,7 +27,6 @@ public class InstitutionEntity implements Serializable {
 	@Embedded
 	private AddressData address;
 
-	// @Email
 	@Column(name = "email", length = 256, nullable = true)
 	private String email;
 
@@ -50,6 +49,7 @@ public class InstitutionEntity implements Serializable {
 	}
 
 	public InstitutionEntity(InstitutionEntityBuilder builder) {
+		this.idInstitution = builder.idInstitution;
 		this.address = builder.address;
 		this.email = builder.email;
 		this.phoneNumber = builder.phoneNumber;
@@ -119,6 +119,7 @@ public class InstitutionEntity implements Serializable {
 	}
 
 	public static class InstitutionEntityBuilder {
+		private int idInstitution;
 		private AddressData address;
 		private String email;
 		private String phoneNumber;
@@ -131,6 +132,11 @@ public class InstitutionEntity implements Serializable {
 
 		public InstitutionEntityBuilder withAddress(AddressData address) {
 			this.address = address;
+			return this;
+		}
+
+		public InstitutionEntityBuilder withIdInstitution(int idInstitution) {
+			this.idInstitution = idInstitution;
 			return this;
 		}
 

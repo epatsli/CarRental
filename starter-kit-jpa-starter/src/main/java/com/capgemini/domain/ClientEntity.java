@@ -47,13 +47,14 @@ public class ClientEntity implements Serializable {
 	public ClientEntity() {
 	}
 
-	public ClientEntity(ClientEntityBuilder build) {
-		this.person = build.person;
-		this.phoneNumber = build.phoneNumber;
-		this.creditCardNumber = build.creditCardNumber;
-		this.email = build.email;
-		this.address = build.address;
-		this.listRentingCars = build.listRentingCars;
+	public ClientEntity(ClientEntityBuilder builder) {
+		this.idClient = builder.idClient;
+		this.person = builder.person;
+		this.phoneNumber = builder.phoneNumber;
+		this.creditCardNumber = builder.creditCardNumber;
+		this.email = builder.email;
+		this.address = builder.address;
+		this.listRentingCars = builder.listRentingCars;
 	}
 
 	public int getIdClient() {
@@ -113,6 +114,7 @@ public class ClientEntity implements Serializable {
 	}
 
 	public static class ClientEntityBuilder {
+		private int idClient;
 		private PersonData person;
 		private String phoneNumber;
 		private String creditCardNumber;
@@ -121,6 +123,11 @@ public class ClientEntity implements Serializable {
 		private List<RentingCarEntity> listRentingCars;
 
 		public ClientEntityBuilder() {
+		}
+
+		public ClientEntityBuilder withPersonData(int idClient) {
+			this.idClient = idClient;
+			return this;
 		}
 
 		public ClientEntityBuilder withPersonData(PersonData person) {

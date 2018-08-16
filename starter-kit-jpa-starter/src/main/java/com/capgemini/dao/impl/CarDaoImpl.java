@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.capgemini.dao.CarDao;
 import com.capgemini.domain.CarEntity;
+import com.capgemini.domain.EmployeeEntity;
 
 @Repository
 public class CarDaoImpl extends AbstractDao<CarEntity, Long> implements CarDao {
@@ -27,9 +28,10 @@ public class CarDaoImpl extends AbstractDao<CarEntity, Long> implements CarDao {
 	@Override
 	public List<CarEntity> findCarByCarKeeper(int idEmployee) {
 
-		TypedQuery<CarEntity> query = entityManager
-				.createQuery("SELECT car FROM CarEntity car WHERE car.carKeeper=:idEmployee ", CarEntity.class);
-		query.setParameter("idEmployee", idEmployee);
+		EmployeeEntity employee = entityManager.getReference(EmployeeEntity.class, idEmployee);
+		TypedQuery<CarEntity> query = entityManager.createQuery(
+				"SELECT car FROM CarEntity car WHERE idEmployee member of car.carKeeper ", CarEntity.class);
+		query.setParameter("idEmployee", employee);
 		return query.getResultList();
 	}
 
