@@ -1,4 +1,4 @@
-package com.capgemini.embedded;
+package com.capgemini.domain;
 
 import java.util.Date;
 

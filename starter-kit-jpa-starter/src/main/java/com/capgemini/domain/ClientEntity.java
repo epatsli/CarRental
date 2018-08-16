@@ -13,9 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.capgemini.embedded.AddressData;
-import com.capgemini.embedded.PersonData;
-
 @Entity
 @Table(name = "CLIENTS")
 public class ClientEntity implements Serializable {

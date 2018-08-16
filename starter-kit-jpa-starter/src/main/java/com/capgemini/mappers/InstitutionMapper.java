@@ -3,10 +3,10 @@ package com.capgemini.mappers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.capgemini.domain.AddressData;
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
 import com.capgemini.domain.RentingCarEntity;
-import com.capgemini.embedded.AddressData;
 import com.capgemini.types.AddressDataTO;
 import com.capgemini.types.EmployeeTO;
 import com.capgemini.types.InstitutionTO;

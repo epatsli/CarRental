@@ -19,8 +19,8 @@ import com.capgemini.dao.impl.CarDaoImpl;
 import com.capgemini.domain.CarEntity;
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
+import com.capgemini.domain.PersonData;
 import com.capgemini.domain.PositionEntity;
-import com.capgemini.embedded.PersonData;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.capgemini.embedded.AddressData;
-
 @Entity
 @Table(name = "INSTITUTIONS")
 public class InstitutionEntity implements Serializable {
