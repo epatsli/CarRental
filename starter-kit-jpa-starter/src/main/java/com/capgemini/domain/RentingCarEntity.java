@@ -1,7 +1,7 @@
 package com.capgemini.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,10 +24,10 @@ public class RentingCarEntity implements Serializable {
 	private Long idRenting;
 
 	@Column(name = "pickupDate", nullable = false)
-	private Date pickupDate;
+	private LocalDate pickupDate;
 
 	@Column(name = "returnDate")
-	private Date returnDate;
+	private LocalDate returnDate;
 
 	@Column(name = "price")
 	private double price;
@@ -74,19 +74,19 @@ public class RentingCarEntity implements Serializable {
 		this.idRenting = idRenting;
 	}
 
-	public Date getPickupDate() {
+	public LocalDate getPickupDate() {
 		return pickupDate;
 	}
 
-	public void setPickupDate(Date pickupDate) {
+	public void setPickupDate(LocalDate pickupDate) {
 		this.pickupDate = pickupDate;
 	}
 
-	public Date getReturnDate() {
+	public LocalDate getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(Date returnDate) {
+	public void setReturnDate(LocalDate returnDate) {
 		this.returnDate = returnDate;
 	}
 
@@ -132,8 +132,8 @@ public class RentingCarEntity implements Serializable {
 
 	public static class RentingCarEntityBuilder {
 		private Long idRenting;
-		private Date pickupDate;
-		private Date returnDate;
+		private LocalDate pickupDate;
+		private LocalDate returnDate;
 		private double price;
 		private InstitutionEntity institutionPickup;
 		private InstitutionEntity institutionReturn;
@@ -148,7 +148,7 @@ public class RentingCarEntity implements Serializable {
 			return this;
 		}
 
-		public RentingCarEntityBuilder withPickupDate(Date pickupDate) {
+		public RentingCarEntityBuilder withPickupDate(LocalDate pickupDate) {
 			this.pickupDate = pickupDate;
 			return this;
 		}
@@ -168,7 +168,7 @@ public class RentingCarEntity implements Serializable {
 			return this;
 		}
 
-		public RentingCarEntityBuilder withReturnDate(Date returnDate) {
+		public RentingCarEntityBuilder withReturnDate(LocalDate returnDate) {
 			this.returnDate = returnDate;
 			return this;
 		}

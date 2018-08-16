@@ -1,11 +1,11 @@
 package com.capgemini.types;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class RentingCarTO {
 	private Long idRenting;
-	private Date pickupDate;
-	private Date returnDate;
+	private LocalDate pickupDate;
+	private LocalDate returnDate;
 	private double price;
 	private InstitutionTO institutionPickup;
 	private InstitutionTO institutionReturn;
@@ -38,19 +38,19 @@ public class RentingCarTO {
 		this.idRenting = idRenting;
 	}
 
-	public Date getPickupDate() {
+	public LocalDate getPickupDate() {
 		return pickupDate;
 	}
 
-	public void setPickupDate(Date pickupDate) {
+	public void setPickupDate(LocalDate pickupDate) {
 		this.pickupDate = pickupDate;
 	}
 
-	public Date getReturnDate() {
+	public LocalDate getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(Date returnDate) {
+	public void setReturnDate(LocalDate returnDate) {
 		this.returnDate = returnDate;
 	}
 
@@ -96,8 +96,8 @@ public class RentingCarTO {
 
 	public static class RentingCarTOBuilder {
 		private Long idRenting;
-		private Date pickupDate;
-		private Date returnDate;
+		private LocalDate pickupDate;
+		private LocalDate returnDate;
 		private double price;
 		private InstitutionTO institutionPickup;
 		private InstitutionTO institutionReturn;
@@ -112,7 +112,7 @@ public class RentingCarTO {
 			return this;
 		}
 
-		public RentingCarTOBuilder withPickupDate(Date pickupDate) {
+		public RentingCarTOBuilder withPickupDate(LocalDate pickupDate) {
 			this.pickupDate = pickupDate;
 			return this;
 		}
@@ -132,7 +132,7 @@ public class RentingCarTO {
 			return this;
 		}
 
-		public RentingCarTOBuilder withReturnDate(Date returnDate) {
+		public RentingCarTOBuilder withReturnDate(LocalDate returnDate) {
 			this.returnDate = returnDate;
 			return this;
 		}

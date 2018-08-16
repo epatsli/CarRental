@@ -20,7 +20,8 @@ public class CarMapper {
 		List<RentingCarTO> RentingCarTOs = RentingCarMapper.map2TOs(carEntity.getListRentingCar());
 		List<EmployeeTO> employeeKeepers = EmployeeMapper.map2TOs(carEntity.getListEmployeeKeeper());
 
-		EntityManager entityManager;
+		EntityManager entityManager = null;
+		RentingCarTO renting = entityManager.getReference(RentingCarTO.class, carEntity.getListRentingCar());
 
 		return new CarTOBuilder().withType(carEntity.getType()).withBrand(carEntity.getBrand())
 				.withModel(carEntity.getModel()).withColor(carEntity.getColor())

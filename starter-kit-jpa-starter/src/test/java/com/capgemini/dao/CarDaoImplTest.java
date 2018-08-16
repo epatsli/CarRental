@@ -79,7 +79,6 @@ public class CarDaoImplTest {
 	public void shouldNotFindCarsByTypeHatchbackAndBrandRenault() {
 
 		// given
-		final Long expectedAmountOfCars = 0L;
 		final String hatchbackType = "Hatchback";
 		final String renaultBrand = "Renault";
 
@@ -87,20 +86,23 @@ public class CarDaoImplTest {
 		List<CarEntity> foundCars = carDao.findCarByTypeAndBrand(hatchbackType, renaultBrand);
 
 		// then
-		Assert.assertTrue(foundCars.size() == expectedAmountOfCars);
+		Assert.assertTrue(foundCars.isEmpty());
 
 	}
 
 	@Test
 	public void shouldFindCarByCarKeeper() {
 
+		// given
+
 		// when
 		List<CarEntity> all = carDao.findAll();
-		List<CarEntity> foundCars = carDao.findCarByCarKeeper111(1L);
+
+		List<CarEntity> foundCars = carDao.findCarByCarKeeper(1L);
 
 		// then
 		Assert.assertNotNull(foundCars);
-		Assert.assertTrue(foundCars.size() == 1L);
+		Assert.assertTrue(foundCars.size() == 1);
 		Assert.assertFalse(foundCars.get(0).getListEmployeeKeeper().isEmpty());
 
 	}

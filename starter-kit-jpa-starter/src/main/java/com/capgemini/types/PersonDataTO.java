@@ -1,17 +1,17 @@
 package com.capgemini.types;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PersonDataTO {
 
 	private String firstName;
 	private String lastName;
-	private Date dataOfBirth;
+	private LocalDate dataOfBirth;
 
 	public PersonDataTO() {
 	}
 
-	public PersonDataTO(String firstName, String lastName, Date dataOfBirth) {
+	public PersonDataTO(String firstName, String lastName, LocalDate dataOfBirth) {
 		checkBeforeCreate();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -40,11 +40,11 @@ public class PersonDataTO {
 		this.lastName = lastName;
 	}
 
-	public Date getDataOfBirth() {
+	public LocalDate getDataOfBirth() {
 		return dataOfBirth;
 	}
 
-	public void setDataOfBirth(Date dataOfBirth) {
+	public void setDataOfBirth(LocalDate dataOfBirth) {
 		this.dataOfBirth = dataOfBirth;
 	}
 

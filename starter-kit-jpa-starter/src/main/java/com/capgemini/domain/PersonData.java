@@ -1,6 +1,6 @@
 package com.capgemini.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -15,7 +15,7 @@ public class PersonData {
 	private String lastName;
 
 	@Column(name = "dateOfBirth", columnDefinition = " DATE")
-	private Date dataOfBirth;
+	private LocalDate dataOfBirth;
 
 	public PersonData() {
 	}
@@ -26,7 +26,7 @@ public class PersonData {
 		checkBeforeCreate();
 	}
 
-	public PersonData(String firstName, String lastName, Date dataOfBirth) {
+	public PersonData(String firstName, String lastName, LocalDate dataOfBirth) {
 		checkBeforeCreate();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -56,11 +56,11 @@ public class PersonData {
 		this.lastName = lastName;
 	}
 
-	public Date getDataOfBirth() {
+	public LocalDate getDataOfBirth() {
 		return dataOfBirth;
 	}
 
-	public void setDataOfBirth(Date dataOfBirth) {
+	public void setDataOfBirth(LocalDate dataOfBirth) {
 		this.dataOfBirth = dataOfBirth;
 	}
 
