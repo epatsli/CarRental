@@ -33,7 +33,7 @@ public class RentingCarEntity implements Serializable {
 	private double price;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "idInstitution", nullable = false)
+	// @JoinColumn(name = "idInstitution", nullable = false)
 	private InstitutionEntity institutionPickup;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
