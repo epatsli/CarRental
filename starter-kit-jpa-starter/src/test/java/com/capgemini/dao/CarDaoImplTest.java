@@ -76,6 +76,22 @@ public class CarDaoImplTest {
 	}
 
 	@Test
+	public void shouldNotFindCarsByTypeHatchbackAndBrandRenault() {
+
+		// given
+		final Long expectedAmountOfCars = 0L;
+		final String hatchbackType = "Hatchback";
+		final String renaultBrand = "Renault";
+
+		// when
+		List<CarEntity> foundCars = carDao.findCarByTypeAndBrand(hatchbackType, renaultBrand);
+
+		// then
+		Assert.assertTrue(foundCars.size() == expectedAmountOfCars);
+
+	}
+
+	@Test
 	public void shouldFindCarByCarKeeper() {
 
 		// when
