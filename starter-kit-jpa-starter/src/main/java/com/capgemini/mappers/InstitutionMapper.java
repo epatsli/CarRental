@@ -5,11 +5,13 @@ import java.util.stream.Collectors;
 
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
+import com.capgemini.domain.RentingCarEntity;
 import com.capgemini.embedded.AddressData;
 import com.capgemini.embedded.AddressDataTO;
 import com.capgemini.types.EmployeeTO;
 import com.capgemini.types.InstitutionTO;
 import com.capgemini.types.InstitutionTO.InstitutionTOBuilder;
+import com.capgemini.types.RentingCarTO;
 
 public class InstitutionMapper {
 
@@ -19,8 +21,8 @@ public class InstitutionMapper {
 			return null;
 
 		List<EmployeeTO> employeeTOs = EmployeeMapper.map2TOs(institution.getListEmployee());
-		List<InstitutionTO> listInstitutionPickups = InstitutionMapper.map2TOs(institution.getListInstitutionPickup());
-		List<InstitutionTO> listInstitutionReturn = InstitutionMapper.map2TOs(institution.getListInstitutionReturn());
+		List<RentingCarTO> listInstitutionPickups = RentingCarMapper.map2TOs(institution.getListInstitutionPickup());
+		List<RentingCarTO> listInstitutionReturn = RentingCarMapper.map2TOs(institution.getListInstitutionReturn());
 		AddressDataTO address = AddressMapper.mapToTO(institution.getAddress());
 
 		return new InstitutionTOBuilder().withIdInstitution(institution.getIdInstitution()).withAddress(address)
@@ -38,9 +40,9 @@ public class InstitutionMapper {
 		InstitutionEntity institutionEntity = new InstitutionEntity();
 
 		List<EmployeeEntity> employeeTOs = EmployeeMapper.map2Entities(institutionTO.getListEmployee());
-		List<InstitutionEntity> listInstitutionPickups = InstitutionMapper
+		List<RentingCarEntity> listInstitutionPickups = RentingCarMapper
 				.map2Entities(institutionTO.getListInstitutionPickup());
-		List<InstitutionEntity> listInstitutionReturn = InstitutionMapper
+		List<RentingCarEntity> listInstitutionReturn = RentingCarMapper
 				.map2Entities(institutionTO.getListInstitutionReturn());
 		AddressData address = AddressMapper.mapToEntity(institutionTO.getAddress());
 

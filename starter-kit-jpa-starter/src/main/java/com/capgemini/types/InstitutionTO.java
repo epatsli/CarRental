@@ -13,8 +13,8 @@ public class InstitutionTO {
 	private String email;
 	private String phoneNumber;
 	private List<EmployeeTO> listEmployee;
-	private List<InstitutionTO> listInstitutionPickup;
-	private List<InstitutionTO> listInstitutionReturn;
+	private List<RentingCarTO> listInstitutionPickup;
+	private List<RentingCarTO> listInstitutionReturn;
 
 	public InstitutionTO() {
 	}
@@ -69,19 +69,19 @@ public class InstitutionTO {
 		this.listEmployee = listEmployee;
 	}
 
-	public List<InstitutionTO> getListInstitutionPickup() {
+	public List<RentingCarTO> getListInstitutionPickup() {
 		return listInstitutionPickup;
 	}
 
-	public void setListInstitutionPickup(List<InstitutionTO> listInstitutionPickup) {
+	public void setListInstitutionPickup(List<RentingCarTO> listInstitutionPickup) {
 		this.listInstitutionPickup = listInstitutionPickup;
 	}
 
-	public List<InstitutionTO> getListInstitutionReturn() {
+	public List<RentingCarTO> getListInstitutionReturn() {
 		return listInstitutionReturn;
 	}
 
-	public void setListInstitutionReturn(List<InstitutionTO> listInstitutionReturn) {
+	public void setListInstitutionReturn(List<RentingCarTO> listInstitutionReturn) {
 		this.listInstitutionReturn = listInstitutionReturn;
 	}
 
@@ -91,8 +91,8 @@ public class InstitutionTO {
 		private String email;
 		private String phoneNumber;
 		private List<EmployeeTO> listEmployee;
-		private List<InstitutionTO> listInstitutionPickup;
-		private List<InstitutionTO> listInstitutionReturn;
+		private List<RentingCarTO> listInstitutionPickup;
+		private List<RentingCarTO> listInstitutionReturn;
 
 		public InstitutionTOBuilder() {
 		}
@@ -122,12 +122,12 @@ public class InstitutionTO {
 			return this;
 		}
 
-		public InstitutionTOBuilder withListInstitutionPickup(List<InstitutionTO> listInstitutionPickup) {
+		public InstitutionTOBuilder withListInstitutionPickup(List<RentingCarTO> listInstitutionPickup) {
 			this.listInstitutionPickup = listInstitutionPickup;
 			return this;
 		}
 
-		public InstitutionTOBuilder withListInstitutionReturn(List<InstitutionTO> listInstitutionReturn) {
+		public InstitutionTOBuilder withListInstitutionReturn(List<RentingCarTO> listInstitutionReturn) {
 			this.listInstitutionReturn = listInstitutionReturn;
 			return this;
 		}

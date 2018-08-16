@@ -40,11 +40,11 @@ public class InstitutionEntity implements Serializable {
 
 	@Column(name = "listInstitutionPickup", nullable = true)
 	@OneToMany(mappedBy = "institutionPickup")
-	private List<InstitutionEntity> listInstitutionPickup = new ArrayList<>();
+	private List<RentingCarEntity> listInstitutionPickup = new ArrayList<>();
 
 	@Column(name = "institutionReturn", nullable = true)
 	@OneToMany(mappedBy = "institutionReturn")
-	private List<InstitutionEntity> listInstitutionReturn = new ArrayList<>();
+	private List<RentingCarEntity> listInstitutionReturn = new ArrayList<>();
 
 	public InstitutionEntity() {
 	}
@@ -98,19 +98,19 @@ public class InstitutionEntity implements Serializable {
 		this.listEmployee = listEmployee;
 	}
 
-	public List<InstitutionEntity> getListInstitutionPickup() {
+	public List<RentingCarEntity> getListInstitutionPickup() {
 		return listInstitutionPickup;
 	}
 
-	public void setListInstitutionPickup(List<InstitutionEntity> listInstitutionPickup) {
+	public void setListInstitutionPickup(List<RentingCarEntity> listInstitutionPickup) {
 		this.listInstitutionPickup = listInstitutionPickup;
 	}
 
-	public List<InstitutionEntity> getListInstitutionReturn() {
+	public List<RentingCarEntity> getListInstitutionReturn() {
 		return listInstitutionReturn;
 	}
 
-	public void setListInstitutionReturn(List<InstitutionEntity> listInstitutionReturn) {
+	public void setListInstitutionReturn(List<RentingCarEntity> listInstitutionReturn) {
 		this.listInstitutionReturn = listInstitutionReturn;
 	}
 
@@ -123,8 +123,8 @@ public class InstitutionEntity implements Serializable {
 		private String email;
 		private String phoneNumber;
 		private List<EmployeeEntity> listEmployee;
-		private List<InstitutionEntity> listInstitutionPickup;
-		private List<InstitutionEntity> listInstitutionReturn;
+		private List<RentingCarEntity> listInstitutionPickup;
+		private List<RentingCarEntity> listInstitutionReturn;
 
 		public InstitutionEntityBuilder() {
 		}
@@ -149,12 +149,12 @@ public class InstitutionEntity implements Serializable {
 			return this;
 		}
 
-		public InstitutionEntityBuilder withListInstitutionPickup(List<InstitutionEntity> listInstitutionPickup) {
+		public InstitutionEntityBuilder withListInstitutionPickup(List<RentingCarEntity> listInstitutionPickup) {
 			this.listInstitutionPickup = listInstitutionPickup;
 			return this;
 		}
 
-		public InstitutionEntityBuilder withListInstitutionReturn(List<InstitutionEntity> listInstitutionReturn) {
+		public InstitutionEntityBuilder withListInstitutionReturn(List<RentingCarEntity> listInstitutionReturn) {
 			this.listInstitutionReturn = listInstitutionReturn;
 			return this;
 		}
