@@ -25,6 +25,10 @@ public class ClientTO {
 		this.listRentingCars = builder.listRentingCars;
 	}
 
+	public ClientTOBuilder builder() {
+		return new ClientTOBuilder();
+	}
+
 	public Long getIdClient() {
 		return idClient;
 	}
@@ -128,7 +132,7 @@ public class ClientTO {
 			return this;
 		}
 
-		public ClientTO builder() {
+		public ClientTO build() {
 			checkBeforeBuild();
 			return new ClientTO(this);
 		}

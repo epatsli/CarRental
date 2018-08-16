@@ -17,6 +17,10 @@ public class PositionTO {
 		this.listEmployee = build.listEmployee;
 	}
 
+	public PositionTOBuilder builder() {
+		return new PositionTOBuilder();
+	}
+
 	public Long getIdPosition() {
 		return idPosition;
 	}
@@ -64,7 +68,7 @@ public class PositionTO {
 			return this;
 		}
 
-		public PositionTO builder() {
+		public PositionTO build() {
 			checkBeforeBuild();
 			return new PositionTO();
 		}

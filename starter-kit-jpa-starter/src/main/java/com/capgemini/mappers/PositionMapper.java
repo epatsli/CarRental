@@ -17,7 +17,7 @@ public class PositionMapper {
 
 		List<EmployeeTO> employeeTOs = EmployeeMapper.map2TOs(positionEntity.getListEmployee());
 		return new PositionTOBuilder().withIdPosition(positionEntity.getIdPosition())
-				.withNamePosition(positionEntity.getNamePosition()).withListEmployee(employeeTOs).builder();
+				.withNamePosition(positionEntity.getNamePosition()).withListEmployee(employeeTOs).build();
 	}
 
 	public static PositionEntity toPositionEntity(PositionTO positionTO) {

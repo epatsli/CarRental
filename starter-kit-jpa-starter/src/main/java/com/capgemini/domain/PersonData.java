@@ -14,7 +14,7 @@ public class PersonData {
 	@Column(name = "lastName", length = 32, nullable = false)
 	private String lastName;
 
-	@Column(name = "dateOfBirth", columnDefinition = " DATE", nullable = true)
+	@Column(name = "dateOfBirth", columnDefinition = " DATE")
 	private Date dataOfBirth;
 
 	public PersonData() {

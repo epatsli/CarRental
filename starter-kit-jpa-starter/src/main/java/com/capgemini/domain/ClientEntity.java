@@ -53,6 +53,10 @@ public class ClientEntity implements Serializable {
 		this.listRentingCars = builder.listRentingCars;
 	}
 
+	public ClientEntityBuilder builder() {
+		return new ClientEntityBuilder();
+	}
+
 	public Long getIdClient() {
 		return idClient;
 	}
@@ -156,7 +160,7 @@ public class ClientEntity implements Serializable {
 			return this;
 		}
 
-		public ClientEntity builder() {
+		public ClientEntity build() {
 			checkBeforeBuild();
 			return new ClientEntity(this);
 		}

@@ -27,7 +27,7 @@ public class ClientMapper {
 		return new ClientTOBuilder().withIdClient(clientEntity.getIdClient()).withPersonDataTO(personDataTO)
 				.withEmail(clientEntity.getEmail()).withCreditCardNumber(clientEntity.getCreditCardNumber())
 				.withAddress(address).withPhoneNumber(clientEntity.getPhoneNumber()).withListRentingCars(rentingCarTOs)
-				.builder();
+				.build();
 	}
 
 	public static ClientEntity toClientEntity(ClientTO clientTO) {

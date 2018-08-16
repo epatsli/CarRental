@@ -24,6 +24,10 @@ public class InstitutionTO {
 		this.listInstitutionReturn = build.listInstitutionReturn;
 	}
 
+	public InstitutionTOBuilder builder() {
+		return new InstitutionTOBuilder();
+	}
+
 	public Long getIdInstitution() {
 		return idInstitution;
 	}

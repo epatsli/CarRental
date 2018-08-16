@@ -26,7 +26,7 @@ public class EmployeeMapper {
 		PositionTO position = PositionMapper.toPositionTO(employeeEntity.getPosition());
 		InstitutionTO institutionTO = InstitutionMapper.toInstitutionTO(employeeEntity.getInstitutionEmployee());
 		return new EmployeeTOBuilder().withIdEmployee(employeeEntity.getIdEmployee()).withPerson(person)
-				.withPosition(position).withInstitutionEmployee(institutionTO).withCarKeeper(carKeepers).builder();
+				.withPosition(position).withInstitutionEmployee(institutionTO).withCarKeeper(carKeepers).build();
 
 	}
 

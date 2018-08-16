@@ -56,6 +56,10 @@ public class InstitutionEntity implements Serializable {
 		this.listInstitutionReturn = builder.listInstitutionReturn;
 	}
 
+	public InstitutionEntityBuilder builder() {
+		return new InstitutionEntityBuilder();
+	}
+
 	public Long getIdInstitution() {
 		return idInstitution;
 	}
@@ -163,7 +167,7 @@ public class InstitutionEntity implements Serializable {
 			return this;
 		}
 
-		public InstitutionEntity builder() {
+		public InstitutionEntity build() {
 			return new InstitutionEntity(this);
 		}
 	}

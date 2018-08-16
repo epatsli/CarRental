@@ -199,9 +199,8 @@ public class CarTO {
 			return this;
 		}
 
-		public CarTO builder() {
+		public CarTO build() {
 			return new CarTO(this);
 		}
 	}
-	// df
 }

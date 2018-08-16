@@ -33,11 +33,11 @@ public class RentingCarEntity implements Serializable {
 	private double price;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	// @JoinColumn(name = "idInstitution", nullable = false)
+	@JoinColumn(name = "idInstitutionPickup", nullable = false)
 	private InstitutionEntity institutionPickup;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "idInstitution")
+	@JoinColumn(name = "idInstitutionReturn")
 	private InstitutionEntity institutionReturn;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -60,6 +60,10 @@ public class RentingCarEntity implements Serializable {
 		this.institutionReturn = builder.institutionReturn;
 		this.clientRented = builder.clientRented;
 		this.car = builder.car;
+	}
+
+	public RentingCarEntityBuilder builder() {
+		return new RentingCarEntityBuilder();
 	}
 
 	public Long getIdRenting() {
@@ -179,7 +183,7 @@ public class RentingCarEntity implements Serializable {
 			return this;
 		}
 
-		public RentingCarEntity builder() {
+		public RentingCarEntity build() {
 			checkBeforeBuild();
 			return new RentingCarEntity(this);
 		}

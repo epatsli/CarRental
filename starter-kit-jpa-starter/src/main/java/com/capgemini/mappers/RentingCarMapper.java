@@ -28,7 +28,7 @@ public class RentingCarMapper {
 		return new RentingCarTOBuilder().withIdRenting(rentingCarEntity.getIdRenting())
 				.withPickupDate(rentingCarEntity.getPickupDate()).withReturnDate(rentingCarEntity.getReturnDate())
 				.withPrice(rentingCarEntity.getPrice()).withInstitutionPickup(institutionPickup)
-				.withInstitutionReturn(institutionReturn).withClientRented(clientRented).withCar(car).builder();
+				.withInstitutionReturn(institutionReturn).withClientRented(clientRented).withCar(car).build();
 
 	}
 

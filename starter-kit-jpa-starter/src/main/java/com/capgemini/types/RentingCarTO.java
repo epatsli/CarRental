@@ -26,6 +26,10 @@ public class RentingCarTO {
 		this.car = builder.car;
 	}
 
+	public RentingCarTOBuilder builder() {
+		return new RentingCarTOBuilder();
+	}
+
 	public Long getIdRenting() {
 		return idRenting;
 	}
@@ -143,7 +147,7 @@ public class RentingCarTO {
 			return this;
 		}
 
-		public RentingCarTO builder() {
+		public RentingCarTO build() {
 			checkBeforeBuild();
 			return new RentingCarTO(this);
 		}

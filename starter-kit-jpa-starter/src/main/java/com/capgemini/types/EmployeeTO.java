@@ -20,6 +20,10 @@ public class EmployeeTO {
 		this.carKeeper = builder.carKeeper;
 	}
 
+	public EmployeeTOBuilder builder() {
+		return new EmployeeTOBuilder();
+	}
+
 	public Long getIdEmployee() {
 		return idEmployee;
 	}
@@ -95,7 +99,7 @@ public class EmployeeTO {
 			return this;
 		}
 
-		public EmployeeTO builder() {
+		public EmployeeTO build() {
 			return new EmployeeTO(this);
 		}
 
