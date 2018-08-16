@@ -25,17 +25,17 @@ public class EmployeeEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idEmployee;
+	private Long idEmployee;
 
 	@Embedded
 	private PersonData person;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "idPosition", nullable = false)
+	@JoinColumn(name = "idPosition", nullable = true)
 	private PositionEntity position;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "idInstitution", nullable = true)
+	@JoinColumn(name = "idInstitution")
 	private InstitutionEntity institutionEmployee;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
@@ -53,11 +53,15 @@ public class EmployeeEntity implements Serializable {
 		this.carKeeper = builder.carKeeper;
 	}
 
-	public int getIdEmployee() {
+	public EmployeeEntityBuilder builder() {
+		return new EmployeeEntityBuilder();
+	}
+
+	public Long getIdEmployee() {
 		return idEmployee;
 	}
 
-	public void setIdEmployee(int idEmployee) {
+	public void setIdEmployee(Long idEmployee) {
 		this.idEmployee = idEmployee;
 	}
 
@@ -94,7 +98,7 @@ public class EmployeeEntity implements Serializable {
 	}
 
 	public static class EmployeeEntityBuilder {
-		private int idEmployee;
+		private Long idEmployee;
 		private PersonData person;
 		private PositionEntity position;
 		private InstitutionEntity institutionEmployee;
@@ -103,7 +107,7 @@ public class EmployeeEntity implements Serializable {
 		public EmployeeEntityBuilder() {
 		}
 
-		public EmployeeEntityBuilder withIdEmployee(int idEmployee) {
+		public EmployeeEntityBuilder withIdEmployee(Long idEmployee) {
 			this.idEmployee = idEmployee;
 			return this;
 		}

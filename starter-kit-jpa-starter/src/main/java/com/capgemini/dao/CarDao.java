@@ -8,6 +8,6 @@ public interface CarDao extends Dao<CarEntity, Long> {
 
 	List<CarEntity> findCarByTypeAndBrand(String type, String brand);
 
-	List<CarEntity> findCarByCarKeeper(int idEmployee);
+	List<CarEntity> findCarByCarKeeper(Long idEmployee);
 
 }

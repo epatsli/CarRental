@@ -7,7 +7,7 @@ import com.capgemini.domain.InstitutionEntity;
 
 public interface InstitutionDao extends Dao<InstitutionEntity, Long> {
 
-	List<EmployeeEntity> findCurrentEmployee(int idInstitution);
+	List<EmployeeEntity> findCurrentEmployee(Long idInstitution);
 
-	List<EmployeeEntity> findCarKeeperInInstitution(int idCar, int idInstitution);
+	List<EmployeeEntity> findCarKeeperInInstitution(Long idCar, Long idInstitution);
 }

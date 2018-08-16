@@ -21,7 +21,7 @@ public class CarEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idCar;
+	private Long idCar;
 
 	@Column(name = "type", length = 32, nullable = false)
 	private String type;
@@ -32,26 +32,26 @@ public class CarEntity implements Serializable {
 	@Column(name = "model", length = 32, nullable = false)
 	private String model;
 
-	@Column(name = "color", length = 32, nullable = true)
+	@Column(name = "color", length = 32)
 	private String color;
 
-	@Column(name = "engineCapacity", nullable = true)
+	@Column(name = "engineCapacity")
 	private int engineCapacity;
 
-	@Column(name = "enginePower", nullable = true)
+	@Column(name = "enginePower")
 	private int enginePower;
 
-	@Column(name = "mileage", nullable = true)
+	@Column(name = "mileage")
 	private int mileage;
 
-	@Column(name = "year", nullable = true)
+	@Column(name = "year")
 	private int year;
 
 	@OneToMany(mappedBy = "car", cascade = CascadeType.PERSIST)
 	private List<RentingCarEntity> listRentingCar = new ArrayList<>();
-
-	@ManyToMany(mappedBy = "carKeeper", cascade = CascadeType.PERSIST)
-	private List<EmployeeEntity> employeeKeeper = new ArrayList<>();
+	// ???
+	@ManyToMany(mappedBy = "carKeeper", cascade = CascadeType.ALL)
+	private List<EmployeeEntity> employeeKeeper;
 
 	public CarEntity() {
 	}
@@ -70,15 +70,15 @@ public class CarEntity implements Serializable {
 		this.employeeKeeper = builder.employeeKeeper;
 	}
 
-	public CarEntityBuilder build() {
+	public CarEntityBuilder builder() {
 		return new CarEntityBuilder();
 	}
 
-	public int getIdCar() {
+	public Long getIdCar() {
 		return idCar;
 	}
 
-	public void setIdCar(int idCar) {
+	public void setIdCar(Long idCar) {
 		this.idCar = idCar;
 	}
 
@@ -114,11 +114,11 @@ public class CarEntity implements Serializable {
 		this.color = color;
 	}
 
-	public int getEngine_capacity() {
+	public int getEngineCapacity() {
 		return engineCapacity;
 	}
 
-	public void setEngine_capacity(int engineCapacity) {
+	public void setEngineCapacity(int engineCapacity) {
 		this.engineCapacity = engineCapacity;
 	}
 
@@ -163,7 +163,7 @@ public class CarEntity implements Serializable {
 	}
 
 	public static class CarEntityBuilder {
-		private int idCar;
+		private Long idCar;
 		private String type;
 		private String brand;
 		private String model;
@@ -178,7 +178,7 @@ public class CarEntity implements Serializable {
 		public CarEntityBuilder() {
 		}
 
-		public CarEntityBuilder withIdCar(int idCar) {
+		public CarEntityBuilder withIdCar(Long idCar) {
 			this.idCar = idCar;
 			return this;
 		}

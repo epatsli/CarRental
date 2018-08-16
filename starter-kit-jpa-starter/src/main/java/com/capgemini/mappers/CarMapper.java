@@ -3,6 +3,8 @@ package com.capgemini.mappers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityManager;
+
 import com.capgemini.domain.CarEntity;
 import com.capgemini.domain.CarEntity.CarEntityBuilder;
 import com.capgemini.types.CarTO;
@@ -18,11 +20,13 @@ public class CarMapper {
 		List<RentingCarTO> RentingCarTOs = RentingCarMapper.map2TOs(carEntity.getListRentingCar());
 		List<EmployeeTO> employeeKeepers = EmployeeMapper.map2TOs(carEntity.getListEmployeeKeeper());
 
+		EntityManager entityManager;
+
 		return new CarTOBuilder().withType(carEntity.getType()).withBrand(carEntity.getBrand())
 				.withModel(carEntity.getModel()).withColor(carEntity.getColor())
-				.withEngineCapacity(carEntity.getEngine_capacity()).withEnginePower(carEntity.getEnginePower())
+				.withEngineCapacity(carEntity.getEngineCapacity()).withEnginePower(carEntity.getEnginePower())
 				.withMileage(carEntity.getMileage()).withYear(carEntity.getYear()).withListRentingCar(RentingCarTOs)
-				.withEmployeeKeeper(employeeKeepers).build();
+				.withEmployeeKeeper(employeeKeepers).builder();
 	}
 
 	public static CarEntity toCarEntity(CarTO carTO) {

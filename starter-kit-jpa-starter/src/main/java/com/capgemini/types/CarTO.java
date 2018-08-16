@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CarTO {
 
-	private int idCar;
+	private Long idCar;
 	private String type;
 	private String brand;
 	private String model;
@@ -37,11 +37,11 @@ public class CarTO {
 		return new CarTOBuilder();
 	}
 
-	public int getIdCar() {
+	public Long getIdCar() {
 		return idCar;
 	}
 
-	public void setIdCar(int idCar) {
+	public void setIdCar(Long idCar) {
 		this.idCar = idCar;
 	}
 
@@ -134,7 +134,7 @@ public class CarTO {
 	}
 
 	public static class CarTOBuilder {
-		private int idCar;
+		private Long idCar;
 		private String type;
 		private String brand;
 		private String model;
@@ -199,7 +199,7 @@ public class CarTO {
 			return this;
 		}
 
-		public CarTO build() {
+		public CarTO builder() {
 			return new CarTO(this);
 		}
 	}

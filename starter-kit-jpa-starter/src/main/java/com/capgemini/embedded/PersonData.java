@@ -20,6 +20,12 @@ public class PersonData {
 	public PersonData() {
 	}
 
+	public PersonData(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		checkBeforeCreate();
+	}
+
 	public PersonData(String firstName, String lastName, Date dataOfBirth) {
 		checkBeforeCreate();
 		this.firstName = firstName;

@@ -14,7 +14,7 @@ import com.capgemini.domain.InstitutionEntity;
 public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> implements InstitutionDao {
 
 	@Override
-	public List<EmployeeEntity> findCurrentEmployee(int idInstitution) {
+	public List<EmployeeEntity> findCurrentEmployee(Long idInstitution) {
 
 		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
 				"SELECT emp FROM EmployeeEntity emp WHERE emp.idInstitution=:idInstitution ", EmployeeEntity.class);
@@ -23,7 +23,7 @@ public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> imp
 	}
 
 	@Override
-	public List<EmployeeEntity> findCarKeeperInInstitution(int idCar, int idInstitution) {
+	public List<EmployeeEntity> findCarKeeperInInstitution(Long idCar, Long idInstitution) {
 
 		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
 				"SELECT emp FROM EmployeeEntity emp JOIN emp.idCarEntity e WHERE e.idCar=:idCar AND emp.idInstitution=:idInstitution  ",

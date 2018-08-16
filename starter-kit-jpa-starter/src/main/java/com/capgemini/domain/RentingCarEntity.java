@@ -21,15 +21,15 @@ public class RentingCarEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idRenting;
+	private Long idRenting;
 
 	@Column(name = "pickupDate", nullable = false)
 	private Date pickupDate;
 
-	@Column(name = "returnDate", nullable = true)
+	@Column(name = "returnDate")
 	private Date returnDate;
 
-	@Column(name = "price", nullable = true)
+	@Column(name = "price")
 	private double price;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -37,7 +37,7 @@ public class RentingCarEntity implements Serializable {
 	private InstitutionEntity institutionPickup;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "idInstitution", nullable = true)
+	@JoinColumn(name = "idInstitution")
 	private InstitutionEntity institutionReturn;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
@@ -62,11 +62,11 @@ public class RentingCarEntity implements Serializable {
 		this.car = builder.car;
 	}
 
-	public int getIdRenting() {
+	public Long getIdRenting() {
 		return idRenting;
 	}
 
-	public void setIdRenting(int idRenting) {
+	public void setIdRenting(Long idRenting) {
 		this.idRenting = idRenting;
 	}
 
@@ -127,7 +127,7 @@ public class RentingCarEntity implements Serializable {
 	}
 
 	public static class RentingCarEntityBuilder {
-		private int idRenting;
+		private Long idRenting;
 		private Date pickupDate;
 		private Date returnDate;
 		private double price;
@@ -139,7 +139,7 @@ public class RentingCarEntity implements Serializable {
 		public RentingCarEntityBuilder() {
 		}
 
-		public RentingCarEntityBuilder withIdRenting(int idRenting) {
+		public RentingCarEntityBuilder withIdRenting(Long idRenting) {
 			this.idRenting = idRenting;
 			return this;
 		}
@@ -179,7 +179,7 @@ public class RentingCarEntity implements Serializable {
 			return this;
 		}
 
-		public RentingCarEntity build() {
+		public RentingCarEntity builder() {
 			checkBeforeBuild();
 			return new RentingCarEntity(this);
 		}

@@ -23,7 +23,7 @@ public class ClientEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idClient;
+	private Long idClient;
 
 	@Column(name = "phoneNumber", length = 16, nullable = false)
 	private String phoneNumber;
@@ -31,8 +31,7 @@ public class ClientEntity implements Serializable {
 	@Column(name = "creditCardNumber", length = 16, nullable = false)
 	private String creditCardNumber;
 
-	// @Email
-	@Column(name = "email", length = 32, nullable = true)
+	@Column(name = "email", length = 32)
 	private String email;
 
 	@Embedded
@@ -57,11 +56,11 @@ public class ClientEntity implements Serializable {
 		this.listRentingCars = builder.listRentingCars;
 	}
 
-	public int getIdClient() {
+	public Long getIdClient() {
 		return idClient;
 	}
 
-	public void setIdClient(int idClient) {
+	public void setIdClient(Long idClient) {
 		this.idClient = idClient;
 	}
 
@@ -114,7 +113,7 @@ public class ClientEntity implements Serializable {
 	}
 
 	public static class ClientEntityBuilder {
-		private int idClient;
+		private Long idClient;
 		private PersonData person;
 		private String phoneNumber;
 		private String creditCardNumber;
@@ -125,7 +124,7 @@ public class ClientEntity implements Serializable {
 		public ClientEntityBuilder() {
 		}
 
-		public ClientEntityBuilder withPersonData(int idClient) {
+		public ClientEntityBuilder withPersonData(Long idClient) {
 			this.idClient = idClient;
 			return this;
 		}
@@ -160,7 +159,7 @@ public class ClientEntity implements Serializable {
 			return this;
 		}
 
-		public ClientEntity build() {
+		public ClientEntity builder() {
 			checkBeforeBuild();
 			return new ClientEntity(this);
 		}

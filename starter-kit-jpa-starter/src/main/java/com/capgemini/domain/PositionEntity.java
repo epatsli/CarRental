@@ -19,7 +19,7 @@ public class PositionEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idPosition;
+	private Long idPosition;
 
 	@Column(name = "namePosition", length = 16, nullable = false)
 	private String namePosition;
@@ -39,11 +39,11 @@ public class PositionEntity implements Serializable {
 		this.listEmployee = listEmployee;
 	}
 
-	public int getIdPosition() {
+	public Long getIdPosition() {
 		return idPosition;
 	}
 
-	public void setIdPosition(int idPosition) {
+	public void setIdPosition(Long idPosition) {
 		this.idPosition = idPosition;
 	}
 

@@ -22,22 +22,22 @@ public class InstitutionEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idInstitution;
+	private Long idInstitution;
 
 	@Embedded
 	private AddressData address;
 
-	@Column(name = "email", length = 256, nullable = true)
+	@Column(name = "email", length = 256)
 	private String email;
 
-	@Column(name = "phoneNumber", length = 16, nullable = true)
+	@Column(name = "phoneNumber", length = 16)
 	private String phoneNumber;
 
-	@Column(name = "listEmployee", nullable = true)
+	@Column(name = "listEmployee")
 	@OneToMany(mappedBy = "institutionEmployee")
 	private List<EmployeeEntity> listEmployee = new ArrayList<>();
 
-	@Column(name = "listInstitutionPickup", nullable = true)
+	@Column(name = "listInstitutionPickup")
 	@OneToMany(mappedBy = "institutionPickup")
 	private List<RentingCarEntity> listInstitutionPickup = new ArrayList<>();
 
@@ -58,11 +58,11 @@ public class InstitutionEntity implements Serializable {
 		this.listInstitutionReturn = builder.listInstitutionReturn;
 	}
 
-	public int getIdInstitution() {
+	public Long getIdInstitution() {
 		return idInstitution;
 	}
 
-	public void setId(int idInstitution) {
+	public void setId(Long idInstitution) {
 		this.idInstitution = idInstitution;
 	}
 
@@ -114,12 +114,12 @@ public class InstitutionEntity implements Serializable {
 		this.listInstitutionReturn = listInstitutionReturn;
 	}
 
-	public void setIdInstitution(int idInstitution) {
+	public void setIdInstitution(Long idInstitution) {
 		this.idInstitution = idInstitution;
 	}
 
 	public static class InstitutionEntityBuilder {
-		private int idInstitution;
+		private Long idInstitution;
 		private AddressData address;
 		private String email;
 		private String phoneNumber;
@@ -135,7 +135,7 @@ public class InstitutionEntity implements Serializable {
 			return this;
 		}
 
-		public InstitutionEntityBuilder withIdInstitution(int idInstitution) {
+		public InstitutionEntityBuilder withIdInstitution(Long idInstitution) {
 			this.idInstitution = idInstitution;
 			return this;
 		}
@@ -165,7 +165,7 @@ public class InstitutionEntity implements Serializable {
 			return this;
 		}
 
-		public InstitutionEntity build() {
+		public InstitutionEntity builder() {
 			return new InstitutionEntity(this);
 		}
 	}

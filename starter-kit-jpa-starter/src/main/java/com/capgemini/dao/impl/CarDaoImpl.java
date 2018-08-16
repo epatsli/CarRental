@@ -17,7 +17,7 @@ public class CarDaoImpl extends AbstractDao<CarEntity, Long> implements CarDao {
 	public List<CarEntity> findCarByTypeAndBrand(String type, String brand) {
 
 		TypedQuery<CarEntity> query = entityManager.createQuery(
-				"SELECT car FROM CarEntity car WHERE upper(car.type) like concat(upper(:type), '%' AND upper(car.brand) like concat(upper(:brand), '%'",
+				"SELECT car FROM CarEntity car WHERE upper(car.type) like concat(upper(:type), '%') AND upper(car.brand) like concat(upper(:brand), '%')",
 				CarEntity.class);
 		query.setParameter("type", type);
 		query.setParameter("brand", brand);
@@ -26,12 +26,20 @@ public class CarDaoImpl extends AbstractDao<CarEntity, Long> implements CarDao {
 	}
 
 	@Override
-	public List<CarEntity> findCarByCarKeeper(int idEmployee) {
+	public List<CarEntity> findCarByCarKeeper(Long idEmployee) {
 
 		EmployeeEntity employee = entityManager.getReference(EmployeeEntity.class, idEmployee);
 		TypedQuery<CarEntity> query = entityManager.createQuery(
-				"SELECT car FROM CarEntity car WHERE idEmployee member of car.carKeeper ", CarEntity.class);
+				"SELECT car FROM CarEntity car WHERE :idEmployee member of car.employeeKeeper ", CarEntity.class);
 		query.setParameter("idEmployee", employee);
+		return query.getResultList();
+	}
+
+	public List<CarEntity> findCarByCarKeeper111(long idEmployee) {
+		EmployeeEntity employee = entityManager.getReference(EmployeeEntity.class, idEmployee);
+		TypedQuery<CarEntity> query = entityManager
+				.createQuery("select car from CarEntity car where car.employeeKeeper is empty", CarEntity.class);
+		// query.setParameter("idEmployee", employee);
 		return query.getResultList();
 	}
 

@@ -2,13 +2,10 @@ package com.capgemini.types;
 
 import java.util.List;
 
-import javax.persistence.Embedded;
-
 import com.capgemini.embedded.PersonDataTO;
 
 public class EmployeeTO {
-	private int idEmployee;
-	@Embedded
+	private Long idEmployee;
 	private PersonDataTO person;
 	private PositionTO position;
 	private InstitutionTO institutionEmployee;
@@ -25,11 +22,11 @@ public class EmployeeTO {
 		this.carKeeper = builder.carKeeper;
 	}
 
-	public int getIdEmployee() {
+	public Long getIdEmployee() {
 		return idEmployee;
 	}
 
-	public void setIdEmployee(int idEmployee) {
+	public void setIdEmployee(Long idEmployee) {
 		this.idEmployee = idEmployee;
 	}
 
@@ -66,7 +63,7 @@ public class EmployeeTO {
 	}
 
 	public static class EmployeeTOBuilder {
-		private int idEmployee;
+		private Long idEmployee;
 		private PersonDataTO person;
 		private PositionTO position;
 		private InstitutionTO institutionEmployee;
@@ -75,7 +72,7 @@ public class EmployeeTO {
 		public EmployeeTOBuilder() {
 		}
 
-		public EmployeeTOBuilder withIdEmployee(int idEmployee) {
+		public EmployeeTOBuilder withIdEmployee(Long idEmployee) {
 			this.idEmployee = idEmployee;
 			return this;
 		}
@@ -100,7 +97,7 @@ public class EmployeeTO {
 			return this;
 		}
 
-		public EmployeeTO build() {
+		public EmployeeTO builder() {
 			return new EmployeeTO(this);
 		}
 

@@ -2,13 +2,10 @@ package com.capgemini.types;
 
 import java.util.List;
 
-import javax.persistence.Embedded;
-
 import com.capgemini.embedded.AddressDataTO;
 
 public class InstitutionTO {
-	private int idInstitution;
-	@Embedded
+	private Long idInstitution;
 	private AddressDataTO address;
 	private String email;
 	private String phoneNumber;
@@ -29,11 +26,11 @@ public class InstitutionTO {
 		this.listInstitutionReturn = build.listInstitutionReturn;
 	}
 
-	public int getIdInstitution() {
+	public Long getIdInstitution() {
 		return idInstitution;
 	}
 
-	public void setIdInstitution(int idInstitution) {
+	public void setIdInstitution(Long idInstitution) {
 		this.idInstitution = idInstitution;
 	}
 
@@ -86,7 +83,7 @@ public class InstitutionTO {
 	}
 
 	public static class InstitutionTOBuilder {
-		private int idInstitution;
+		private Long idInstitution;
 		private AddressDataTO address;
 		private String email;
 		private String phoneNumber;
@@ -97,7 +94,7 @@ public class InstitutionTO {
 		public InstitutionTOBuilder() {
 		}
 
-		public InstitutionTOBuilder withIdInstitution(int idInstitution) {
+		public InstitutionTOBuilder withIdInstitution(Long idInstitution) {
 			this.idInstitution = idInstitution;
 			return this;
 		}
