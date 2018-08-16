@@ -5,6 +5,7 @@ import java.util.List;
 import com.capgemini.types.BookTO;
 
 public interface BookService {
+
 	List<BookTO> findAllBooks();
 
 	List<BookTO> findBooksByTitle(String title);

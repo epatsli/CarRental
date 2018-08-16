@@ -51,13 +51,13 @@ public class InstitutionEntity implements Serializable {
 	public InstitutionEntity() {
 	}
 
-	public InstitutionEntity(InstitutionEntityBuilder build) {
-		this.address = build.address;
-		this.email = build.email;
-		this.phoneNumber = build.phoneNumber;
-		this.listEmployee = build.listEmployee;
-		this.listInstitutionPickup = build.listInstitutionPickup;
-		this.listInstitutionReturn = build.listInstitutionReturn;
+	public InstitutionEntity(InstitutionEntityBuilder builder) {
+		this.address = builder.address;
+		this.email = builder.email;
+		this.phoneNumber = builder.phoneNumber;
+		this.listEmployee = builder.listEmployee;
+		this.listInstitutionPickup = builder.listInstitutionPickup;
+		this.listInstitutionReturn = builder.listInstitutionReturn;
 	}
 
 	public int getIdInstitution() {
@@ -131,8 +131,9 @@ public class InstitutionEntity implements Serializable {
 		public InstitutionEntityBuilder() {
 		}
 
-		public InstitutionEntityBuilder(AddressData address) {
+		public InstitutionEntityBuilder withAddress(AddressData address) {
 			this.address = address;
+			return this;
 		}
 
 		public InstitutionEntityBuilder withEmail(String email) {
