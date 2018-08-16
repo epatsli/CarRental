@@ -7,7 +7,7 @@ import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
 import com.capgemini.domain.RentingCarEntity;
 import com.capgemini.embedded.AddressData;
-import com.capgemini.embedded.AddressDataTO;
+import com.capgemini.types.AddressDataTO;
 import com.capgemini.types.EmployeeTO;
 import com.capgemini.types.InstitutionTO;
 import com.capgemini.types.InstitutionTO.InstitutionTOBuilder;

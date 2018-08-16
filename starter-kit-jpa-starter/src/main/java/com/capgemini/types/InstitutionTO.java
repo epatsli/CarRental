@@ -2,8 +2,6 @@ package com.capgemini.types;
 
 import java.util.List;
 
-import com.capgemini.embedded.AddressDataTO;
-
 public class InstitutionTO {
 	private Long idInstitution;
 	private AddressDataTO address;

@@ -2,8 +2,6 @@ package com.capgemini.types;
 
 import java.util.List;
 
-import com.capgemini.embedded.PersonDataTO;
-
 public class EmployeeTO {
 	private Long idEmployee;
 	private PersonDataTO person;
