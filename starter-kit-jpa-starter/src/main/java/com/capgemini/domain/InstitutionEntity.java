@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.Email;
-
 import com.capgemini.embedded.AddressData;
 
 @Entity
@@ -29,7 +27,7 @@ public class InstitutionEntity implements Serializable {
 	@Embedded
 	private AddressData address;
 
-	@Email
+	// @Email
 	@Column(name = "email", length = 256, nullable = true)
 	private String email;
 

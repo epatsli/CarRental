@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.Email;
-
 import com.capgemini.embedded.AddressData;
 import com.capgemini.embedded.PersonData;
 
@@ -33,7 +31,7 @@ public class ClientEntity implements Serializable {
 	@Column(name = "creditCardNumber", length = 16, nullable = false)
 	private String creditCardNumber;
 
-	@Email
+	// @Email
 	@Column(name = "email", length = 32, nullable = true)
 	private String email;
 
