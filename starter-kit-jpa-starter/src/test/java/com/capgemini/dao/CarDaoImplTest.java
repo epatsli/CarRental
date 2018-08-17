@@ -1,5 +1,6 @@
 package com.capgemini.dao;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,12 +54,15 @@ public class CarDaoImplTest {
 		CarEntity opelAstra = new CarEntity().builder().withBrand("Opel").withModel("Astra").withType("Van").build();
 		CarEntity maluch = new CarEntity().builder().withBrand("Fiat").withModel("126P").withType("Van")
 				.withEmployeeKeeper(Collections.singletonList(stefanEmpl)).build();
-		// stefanEmpl.builder().withCarKeeper(Collections.singletonList(maluch));
+
 		carDao.save(opelCorsa);
 		carDao.save(opelAstra);
 		carDao.save(maluch);
-		stefanEmpl.builder().withCarKeeper(Collections.singletonList(maluch));
-		employeeDao.update(stefanEmpl);
+		List<CarEntity> listCar = new ArrayList<>();
+		listCar.add(maluch);
+		stefanEmpl.setCarKeeper(listCar);
+
+		// employeeDao.update(stefanEmpl);
 
 	}
 
@@ -97,17 +101,17 @@ public class CarDaoImplTest {
 
 	@Test
 	public void shouldFindCarByCarKeeper() {
-
+		Long id = employeeDao.getOne(1L).getIdEmployee();
 		// given
 
 		// when
 		List<CarEntity> all = carDao.findAll();
 		List<EmployeeEntity> allemp = employeeDao.findAll();
-		List<CarEntity> foundCars = carDao.findCarByCarKeeper(1L);
+		List<CarEntity> foundCars = carDao.findCarByCarKeeper(id);
 
 		// then
-		// Assert.assertNotNull(foundCars);
-		Assert.assertTrue(foundCars.size() == 0);
+		Assert.assertNotNull(foundCars);
+		Assert.assertTrue(foundCars.size() == 1);
 		Assert.assertFalse(foundCars.get(0).getListEmployeeKeeper().isEmpty());
 
 	}
