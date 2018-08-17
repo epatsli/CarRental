@@ -2,6 +2,8 @@ package com.capgemini.types;
 
 import java.util.List;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 public class ClientTO {
 
 	private Long idClient;
@@ -140,7 +142,7 @@ public class ClientTO {
 		private void checkBeforeBuild() {
 
 			if (phoneNumber == null || creditCardNumber == null) {
-				throw new RuntimeException("Thic client can't be created.");
+				throw new IncorrectParameterException("Thic client can't be created.");
 			}
 
 		}

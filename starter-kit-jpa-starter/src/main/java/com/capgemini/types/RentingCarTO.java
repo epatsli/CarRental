@@ -2,6 +2,8 @@ package com.capgemini.types;
 
 import java.time.LocalDate;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 public class RentingCarTO {
 	private Long idRenting;
 	private LocalDate pickupDate;
@@ -154,7 +156,7 @@ public class RentingCarTO {
 
 		private void checkBeforeBuild() {
 			if (pickupDate == null || institutionPickup == null || clientRented == null || car == null) {
-				throw new RuntimeException("This rent can't be created.");
+				throw new IncorrectParameterException("This rent can't be created.");
 			}
 		}
 	}

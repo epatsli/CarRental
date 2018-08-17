@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 @Entity
 @Table(name = "CARS")
 public class CarEntity implements Serializable {
@@ -240,7 +242,7 @@ public class CarEntity implements Serializable {
 
 		private void checkBeforeBuild() {
 			if (type == null || brand == null || model == null) {
-				throw new RuntimeException("This car can't be created");
+				throw new IncorrectParameterException("This car can't be created");
 			}
 
 		}

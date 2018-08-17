@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 @Entity
 @Table(name = "RENTINGCARS")
 public class RentingCarEntity implements Serializable {
@@ -190,7 +192,7 @@ public class RentingCarEntity implements Serializable {
 
 		private void checkBeforeBuild() {
 			if (pickupDate == null || institutionPickup == null || clientRented == null || car == null) {
-				throw new RuntimeException("This rent can't be created.");
+				throw new IncorrectParameterException("This rent can't be created.");
 			}
 		}
 	}

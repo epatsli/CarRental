@@ -3,6 +3,8 @@ package com.capgemini.domain;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 @Embeddable
 public class AddressData {
 
@@ -95,7 +97,7 @@ public class AddressData {
 
 		private void checkBeforeBuild() {
 			if (street == null || houseNumber == null || city == null || postCode == null) {
-				throw new RuntimeException("This address can't be created.");
+				throw new IncorrectParameterException("This address can't be created.");
 			}
 		}
 

@@ -1,5 +1,7 @@
 package com.capgemini.types;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 public class AddressDataTO {
 	private String street;
 	private String houseNumber;
@@ -79,7 +81,7 @@ public class AddressDataTO {
 
 		private void checkBeforeBuild() {
 			if (street == null || houseNumber == null || city == null || postCode == null) {
-				throw new RuntimeException("This address can't be created.");
+				throw new IncorrectParameterException("This address can't be created.");
 			}
 		}
 

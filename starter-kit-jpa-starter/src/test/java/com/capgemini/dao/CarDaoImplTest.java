@@ -70,8 +70,11 @@ public class CarDaoImplTest {
 
 		// then
 		Assert.assertNotNull(foundCars);
+		// Assert.assertEquals(1, foundCars.size());
 		Assert.assertTrue(foundCars.size() == 1);
 		Assert.assertFalse(foundCars.get(0).getListEmployeeKeeper().isEmpty());
+		// Assert.assertEquals(employeeDao.getOne(1L).getCarKeeper(),
+		// foundCars.get(0));
 	}
 
 	@Test

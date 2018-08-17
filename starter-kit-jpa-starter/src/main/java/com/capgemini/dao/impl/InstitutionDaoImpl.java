@@ -16,9 +16,12 @@ public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> imp
 	@Override
 	public List<EmployeeEntity> findCurrentEmployee(Long idInstitution) {
 
+		InstitutionEntity institution = entityManager.getReference(InstitutionEntity.class, idInstitution);
+
 		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
-				"SELECT emp FROM EmployeeEntity emp WHERE emp.idInstitution = :idInstitution  ", EmployeeEntity.class);
-		query.setParameter("idInstitution", idInstitution);
+				"SELECT emp FROM EmployeeEntity emp JOIN emp.instititutionEntity ie WHERE :institution MEMBER OF ie.institutionEntity ",
+				EmployeeEntity.class);
+		query.setParameter("institution", idInstitution);
 		return query.getResultList();
 	}
 
@@ -26,7 +29,7 @@ public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> imp
 	public List<EmployeeEntity> findCarKeeperInInstitution(Long idCar, Long idInstitution) {
 
 		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
-				"SELECT emp FROM EmployeeEntity emp JOIN emp.idCarEntity e WHERE e.idCar=:idCar AND emp.idInstitution=:idInstitution  ",
+				"SELECT emp FROM EmployeeEntity emp WHERE emp.idCar=:idCar AND emp.idInstitution=:idInstitution  ",
 				EmployeeEntity.class);
 		query.setParameter("idInstitution", idInstitution);
 		query.setParameter("idCar", idCar);

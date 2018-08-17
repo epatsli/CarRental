@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 @Entity
 @Table(name = "CLIENTS")
 public class ClientEntity implements Serializable {
@@ -168,7 +170,7 @@ public class ClientEntity implements Serializable {
 		private void checkBeforeBuild() {
 
 			if (phoneNumber == null || creditCardNumber == null) {
-				throw new RuntimeException("Thic client can't be created.");
+				throw new IncorrectParameterException("Thic client can't be created.");
 			}
 
 		}

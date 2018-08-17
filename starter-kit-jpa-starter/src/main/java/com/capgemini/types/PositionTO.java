@@ -2,6 +2,8 @@ package com.capgemini.types;
 
 import java.util.List;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 public class PositionTO {
 
 	private Long idPosition;
@@ -75,7 +77,7 @@ public class PositionTO {
 
 		private void checkBeforeBuild() {
 			if (namePosition == null || namePosition.isEmpty()) {
-				throw new RuntimeException("Incorrect author to be created");
+				throw new IncorrectParameterException("Incorrect author to be created");
 			}
 
 		}

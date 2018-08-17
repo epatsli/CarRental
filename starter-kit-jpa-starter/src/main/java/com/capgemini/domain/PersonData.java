@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.capgemini.exception.IncorrectParameterException;
+
 @Embeddable
 public class PersonData {
 
@@ -27,15 +29,15 @@ public class PersonData {
 	}
 
 	public PersonData(String firstName, String lastName, LocalDate dataOfBirth) {
-		checkBeforeCreate();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dataOfBirth = dataOfBirth;
+		checkBeforeCreate();
 	}
 
 	private void checkBeforeCreate() {
 		if (firstName == null || lastName == null) {
-			throw new RuntimeException("This person can't be created");
+			throw new IncorrectParameterException("This person can't be created");
 		}
 
 	}
