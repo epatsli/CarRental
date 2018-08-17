@@ -29,7 +29,7 @@ public class EmployeeEntity implements Serializable {
 	private PersonData person;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "idPosition", nullable = true)
+	@JoinColumn(name = "idPosition")
 	private PositionEntity position;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)

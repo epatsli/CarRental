@@ -51,7 +51,7 @@ public class CarEntity implements Serializable {
 	private List<RentingCarEntity> listRentingCar = new ArrayList<>();
 	// ???
 	@ManyToMany(mappedBy = "carKeeper", cascade = CascadeType.ALL)
-	private List<EmployeeEntity> employeeKeeper;
+	private List<EmployeeEntity> employeeKeeper = new ArrayList<>();
 
 	public CarEntity() {
 	}

@@ -30,7 +30,7 @@ public class CarDaoImpl extends AbstractDao<CarEntity, Long> implements CarDao {
 
 		EmployeeEntity employee = entityManager.getReference(EmployeeEntity.class, idEmployee);
 		TypedQuery<CarEntity> query = entityManager.createQuery(
-				"SELECT car FROM CarEntity car WHERE :idEmployee member of car.employeeKeeper ", CarEntity.class);
+				"SELECT car FROM CarEntity car WHERE :idEmployee MEMBER OF car.employeeKeeper ", CarEntity.class);
 		query.setParameter("idEmployee", employee);
 		return query.getResultList();
 	}

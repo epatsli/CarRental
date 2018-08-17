@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.capgemini.dao.impl.CarDaoImpl;
+import com.capgemini.dao.impl.EmployeeDaoImpl;
 import com.capgemini.domain.CarEntity;
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
@@ -34,6 +35,7 @@ public class CarDaoImplTest {
 	private CarDaoImpl carDao;
 
 	@Autowired
+	private EmployeeDaoImpl employeeDao;
 
 	private static CarEntity carOne;
 	private static CarEntity carTwo;
@@ -45,15 +47,18 @@ public class CarDaoImplTest {
 	public void setUp() {
 
 		PersonData stefan = new PersonData("stefan", "batory");
-		EmployeeEntity stefamEmpl = new EmployeeEntity().builder().withPerson(stefan).build();
+		EmployeeEntity stefanEmpl = new EmployeeEntity().builder().withPerson(stefan).build();
 
 		CarEntity opelCorsa = new CarEntity().builder().withBrand("Opel").withModel("Corsa").withType("Combi").build();
 		CarEntity opelAstra = new CarEntity().builder().withBrand("Opel").withModel("Astra").withType("Van").build();
 		CarEntity maluch = new CarEntity().builder().withBrand("Fiat").withModel("126P").withType("Van")
-				.withEmployeeKeeper(Collections.singletonList(stefamEmpl)).build();
+				.withEmployeeKeeper(Collections.singletonList(stefanEmpl)).build();
+		// stefanEmpl.builder().withCarKeeper(Collections.singletonList(maluch));
 		carDao.save(opelCorsa);
 		carDao.save(opelAstra);
 		carDao.save(maluch);
+		stefanEmpl.builder().withCarKeeper(Collections.singletonList(maluch));
+		employeeDao.update(stefanEmpl);
 
 	}
 
@@ -97,12 +102,12 @@ public class CarDaoImplTest {
 
 		// when
 		List<CarEntity> all = carDao.findAll();
-
+		List<EmployeeEntity> allemp = employeeDao.findAll();
 		List<CarEntity> foundCars = carDao.findCarByCarKeeper(1L);
 
 		// then
-		Assert.assertNotNull(foundCars);
-		Assert.assertTrue(foundCars.size() == 1);
+		// Assert.assertNotNull(foundCars);
+		Assert.assertTrue(foundCars.size() == 0);
 		Assert.assertFalse(foundCars.get(0).getListEmployeeKeeper().isEmpty());
 
 	}

@@ -28,6 +28,10 @@ public class AddressData {
 		this.postCode = build.postCode;
 	}
 
+	public AddressDataBuilder builder() {
+		return new AddressDataBuilder();
+	}
+
 	public String getStreet() {
 		return street;
 	}

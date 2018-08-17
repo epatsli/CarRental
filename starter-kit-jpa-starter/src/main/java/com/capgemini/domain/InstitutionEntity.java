@@ -39,7 +39,7 @@ public class InstitutionEntity implements Serializable {
 	@OneToMany(mappedBy = "institutionPickup")
 	private List<RentingCarEntity> listInstitutionPickup = new ArrayList<>();
 
-	@Column(name = "institutionReturn", nullable = true)
+	@Column(name = "institutionReturn")
 	@OneToMany(mappedBy = "institutionReturn")
 	private List<RentingCarEntity> listInstitutionReturn = new ArrayList<>();
 

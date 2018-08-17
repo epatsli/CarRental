@@ -17,7 +17,7 @@ public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> imp
 	public List<EmployeeEntity> findCurrentEmployee(Long idInstitution) {
 
 		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
-				"SELECT emp FROM EmployeeEntity emp WHERE emp.idInstitution=:idInstitution ", EmployeeEntity.class);
+				"SELECT emp FROM EmployeeEntity emp WHERE emp.idInstitution = :idInstitution  ", EmployeeEntity.class);
 		query.setParameter("idInstitution", idInstitution);
 		return query.getResultList();
 	}
