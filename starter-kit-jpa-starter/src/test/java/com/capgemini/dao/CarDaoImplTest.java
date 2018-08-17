@@ -61,36 +61,6 @@ public class CarDaoImplTest {
 	}
 
 	@Test
-	public void shouldFindCarByCarKeeper() {
-
-		// given
-
-		// when
-		List<CarEntity> foundCars = carDao.findCarByCarKeeper(1L);
-
-		// then
-		Assert.assertNotNull(foundCars);
-		// Assert.assertEquals(1, foundCars.size());
-		Assert.assertTrue(foundCars.size() == 1);
-		Assert.assertFalse(foundCars.get(0).getListEmployeeKeeper().isEmpty());
-		// Assert.assertEquals(employeeDao.getOne(1L).getCarKeeper(),
-		// foundCars.get(0));
-	}
-
-	@Test
-	public void shouldNotFindCarByCarKeeperId2L() {
-
-		// given
-
-		// when
-		List<CarEntity> foundCars = carDao.findCarByCarKeeper(2L);
-
-		// then
-		Assert.assertTrue(foundCars.size() == 0);
-		Assert.assertTrue(foundCars.isEmpty());
-	}
-
-	@Test
 	public void shouldFindCarsByTypeCombiAndBrandOpel() {
 
 		// given
@@ -129,8 +99,6 @@ public class CarDaoImplTest {
 		// given
 
 		// when
-		// List<CarEntity> all = carDao.findAll();
-		// List<EmployeeEntity> allemp = employeeDao.findAll();
 		List<CarEntity> foundCars = carDao.findCarByCarKeeper(1L);
 
 		// then
@@ -138,6 +106,19 @@ public class CarDaoImplTest {
 		Assert.assertTrue(foundCars.size() == 1);
 		Assert.assertFalse(foundCars.get(0).getListEmployeeKeeper().isEmpty());
 
+	}
+
+	@Test
+	public void shouldNotFindCarByCarKeeperId2L() {
+
+		// given
+
+		// when
+		List<CarEntity> foundCars = carDao.findCarByCarKeeper(2L);
+
+		// then
+		Assert.assertTrue(foundCars.size() == 0);
+		Assert.assertTrue(foundCars.isEmpty());
 	}
 
 }
