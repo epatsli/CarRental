@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import com.capgemini.dao.InstitutionDao;
+import com.capgemini.domain.CarEntity;
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
 
@@ -29,11 +30,12 @@ public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> imp
 	@Override
 	public List<EmployeeEntity> findCarKeeperInInstitution(Long idCar, Long idInstitution) {
 
+		CarEntity car = entityManager.getReference(CarEntity.class, idCar);
 		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
-				"SELECT emp FROM EmployeeEntity emp WHERE emp.idCar=:idCar AND emp.idInstitution=:idInstitution  ",
+				"SELECT emp FROM EmployeeEntity emp WHERE :idInstitution=emp.institutionEmployee.idInstitution AND :idCar MEMBER OF emp.carKeeper",
 				EmployeeEntity.class);
 		query.setParameter("idInstitution", idInstitution);
-		query.setParameter("idCar", idCar);
+		query.setParameter("idCar", car);
 		return query.getResultList();
 
 	}
