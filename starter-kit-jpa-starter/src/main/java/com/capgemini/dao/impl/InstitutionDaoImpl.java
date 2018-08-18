@@ -16,12 +16,13 @@ public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> imp
 	@Override
 	public List<EmployeeEntity> findCurrentEmployee(Long idInstitution) {
 
-		InstitutionEntity institution = entityManager.getReference(InstitutionEntity.class, idInstitution);
+		// InstitutionEntity institution =
+		// entityManager.getReference(InstitutionEntity.class, idInstitution);
 
 		TypedQuery<EmployeeEntity> query = entityManager.createQuery(
-				"SELECT emp FROM EmployeeEntity emp JOIN emp.instititutionEntity ie WHERE :institution MEMBER OF ie.institutionEntity ",
+				"SELECT emp FROM EmployeeEntity emp WHERE :idInstitution =emp.institutionEmployee.idInstitution ",
 				EmployeeEntity.class);
-		query.setParameter("institution", idInstitution);
+		query.setParameter("idInstitution", idInstitution);
 		return query.getResultList();
 	}
 

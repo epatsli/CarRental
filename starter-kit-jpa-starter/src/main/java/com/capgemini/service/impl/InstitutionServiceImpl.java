@@ -18,13 +18,13 @@ import com.capgemini.types.InstitutionTO;
 
 @Service
 @Transactional(readOnly = true)
-public class InstitutionerviceImpl implements InstitutionService {
+public class InstitutionServiceImpl implements InstitutionService {
 
 	private final InstitutionDao institutionDao;
 	private final EmployeeDao employeeDao;
 
 	@Autowired
-	public InstitutionerviceImpl(InstitutionDao institutionDao, EmployeeDao employeeDao) {
+	public InstitutionServiceImpl(InstitutionDao institutionDao, EmployeeDao employeeDao) {
 		this.institutionDao = institutionDao;
 		this.employeeDao = employeeDao;
 	}
