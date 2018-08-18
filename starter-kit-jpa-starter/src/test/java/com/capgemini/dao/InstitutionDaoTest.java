@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -86,6 +87,11 @@ public class InstitutionDaoTest {
 		CarEntity opelAstra = new CarEntity().builder().withBrand("Opel").withModel("Astra").withType("Van").build();
 		carDao.save(opelAstra);
 
+	}
+
+	@After
+	public void set() {
+		carDao.deleteAll();
 	}
 
 	@Test
