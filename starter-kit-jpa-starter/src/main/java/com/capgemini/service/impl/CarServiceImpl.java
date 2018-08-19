@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.capgemini.dao.CarDao;
+import com.capgemini.dao.EmployeeDao;
 import com.capgemini.domain.CarEntity;
+import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.mappers.CarMapper;
 import com.capgemini.service.CarService;
 import com.capgemini.types.CarTO;
@@ -17,10 +19,12 @@ import com.capgemini.types.CarTO;
 public class CarServiceImpl implements CarService {
 
 	private final CarDao carDao;
+	private final EmployeeDao employeeDao;
 
 	@Autowired
-	public CarServiceImpl(CarDao carDao) {
+	public CarServiceImpl(CarDao carDao, EmployeeDao employeeDao) {
 		this.carDao = carDao;
+		this.employeeDao = employeeDao;
 	}
 
 	@Override
@@ -40,19 +44,21 @@ public class CarServiceImpl implements CarService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public CarTO editCar(CarTO car) {
+	public void editCar(CarTO car) {
 
 		CarEntity carEntity = carDao.update(CarMapper.toCarEntity(car));
-		return CarMapper.toCarTO(carEntity);
+		CarMapper.toCarTO(carEntity);
 	}
 
 	@Override
 	@Transactional(readOnly = false)
-	public CarTO addCarKeeper(Long idCar, Long idEmployee) {
+	public void addCarKeeper(Long idCar, Long idEmployee) {
 
-		// fghfgh
+		List<EmployeeEntity> employees = (carDao.findOne(idCar)).getListEmployeeKeeper();
+		employees.add(employeeDao.findOne(idEmployee));
+		(carDao.findOne(idCar)).setListEmployeeKeeper(employees);
+		carDao.save(carDao.findOne(idCar));
 
-		return null;
 	}
 
 	@Override

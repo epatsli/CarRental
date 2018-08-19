@@ -52,21 +52,28 @@ public class InstitutionServiceImpl implements InstitutionService {
 
 	@Override
 	@Transactional(readOnly = false)
-	public InstitutionTO addEmployeeTOInstitution(InstitutionTO institution, EmployeeTO employee) {
+	public void addEmployeeTOInstitution(Long idInstitution, Long idEmployee) {
 
-		// ddgfdjgdfkghufdhvfdvhd
+		InstitutionEntity institutionEntity = institutionDao.findOne(idInstitution);
+		EmployeeEntity employeeEntity = employeeDao.findOne(idEmployee);
+		List<EmployeeEntity> employess = institutionEntity.getListEmployee();
+		employess.add(employeeEntity);
+		institutionEntity.setListEmployee(employess);
+		institutionDao.save(institutionEntity);
 
-		InstitutionEntity institutionEntity = institutionDao.update(InstitutionMapper.toInstitutionEntity(institution));
-		InstitutionMapper.toInstitutionTO(institutionEntity);
-
-		return null;
 	}
 
 	@Override
 	@Transactional(readOnly = false)
 	public void deleteEmployeeWithInstitution(Long idEmployee) {
 
-		// TODO Auto-generated method stub
+		EmployeeEntity employeeEntity = employeeDao.findOne(idEmployee);
+		InstitutionEntity institutionEntity = employeeEntity.getInstitutionEmployee();
+		employeeEntity.setInstitutionEmployee(null);
+		List<EmployeeEntity> employees = institutionEntity.getListEmployee();
+		employees.remove(employeeEntity);
+		institutionEntity.setListEmployee(employees);
+		institutionDao.save(institutionEntity);
 
 	}
 

@@ -10,9 +10,9 @@ public interface CarService {
 
 	void deleteCar(CarTO car);
 
-	CarTO editCar(CarTO car);
+	void editCar(CarTO car);
 
-	CarTO addCarKeeper(Long idCar, Long idEmployee);
+	void addCarKeeper(Long idCar, Long idEmployee);
 
 	List<CarTO> findByTypeAndBrand(String type, String brand);
 

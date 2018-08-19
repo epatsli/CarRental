@@ -13,7 +13,7 @@ public interface InstitutionService {
 
 	InstitutionTO editInstitution(InstitutionTO institution);
 
-	InstitutionTO addEmployeeTOInstitution(InstitutionTO Institution, EmployeeTO employee);
+	void addEmployeeTOInstitution(Long idInstitution, Long idEmployee);
 
 	void deleteEmployeeWithInstitution(Long idEmployee);
 
