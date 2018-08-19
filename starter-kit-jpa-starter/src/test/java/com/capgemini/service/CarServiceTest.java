@@ -48,7 +48,9 @@ public class CarServiceTest {
 		// then
 		assertEquals("Opel", addedCar.getBrand());
 		assertEquals("Combi", addedCar.getType());
-		// Mockito.when(carDaoMock.findCarByTypeAndBrand(any(), any()));
+
 	}
+
+	// Mockito.when(carDaoMock.findCarByTypeAndBrand(any(), any()));
 
 }
