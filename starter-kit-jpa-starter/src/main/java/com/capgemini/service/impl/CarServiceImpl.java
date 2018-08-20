@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.capgemini.dao.CarDao;
-import com.capgemini.dao.EmployeeDao;
+import com.capgemini.dao.SearchCriteriaDao;
 import com.capgemini.domain.CarEntity;
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.mappers.CarMapper;
@@ -24,10 +24,10 @@ import com.capgemini.types.CarTO;
 public class CarServiceImpl implements CarService {
 
 	private final CarDao carDao;
-	private final EmployeeDao employeeDao;
+	private final SearchCriteriaDao employeeDao;
 
 	@Autowired
-	public CarServiceImpl(CarDao carDao, EmployeeDao employeeDao) {
+	public CarServiceImpl(CarDao carDao, SearchCriteriaDao employeeDao) {
 		this.carDao = carDao;
 		this.employeeDao = employeeDao;
 	}

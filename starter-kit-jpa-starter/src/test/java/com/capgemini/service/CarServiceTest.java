@@ -5,8 +5,6 @@ import static org.mockito.Mockito.times;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -21,6 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
 import com.capgemini.dao.CarDao;
 import com.capgemini.domain.CarEntity;
 import com.capgemini.mappers.CarMapper;
+import com.capgemini.mappers.RentingCarMapper;
 import com.capgemini.service.impl.CarServiceImpl;
 import com.capgemini.types.CarTO;
 
@@ -32,17 +31,8 @@ import com.capgemini.types.CarTO;
 @RunWith(MockitoJUnitRunner.class)
 public class CarServiceTest {
 
-	// @Autowired
-	// private CarService carService;
-
-	// @Autowired
-	// private InstitutionService institutionService;
-
-	// @Autowired
-	// private EmployeeDao employeeDao;
-
-	@PersistenceContext
-	private EntityManager entityManager;
+	// @PersistenceContext
+	// private EntityManager entityManager;
 
 	@Mock
 	private CarMapper carMapperMock;
@@ -52,6 +42,16 @@ public class CarServiceTest {
 
 	@InjectMocks
 	private CarServiceImpl carService;
+
+	@Test
+	public void should() {
+		CarEntity carEntity = new CarEntity().builder().withBrand("Opel").withModel("Corsa").withType("Combi").build();
+		CarTO carTO = new CarTO().builder().withBrand("Opel").withModel("Corsa").withType("Combi").build();
+		Mockito.when(carDaoMock.save(carEntity)).thenReturn(carEntity);
+		Mockito.when(carService.addCar(carTO)).thenReturn(carTO);
+
+		Mockito.verify(carDaoMock, times(1)).save(carEntity);
+	}
 
 	@Test
 	public void shouldFindCarByTypeAndBrand() {
@@ -66,14 +66,12 @@ public class CarServiceTest {
 
 		// when
 		Mockito.when(carDaoMock.findCarByTypeAndBrand("Combi", "Opel")).thenReturn(list);
-
-		Mockito.when(carMapperMock.map2Entities(listTO)).thenReturn(list);
-
-		Mockito.when(carMapperMock.map2TOs(list)).thenReturn(listTO);
-
-		Mockito.when(carMapperMock.toCarEntity(carTO)).thenReturn(carEntity);
-
-		Mockito.when(carMapperMock.toCarTO(carEntity)).thenReturn(carTO);
+		CarMapper objMapper = Mockito.mock(CarMapper.class);
+		RentingCarMapper objMapp = Mockito.mock(RentingCarMapper.class);
+		// Mockito.when(carMapperMock.map2Entities(listTO)).thenReturn(list);
+		// Mockito.when(carMapperMock.map2TOs(list)).thenReturn(listTO);
+		// Mockito.when(carMapperMock.toCarEntity(carTO)).thenReturn(carEntity);
+		// Mockito.when(carMapperMock.toCarTO(carEntity)).thenReturn(carTO);
 
 		// Mockito.when(carMapperMock.map2TOs(list)).thenReturn(listTO);
 		carService.findByTypeAndBrand("Combi", "Opel");

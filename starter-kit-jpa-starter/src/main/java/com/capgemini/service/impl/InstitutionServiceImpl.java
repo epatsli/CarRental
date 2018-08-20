@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.capgemini.dao.EmployeeDao;
+import com.capgemini.dao.SearchCriteriaDao;
 import com.capgemini.dao.InstitutionDao;
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
@@ -25,10 +25,10 @@ import com.capgemini.types.InstitutionTO;
 public class InstitutionServiceImpl implements InstitutionService {
 
 	private final InstitutionDao institutionDao;
-	private final EmployeeDao employeeDao;
+	private final SearchCriteriaDao employeeDao;
 
 	@Autowired
-	public InstitutionServiceImpl(InstitutionDao institutionDao, EmployeeDao employeeDao) {
+	public InstitutionServiceImpl(InstitutionDao institutionDao, SearchCriteriaDao employeeDao) {
 		this.institutionDao = institutionDao;
 		this.employeeDao = employeeDao;
 	}

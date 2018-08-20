@@ -18,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.capgemini.dao.impl.CarDaoImpl;
-import com.capgemini.dao.impl.EmployeeDaoImpl;
+import com.capgemini.dao.impl.SearchCriteriaDaoImpl;
 import com.capgemini.domain.CarEntity;
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.PersonData;
@@ -36,7 +36,7 @@ public class CarDaoImplTest {
 	private CarDaoImpl carDao;
 
 	@Autowired
-	private EmployeeDaoImpl employeeDao;
+	private SearchCriteriaDaoImpl employeeDao;
 
 	@Before
 	public void setUp() {
