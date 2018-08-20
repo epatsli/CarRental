@@ -8,13 +8,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.capgemini.dao.impl.CarDaoImpl;
@@ -26,6 +26,7 @@ import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
 import com.capgemini.domain.PersonData;
 
+@ActiveProfiles("hsql")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
@@ -89,45 +90,6 @@ public class InstitutionDaoTest {
 
 	}
 
-	@After
-	public void set() {
-		carDao.deleteAll();
-	}
-
-	@Test
-	public void shouldFindCurrentEmployeeInInstitution() {
-
-		// given
-
-		// when
-		List<EmployeeEntity> listEmployee = institutionDaoImpl.findCurrentEmployee(1L);
-
-		// then
-		Assert.assertNotNull(listEmployee);
-		Assert.assertEquals(2, listEmployee.size());
-		Assert.assertEquals("Stefan", listEmployee.get(0).getPerson().getFirstName());
-		Assert.assertEquals("Batory", listEmployee.get(0).getPerson().getLastName());
-		Assert.assertEquals("Edmund", listEmployee.get(1).getPerson().getFirstName());
-		Assert.assertEquals("Maly", listEmployee.get(1).getPerson().getLastName());
-		Assert.assertTrue(listEmployee.size() == 2);
-
-	}
-
-	@Test
-	public void shouldCantFindCurrentEmployeeInInstitution() {
-
-		// given
-
-		// when
-		List<EmployeeEntity> listEmployee = institutionDaoImpl.findCurrentEmployee(2L);
-
-		// then
-		Assert.assertTrue(listEmployee.isEmpty());
-		Assert.assertEquals(0, listEmployee.size());
-		Assert.assertTrue(listEmployee.size() == 0);
-
-	}
-
 	@Test
 	public void shouldFindCarKeeperInInstitution() {
 
@@ -152,8 +114,41 @@ public class InstitutionDaoTest {
 		List<EmployeeEntity> listEmployee = institutionDaoImpl.findCarKeeperInInstitution(2L, 1L);
 
 		// then
-		Assert.assertEquals(0, listEmployee.size());
 		Assert.assertTrue(listEmployee.isEmpty());
+
+	}
+
+	@Test
+	public void shouldFindCurrentEmployeeInInstitution() {
+
+		// given
+		List<EmployeeEntity> listEmployee = new ArrayList<>();
+
+		// when
+		listEmployee = institutionDaoImpl.findCurrentEmployee(1L);
+
+		// then
+		Assert.assertNotNull(listEmployee);
+		Assert.assertEquals(2, listEmployee.size());
+		Assert.assertEquals("Stefan", listEmployee.get(0).getPerson().getFirstName());
+		Assert.assertEquals("Batory", listEmployee.get(0).getPerson().getLastName());
+		Assert.assertEquals("Edmund", listEmployee.get(1).getPerson().getFirstName());
+		Assert.assertEquals("Maly", listEmployee.get(1).getPerson().getLastName());
+		Assert.assertTrue(listEmployee.size() == 2);
+	}
+
+	@Test
+	public void shouldCantFindCurrentEmployeeInInstitution() {
+
+		// given
+
+		// when
+		List<EmployeeEntity> listEmployee = institutionDaoImpl.findCurrentEmployee(2L);
+
+		// then
+		Assert.assertTrue(listEmployee.isEmpty());
+		Assert.assertEquals(0, listEmployee.size());
+		Assert.assertTrue(listEmployee.size() == 0);
 
 	}
 

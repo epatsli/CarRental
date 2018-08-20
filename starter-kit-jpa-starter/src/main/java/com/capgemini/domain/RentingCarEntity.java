@@ -16,6 +16,10 @@ import javax.persistence.Table;
 
 import com.capgemini.exception.IncorrectParameterException;
 
+/**
+ * This class maps renting cars tables.
+ *
+ */
 @Entity
 @Table(name = "RENTINGCARS")
 public class RentingCarEntity implements Serializable {
@@ -50,9 +54,17 @@ public class RentingCarEntity implements Serializable {
 	@JoinColumn(name = "idCar", nullable = false)
 	private CarEntity car;
 
+	/**
+	 * No-argument constructor
+	 */
 	public RentingCarEntity() {
 	}
 
+	/**
+	 * Constructor create new object with builder.
+	 * 
+	 * @param builder
+	 */
 	public RentingCarEntity(RentingCarEntityBuilder builder) {
 		this.idRenting = builder.idRenting;
 		this.pickupDate = builder.pickupDate;
@@ -64,6 +76,11 @@ public class RentingCarEntity implements Serializable {
 		this.car = builder.car;
 	}
 
+	/**
+	 * This method create new object.
+	 * 
+	 * @return new object
+	 */
 	public RentingCarEntityBuilder builder() {
 		return new RentingCarEntityBuilder();
 	}
@@ -132,6 +149,10 @@ public class RentingCarEntity implements Serializable {
 		this.car = car;
 	}
 
+	/**
+	 * This is builder class.
+	 *
+	 */
 	public static class RentingCarEntityBuilder {
 		private Long idRenting;
 		private LocalDate pickupDate;
@@ -142,49 +163,114 @@ public class RentingCarEntity implements Serializable {
 		private ClientEntity clientRented;
 		private CarEntity car;
 
+		/**
+		 * No-argument constructor
+		 */
 		public RentingCarEntityBuilder() {
 		}
 
+		/**
+		 * 
+		 * This method set index renting.
+		 * 
+		 * @param idRenting
+		 *            index renting
+		 * @return new object with index
+		 */
 		public RentingCarEntityBuilder withIdRenting(Long idRenting) {
 			this.idRenting = idRenting;
 			return this;
 		}
 
+		/**
+		 * This method set pickup date
+		 * 
+		 * @param pickupDate
+		 *            date when car was take
+		 * @return new object with pickup date
+		 */
 		public RentingCarEntityBuilder withPickupDate(LocalDate pickupDate) {
 			this.pickupDate = pickupDate;
 			return this;
 		}
 
+		/**
+		 * This method set institution pickup
+		 * 
+		 * @param institutionPickup
+		 *            place where take car
+		 * @return new object with institution pickup
+		 */
 		public RentingCarEntityBuilder withInstitutionPickup(InstitutionEntity institutionPickup) {
 			this.institutionPickup = institutionPickup;
 			return this;
 		}
 
+		/**
+		 * This method set client who rented car
+		 * 
+		 * @param clientRented
+		 *            client who rented car
+		 * @return new object with client who rented car
+		 */
 		public RentingCarEntityBuilder withClientRented(ClientEntity clientRented) {
 			this.clientRented = clientRented;
 			return this;
 		}
 
+		/**
+		 * This method set car which was rented.
+		 * 
+		 * @param car
+		 *            car which was rented
+		 * @return new object with car witch was rented
+		 */
 		public RentingCarEntityBuilder withCar(CarEntity car) {
 			this.car = car;
 			return this;
 		}
 
+		/**
+		 * This method set return date.
+		 * 
+		 * @param returnDate
+		 *            date when car was return
+		 * @return new object with return date
+		 */
 		public RentingCarEntityBuilder withReturnDate(LocalDate returnDate) {
 			this.returnDate = returnDate;
 			return this;
 		}
 
+		/**
+		 * This method set return institution.
+		 * 
+		 * @param institutionReturn
+		 *            place where car was return
+		 * @return new object with return place
+		 */
 		public RentingCarEntityBuilder withInstitutionReturn(InstitutionEntity institutionReturn) {
 			this.institutionReturn = institutionReturn;
 			return this;
 		}
 
+		/**
+		 * This method set rental price
+		 * 
+		 * @param price
+		 *            rental price
+		 * @return new object with rental price
+		 */
 		public RentingCarEntityBuilder withPrice(double price) {
 			this.price = price;
 			return this;
 		}
 
+		/**
+		 * This method create new object.
+		 * 
+		 * @return new object renting car
+		 */
 		public RentingCarEntity build() {
 			checkBeforeBuild();
 			return new RentingCarEntity(this);

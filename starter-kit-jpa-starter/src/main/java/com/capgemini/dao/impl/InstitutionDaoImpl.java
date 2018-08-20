@@ -14,6 +14,13 @@ import com.capgemini.domain.InstitutionEntity;
 @Repository
 public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> implements InstitutionDao {
 
+	/**
+	 * Returns list of current employees of the institution.
+	 * 
+	 * @param idInstitution
+	 *            index institution
+	 * @return List<EmployeeEntity> workers list
+	 */
 	@Override
 	public List<EmployeeEntity> findCurrentEmployee(Long idInstitution) {
 
@@ -24,6 +31,15 @@ public class InstitutionDaoImpl extends AbstractDao<InstitutionEntity, Long> imp
 		return query.getResultList();
 	}
 
+	/**
+	 * Returns list of current employees of the institution which take care car.
+	 * 
+	 * @param idCar
+	 *            index car
+	 * @param idInstitution
+	 *            index institution
+	 * @return List<EmployeeEntity> workers list
+	 */
 	@Override
 	public List<EmployeeEntity> findCarKeeperInInstitution(Long idCar, Long idInstitution) {
 

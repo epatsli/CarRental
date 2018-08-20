@@ -17,6 +17,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * This class maps employee tables.
+ *
+ */
 @Entity
 @Table(name = "EMPLOYEES")
 public class EmployeeEntity implements Serializable {
@@ -41,9 +45,17 @@ public class EmployeeEntity implements Serializable {
 	@JoinTable(name = "EMPLOYEES_CARS", joinColumns = @JoinColumn(name = "idEmployee") , inverseJoinColumns = @JoinColumn(name = "idCar") )
 	private List<CarEntity> carKeeper = new ArrayList<>();
 
+	/**
+	 * No-argument constructor
+	 */
 	public EmployeeEntity() {
 	}
 
+	/**
+	 * Constructor create new object with builder.
+	 * 
+	 * @param builder
+	 */
 	public EmployeeEntity(EmployeeEntityBuilder builder) {
 		this.idEmployee = builder.idEmployee;
 		this.person = builder.person;
@@ -52,6 +64,11 @@ public class EmployeeEntity implements Serializable {
 		this.carKeeper = builder.carKeeper;
 	}
 
+	/**
+	 * This method create new object.
+	 * 
+	 * @return new object
+	 */
 	public EmployeeEntityBuilder builder() {
 		return new EmployeeEntityBuilder();
 	}
@@ -96,6 +113,10 @@ public class EmployeeEntity implements Serializable {
 		this.carKeeper = carKeeper;
 	}
 
+	/**
+	 * This is builder class.
+	 *
+	 */
 	public static class EmployeeEntityBuilder {
 		private Long idEmployee;
 		private PersonData person;
@@ -103,34 +124,78 @@ public class EmployeeEntity implements Serializable {
 		private InstitutionEntity institutionEmployee;
 		private List<CarEntity> carKeeper;
 
+		/**
+		 * No-argument constructor
+		 */
 		public EmployeeEntityBuilder() {
 		}
 
+		/**
+		 * 
+		 * This method set index employee.
+		 * 
+		 * @param idEmployee
+		 *            index employee
+		 * @return new object with index
+		 */
 		public EmployeeEntityBuilder withIdEmployee(Long idEmployee) {
 			this.idEmployee = idEmployee;
 			return this;
 		}
 
+		/**
+		 * This method set personal data.
+		 * 
+		 * @param person
+		 *            personal date employee
+		 * @return new object with personal date employee
+		 */
 		public EmployeeEntityBuilder withPerson(PersonData person) {
 			this.person = person;
 			return this;
 		}
 
+		/**
+		 * This method set position employee.
+		 * 
+		 * @param position
+		 *            position employee in factory
+		 * @return new object with position employee
+		 */
 		public EmployeeEntityBuilder withPosition(PositionEntity position) {
 			this.position = position;
 			return this;
 		}
 
+		/**
+		 * This method set work place for employee.
+		 * 
+		 * @param institutionEmployee
+		 *            work place employee
+		 * @return new object with work place
+		 */
 		public EmployeeEntityBuilder withInstitutionEmployee(InstitutionEntity institutionEmployee) {
 			this.institutionEmployee = institutionEmployee;
 			return this;
 		}
 
+		/**
+		 * This method set list of cars that employee looks after
+		 * 
+		 * @param carKeeper
+		 *            list of cars
+		 * @return new object with list of cars
+		 */
 		public EmployeeEntityBuilder withCarKeeper(List<CarEntity> carKeeper) {
 			this.carKeeper = carKeeper;
 			return this;
 		}
 
+		/**
+		 * This method create new object.
+		 * 
+		 * @return new object employee
+		 */
 		public EmployeeEntity build() {
 			return new EmployeeEntity(this);
 		}

@@ -14,9 +14,17 @@ public class RentingCarTO {
 	private ClientTO clientRented;
 	private CarTO car;
 
+	/**
+	 * No-argument constructor
+	 */
 	public RentingCarTO() {
 	}
 
+	/**
+	 * Constructor create new object with builder.
+	 * 
+	 * @param builder
+	 */
 	public RentingCarTO(RentingCarTOBuilder builder) {
 		this.idRenting = builder.idRenting;
 		this.pickupDate = builder.pickupDate;
@@ -28,6 +36,11 @@ public class RentingCarTO {
 		this.car = builder.car;
 	}
 
+	/**
+	 * This method create new object.
+	 * 
+	 * @return new object
+	 */
 	public RentingCarTOBuilder builder() {
 		return new RentingCarTOBuilder();
 	}
@@ -96,6 +109,10 @@ public class RentingCarTO {
 		this.car = car;
 	}
 
+	/**
+	 * This is builder class.
+	 *
+	 */
 	public static class RentingCarTOBuilder {
 		private Long idRenting;
 		private LocalDate pickupDate;
@@ -106,49 +123,114 @@ public class RentingCarTO {
 		private ClientTO clientRented;
 		private CarTO car;
 
+		/**
+		 * No-argument constructor
+		 */
 		public RentingCarTOBuilder() {
 		}
 
+		/**
+		 * 
+		 * This method set index renting.
+		 * 
+		 * @param idRenting
+		 *            index renting
+		 * @return new object with index
+		 */
 		public RentingCarTOBuilder withIdRenting(Long idRenting) {
 			this.idRenting = idRenting;
 			return this;
 		}
 
+		/**
+		 * This method set pickup date
+		 * 
+		 * @param pickupDate
+		 *            date when car was take
+		 * @return new object with pickup date
+		 */
 		public RentingCarTOBuilder withPickupDate(LocalDate pickupDate) {
 			this.pickupDate = pickupDate;
 			return this;
 		}
 
+		/**
+		 * This method set institution pickup
+		 * 
+		 * @param institutionPickup
+		 *            place where take car
+		 * @return new object with institution pickup
+		 */
 		public RentingCarTOBuilder withInstitutionPickup(InstitutionTO institutionPickup) {
 			this.institutionPickup = institutionPickup;
 			return this;
 		}
 
+		/**
+		 * This method set client who rented car
+		 * 
+		 * @param clientRented
+		 *            client who rented car
+		 * @return new object with client who rented car
+		 */
 		public RentingCarTOBuilder withClientRented(ClientTO clientRented) {
 			this.clientRented = clientRented;
 			return this;
 		}
 
+		/**
+		 * This method set car which was rented.
+		 * 
+		 * @param car
+		 *            car which was rented
+		 * @return new object with car witch was rented
+		 */
 		public RentingCarTOBuilder withCar(CarTO car) {
 			this.car = car;
 			return this;
 		}
 
+		/**
+		 * This method set return date.
+		 * 
+		 * @param returnDate
+		 *            date when car was return
+		 * @return new object with return date
+		 */
 		public RentingCarTOBuilder withReturnDate(LocalDate returnDate) {
 			this.returnDate = returnDate;
 			return this;
 		}
 
+		/**
+		 * This method set return institution.
+		 * 
+		 * @param institutionReturn
+		 *            place where car was return
+		 * @return new object with return place
+		 */
 		public RentingCarTOBuilder withInstitutionReturn(InstitutionTO institutionReturn) {
 			this.institutionReturn = institutionReturn;
 			return this;
 		}
 
+		/**
+		 * This method set rental price
+		 * 
+		 * @param price
+		 *            rental price
+		 * @return new object with rental price
+		 */
 		public RentingCarTOBuilder withPrice(double price) {
 			this.price = price;
 			return this;
 		}
 
+		/**
+		 * This method create new object.
+		 * 
+		 * @return new object renting car
+		 */
 		public RentingCarTO build() {
 			checkBeforeBuild();
 			return new RentingCarTO(this);

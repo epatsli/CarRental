@@ -16,6 +16,10 @@ import javax.persistence.Table;
 
 import com.capgemini.exception.IncorrectParameterException;
 
+/**
+ * This class maps car tables.
+ *
+ */
 @Entity
 @Table(name = "CARS")
 public class CarEntity implements Serializable {
@@ -51,13 +55,21 @@ public class CarEntity implements Serializable {
 
 	@OneToMany(mappedBy = "car", cascade = CascadeType.PERSIST)
 	private List<RentingCarEntity> listRentingCar = new ArrayList<>();
-	// ???
+
 	@ManyToMany(mappedBy = "carKeeper", cascade = CascadeType.ALL)
 	private List<EmployeeEntity> employeeKeeper = new ArrayList<>();
 
+	/**
+	 * No-argument constructor
+	 */
 	public CarEntity() {
 	}
 
+	/**
+	 * Constructor create new object with builder.
+	 * 
+	 * @param builder
+	 */
 	public CarEntity(CarEntityBuilder builder) {
 		this.idCar = builder.idCar;
 		this.type = builder.type;
@@ -72,6 +84,11 @@ public class CarEntity implements Serializable {
 		this.employeeKeeper = builder.employeeKeeper;
 	}
 
+	/**
+	 * This method create new object.
+	 * 
+	 * @return new object
+	 */
 	public CarEntityBuilder builder() {
 		return new CarEntityBuilder();
 	}
@@ -164,6 +181,10 @@ public class CarEntity implements Serializable {
 		this.employeeKeeper = employeeKeeper;
 	}
 
+	/**
+	 * This is builder class.
+	 *
+	 */
 	public static class CarEntityBuilder {
 		private Long idCar;
 		private String type;
@@ -177,64 +198,150 @@ public class CarEntity implements Serializable {
 		private List<RentingCarEntity> listRentingCar;
 		private List<EmployeeEntity> employeeKeeper;
 
+		/**
+		 * No-argument constructor
+		 */
 		public CarEntityBuilder() {
 		}
 
+		/**
+		 * This method set car index.
+		 * 
+		 * @param idCar
+		 *            car index
+		 * @return new object with car index
+		 */
 		public CarEntityBuilder withIdCar(Long idCar) {
 			this.idCar = idCar;
 			return this;
 		}
 
+		/**
+		 * This method set car type.
+		 * 
+		 * @param type
+		 *            car type
+		 * @return new object with car type
+		 */
 		public CarEntityBuilder withType(String type) {
 			this.type = type;
 			return this;
 		}
 
+		/**
+		 * This method set car brand.
+		 * 
+		 * @param brand
+		 *            car brand
+		 * @return new object with car brand
+		 */
 		public CarEntityBuilder withBrand(String brand) {
 			this.brand = brand;
 			return this;
 		}
 
+		/**
+		 * This method set car model.
+		 * 
+		 * @param model
+		 *            car model
+		 * @return new object with car model
+		 */
 		public CarEntityBuilder withModel(String model) {
 			this.model = model;
 			return this;
 		}
 
+		/**
+		 * This method set the color of the car.
+		 * 
+		 * @param color
+		 *            color of the car
+		 * @return new object with color of the car
+		 */
 		public CarEntityBuilder withColor(String color) {
 			this.color = color;
 			return this;
 		}
 
+		/**
+		 * This method sat engine capacity.
+		 * 
+		 * @param engineCapacity
+		 *            capacity of the car engine
+		 * @return new object with capacity of the car engine
+		 */
 		public CarEntityBuilder withEngineCapacity(int engineCapacity) {
 			this.engineCapacity = engineCapacity;
 			return this;
 		}
 
+		/**
+		 * 
+		 * This method set power engine.
+		 * 
+		 * @param enginePower
+		 *            power of the car engine
+		 * @return new object with power of the car engine
+		 */
 		public CarEntityBuilder withEnginePower(int enginePower) {
 			this.enginePower = enginePower;
 			return this;
 		}
 
+		/**
+		 * This method set mileage.
+		 * 
+		 * @param mileage
+		 *            car mileage
+		 * @return new object with car mileage
+		 */
 		public CarEntityBuilder withMileage(int mileage) {
 			this.mileage = mileage;
 			return this;
 		}
 
+		/**
+		 * This method set car year.
+		 * 
+		 * @param year
+		 *            production year
+		 * @return new object with production year
+		 */
 		public CarEntityBuilder withYear(int year) {
 			this.year = year;
 			return this;
 		}
 
+		/**
+		 * This method set list of rentals for this car.
+		 * 
+		 * @param listRentingCar
+		 *            list of rentals
+		 * @return new object with list of rentals
+		 */
 		public CarEntityBuilder withListRentingCar(List<RentingCarEntity> listRentingCar) {
 			this.listRentingCar = listRentingCar;
 			return this;
 		}
 
+		/**
+		 * This method set list car keepers.
+		 * 
+		 * @param employeeKeeper
+		 *            list of car keepers
+		 * @return new object with list car keepers
+		 */
 		public CarEntityBuilder withEmployeeKeeper(List<EmployeeEntity> employeeKeeper) {
 			this.employeeKeeper = employeeKeeper;
 			return this;
 		}
 
+		/**
+		 * This method create new object.
+		 * 
+		 * @return new object car
+		 */
 		public CarEntity build() {
 			checkBeforeBuild();
 			return new CarEntity(this);

@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * This class maps position tables.
+ *
+ */
 @Entity
 @Table(name = "POSITIONS")
 public class PositionEntity implements Serializable {
@@ -27,13 +31,30 @@ public class PositionEntity implements Serializable {
 	@OneToMany(mappedBy = "position")
 	private List<EmployeeEntity> listEmployee = new ArrayList<>();
 
+	/**
+	 * No-argument constructor
+	 */
 	public PositionEntity() {
 	}
 
+	/**
+	 * Constructor with one parameter.
+	 * 
+	 * @param namePosition
+	 *            name of position
+	 */
 	public PositionEntity(String namePosition) {
 		this.namePosition = namePosition;
 	}
 
+	/**
+	 * Constructor with two parameters.
+	 * 
+	 * @param namePosition
+	 *            name of position
+	 * @param listEmployee
+	 *            list of employee which have specific position
+	 */
 	public PositionEntity(String namePosition, List<EmployeeEntity> listEmployee) {
 		this.namePosition = namePosition;
 		this.listEmployee = listEmployee;

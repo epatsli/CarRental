@@ -16,6 +16,10 @@ import com.capgemini.service.InstitutionService;
 import com.capgemini.types.EmployeeTO;
 import com.capgemini.types.InstitutionTO;
 
+/**
+ * This class contains implementations of interface methods.
+ *
+ */
 @Service
 @Transactional(readOnly = true)
 public class InstitutionServiceImpl implements InstitutionService {
@@ -29,6 +33,13 @@ public class InstitutionServiceImpl implements InstitutionService {
 		this.employeeDao = employeeDao;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.capgemini.service.InstitutionService#addInstitution(com.capgemini.
+	 * types.InstitutionTO)
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public InstitutionTO addInstitution(InstitutionTO institution) {
@@ -36,12 +47,26 @@ public class InstitutionServiceImpl implements InstitutionService {
 		return InstitutionMapper.toInstitutionTO(institutionEntity);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.capgemini.service.InstitutionService#deleteInstitution(com.capgemini.
+	 * types.InstitutionTO)
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public void deleteInstitution(InstitutionTO institution) {
 		institutionDao.delete(InstitutionMapper.toInstitutionEntity(institution));
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.capgemini.service.InstitutionService#editInstitution(com.capgemini.
+	 * types.InstitutionTO)
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public InstitutionTO editInstitution(InstitutionTO institution) {
@@ -50,6 +75,13 @@ public class InstitutionServiceImpl implements InstitutionService {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.capgemini.service.InstitutionService#addEmployeeTOInstitution(java.
+	 * lang.Long, java.lang.Long)
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public void addEmployeeTOInstitution(Long idInstitution, Long idEmployee) {
@@ -63,6 +95,13 @@ public class InstitutionServiceImpl implements InstitutionService {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.capgemini.service.InstitutionService#deleteEmployeeWithInstitution(
+	 * java.lang.Long)
+	 */
 	@Override
 	@Transactional(readOnly = false)
 	public void deleteEmployeeWithInstitution(Long idEmployee) {
@@ -77,12 +116,26 @@ public class InstitutionServiceImpl implements InstitutionService {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.capgemini.service.InstitutionService#findAllEmployeeInIntitution(java
+	 * .lang.Long)
+	 */
 	@Override
 	public List<EmployeeTO> findAllEmployeeInIntitution(Long idInstitution) {
 		List<EmployeeEntity> employees = institutionDao.findCurrentEmployee(idInstitution);
 		return EmployeeMapper.map2TOs(employees);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.capgemini.service.InstitutionService#findAllCarKeeperInInstitution(
+	 * java.lang.Long, java.lang.Long)
+	 */
 	@Override
 	public List<EmployeeTO> findAllCarKeeperInInstitution(Long idInstitution, Long idCar) {
 		List<EmployeeEntity> carKeepersInInstitution = institutionDao.findCarKeeperInInstitution(idCar, idInstitution);

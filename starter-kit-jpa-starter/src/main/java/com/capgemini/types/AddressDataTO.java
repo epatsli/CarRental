@@ -2,15 +2,29 @@ package com.capgemini.types;
 
 import com.capgemini.exception.IncorrectParameterException;
 
+/**
+ * This class save address.
+ * 
+ */
 public class AddressDataTO {
 	private String street;
 	private String houseNumber;
 	private String city;
 	private String postCode;
 
+	/**
+	 * No-argument constructor
+	 */
 	public AddressDataTO() {
 	}
 
+	/**
+	 * Constructor creating an address with the help of a builder.
+	 * 
+	 * @param build
+	 *            object AddressDataBuilder
+	 * 
+	 */
 	public AddressDataTO(AddressDataTOBuilder build) {
 		this.street = build.street;
 		this.houseNumber = build.houseNumber;
@@ -50,30 +64,62 @@ public class AddressDataTO {
 		this.postCode = postCode;
 	}
 
+	/**
+	 * This is auxiliary class to build new object.
+	 *
+	 */
 	public static class AddressDataTOBuilder {
 		private String street;
 		private String houseNumber;
 		private String city;
 		private String postCode;
 
+		/**
+		 * No-argument constructor
+		 */
 		public AddressDataTOBuilder() {
 		}
 
+		/**
+		 * Method which create object with street name.
+		 * 
+		 * @param street
+		 *            new street name
+		 * @return new object
+		 */
 		public AddressDataTOBuilder withStreet(String street) {
 			this.street = street;
 			return this;
 		}
 
+		/**
+		 * Method which create object with house number.
+		 * 
+		 * @param houseNumber
+		 * @return new object
+		 */
 		public AddressDataTOBuilder withHouseNumber(String houseNumber) {
 			this.houseNumber = houseNumber;
 			return this;
 		}
 
+		/**
+		 * Method which create object with city name.
+		 * 
+		 * @param city
+		 * @return new object
+		 */
 		public AddressDataTOBuilder withCity(String city) {
 			this.city = city;
 			return this;
 		}
 
+		/**
+		 * Method which create object with post code.
+		 * 
+		 * @param postCode
+		 * @return new object
+		 */
 		public AddressDataTOBuilder withPostCode(String postCode) {
 			this.postCode = postCode;
 			return this;
@@ -85,6 +131,12 @@ public class AddressDataTO {
 			}
 		}
 
+		/**
+		 * This method creates a new object if we provide all the required
+		 * parameters.
+		 * 
+		 * @return new object
+		 */
 		public AddressDataTO build() {
 			checkBeforeBuild();
 			return new AddressDataTO(this);

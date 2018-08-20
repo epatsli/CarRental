@@ -8,9 +8,22 @@ public class PersonDataTO {
 	private String lastName;
 	private LocalDate dataOfBirth;
 
+	/**
+	 * No-argument constructor
+	 */
 	public PersonDataTO() {
 	}
 
+	/**
+	 * Constructor with three parameters whcich create new object.
+	 * 
+	 * @param firstName
+	 *            first name person
+	 * @param lastName
+	 *            surname person
+	 * @param dataOfBirth
+	 *            date of birth person
+	 */
 	public PersonDataTO(String firstName, String lastName, LocalDate dataOfBirth) {
 		checkBeforeCreate();
 		this.firstName = firstName;

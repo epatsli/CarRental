@@ -47,8 +47,8 @@ public class CarMapper {
 		if (carTO == null)
 			return null;
 
-		return new CarEntityBuilder().withType(carTO.getType()).withBrand(carTO.getBrand()).withModel(carTO.getModel())
-				.withColor(carTO.getColor()).withEngineCapacity(carTO.getEngine_capacity())
+		return new CarEntityBuilder().withIdCar(carTO.getIdCar()).withType(carTO.getType()).withBrand(carTO.getBrand())
+				.withModel(carTO.getModel()).withColor(carTO.getColor()).withEngineCapacity(carTO.getEngine_capacity())
 				.withEnginePower(carTO.getEnginePower()).withMileage(carTO.getMileage()).withYear(carTO.getYear())
 				.build();
 
