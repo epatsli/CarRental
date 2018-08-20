@@ -3,7 +3,7 @@ package com.capgemini.dao;
 import java.util.List;
 
 import com.capgemini.domain.EmployeeEntity;
-import com.capgemini.domain.SearchCriteria;
+import com.capgemini.domain.SearchCriteriaEntity;
 
 public interface SearchCriteriaDao extends Dao<EmployeeEntity, Long> {
 
@@ -41,6 +41,6 @@ public interface SearchCriteriaDao extends Dao<EmployeeEntity, Long> {
 	 * @param searchCriteria
 	 * @return list of employees
 	 */
-	List<EmployeeEntity> findEmployeesByCriteria(SearchCriteria searchCriteria);
+	List<EmployeeEntity> findEmployeesByCriteria(SearchCriteriaEntity searchCriteria);
 
 }

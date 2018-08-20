@@ -13,7 +13,7 @@ import com.capgemini.domain.CarEntity;
 import com.capgemini.domain.EmployeeEntity;
 import com.capgemini.domain.InstitutionEntity;
 import com.capgemini.domain.PositionEntity;
-import com.capgemini.domain.SearchCriteria;
+import com.capgemini.domain.SearchCriteriaEntity;
 
 @Repository
 public class SearchCriteriaDaoImpl extends AbstractDao<EmployeeEntity, Long> implements SearchCriteriaDao {
@@ -73,7 +73,7 @@ public class SearchCriteriaDaoImpl extends AbstractDao<EmployeeEntity, Long> imp
 	 * .domain.SearchCriteria)
 	 */
 	@Override
-	public List<EmployeeEntity> findEmployeesByCriteria(SearchCriteria criteria) {
+	public List<EmployeeEntity> findEmployeesByCriteria(SearchCriteriaEntity criteria) {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		StringBuilder stringBuilder = new StringBuilder();

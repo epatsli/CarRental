@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.capgemini.dao.SearchCriteriaDao;
-import com.capgemini.domain.SearchCriteria;
+import com.capgemini.domain.SearchCriteriaEntity;
 import com.capgemini.mappers.EmployeeMapper;
 import com.capgemini.service.SearchCriteriaService;
 import com.capgemini.types.EmployeeTO;
@@ -27,7 +27,7 @@ public class SearchCriteriaServiceImpl implements SearchCriteriaService {
 	 * com.capgemini.domain.SearchCriteria)
 	 */
 	@Override
-	public List<EmployeeTO> findEmployeesByAllCriteria(SearchCriteria search) {
+	public List<EmployeeTO> findEmployeesByAllCriteria(SearchCriteriaEntity search) {
 
 		return EmployeeMapper.map2TOs(searchCriteriaDao.findEmployeesByCriteria(search));
 

@@ -1,6 +1,6 @@
 package com.capgemini.domain;
 
-public class SearchCriteria {
+public class SearchCriteriaEntity {
 	private Long idInstitution;
 	private Long idCar;
 	private Long idPosition;
@@ -10,7 +10,7 @@ public class SearchCriteria {
 	 * 
 	 * @param builder
 	 */
-	public SearchCriteria(SearchCriteriaBuilder builder) {
+	public SearchCriteriaEntity(SearchCriteriaBuilder builder) {
 		this.idInstitution = builder.idInstitution;
 		this.idCar = builder.idCar;
 		this.idPosition = builder.idPosition;
@@ -100,8 +100,8 @@ public class SearchCriteria {
 		 * 
 		 * @return new object search criteria
 		 */
-		public SearchCriteria build() {
-			return new SearchCriteria(this);
+		public SearchCriteriaEntity build() {
+			return new SearchCriteriaEntity(this);
 
 		}
 	}
