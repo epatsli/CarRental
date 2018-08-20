@@ -81,6 +81,4 @@ public class CarServiceTest {
 		Mockito.verify(carDaoMock, times(1)).findCarByTypeAndBrand("Combi", "Opel");
 	}
 
-	// Mockito.when(carDaoMock.findCarByTypeAndBrand(any(), any()));
-
 }

@@ -95,7 +95,6 @@ public class EmployeeTO {
 		}
 
 		/**
-		 * 
 		 * This method set index employee.
 		 * 
 		 * @param idEmployee

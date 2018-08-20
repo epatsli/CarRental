@@ -50,6 +50,12 @@ public class SearchCriteriaDaoImpl extends AbstractDao<EmployeeEntity, Long> imp
 		return query.getResultList();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.capgemini.dao.SearchCriteriaDao#findEmployeesByCar(java.lang.Long)
+	 */
 	@Override
 	public List<EmployeeEntity> findEmployeesByCar(Long idCar) {
 		CarEntity car = entityManager.getReference(CarEntity.class, idCar);
